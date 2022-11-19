@@ -1,10 +1,13 @@
 package com.example.hospital;
 
+import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -51,6 +54,11 @@ public class Main extends Application {
         FXMLLoader LihatAntriPetugasLoader = new FXMLLoader(getClass().getResource("LihatAntriPetugas.fxml"));
         Parent LihatAntriPetugasPage = LihatAntriPetugasLoader.load();
         Scene LihatAntriPetugasScene = new Scene(LihatAntriPetugasPage, 1200, 700);
+
+// getting loader and a pane for the SPLASH scene
+        FXMLLoader SplashLoader = new FXMLLoader(getClass().getResource("Splash.fxml"));
+        Parent SplashPage = SplashLoader.load();
+        Scene SplashScene = new Scene(SplashPage, 1200, 700);
 
 //----------------------------------------------------------------------------------------------------------------------------
 
@@ -108,9 +116,39 @@ public class Main extends Application {
         lihatantripetugas.setFormAntriPetugasScene(FormAntriPetugasScene);
         lihatantripetugas.setLihatAntriPetugasScene(LihatAntriPetugasScene);
 
+// injecting scene into the controller of the SPLASH scene
+        SplashController splash = (SplashController) SplashLoader.getController();
+        splash.setHomepageScene(HomepageScene);
+        splash.setFormAntriScene(FormAntriScene);
+        splash.setLoginPetugasScene(LoginPetugasScene);
+        splash.setHomepagePetugasScene(HomepagePetugasScene);
+        splash.setFormAntriPetugasScene(FormAntriPetugasScene);
+        splash.setLihatAntriPetugasScene(LihatAntriPetugasScene);
+
         primaryStage.setTitle("RSUD Dr.Soeprapto Cepu");
-        primaryStage.setScene(HomepageScene);
+        primaryStage.setScene(SplashScene);
         primaryStage.show();
+
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), SplashPage);
+        fadeIn.setFromValue(0);
+        fadeIn.setToValue(1);
+        fadeIn.setCycleCount(1);
+
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), SplashPage);
+        fadeOut.setFromValue(1);
+        fadeOut.setToValue(0);
+        fadeOut.setCycleCount(1);
+
+        fadeIn.play();
+
+        fadeIn.setOnFinished((e) -> {
+            fadeOut.play();
+        });
+
+        fadeOut.setOnFinished((e) -> {
+            primaryStage.setScene(HomepageScene);
+            primaryStage.show();
+        });
     }
 
     public static void main(String[] args) {

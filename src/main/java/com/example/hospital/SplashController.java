@@ -1,26 +1,18 @@
 package com.example.hospital;
 
-import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class HomepageController {
-
+public class SplashController {
 //    @FXML
-//    private VBox root;
+//    private Label welcomeText;
+//
+//    @FXML
+//    protected void onHelloButtonClick() {
+//        welcomeText.setText("Welcome to JavaFX Application!");
+//    }
 
     private Scene HomepageScene;
     private Scene FormAntriScene;
@@ -28,8 +20,6 @@ public class HomepageController {
     private Scene LoginPetugasScene;
     private Scene FormAntriPetugasScene;
     private Scene LihatAntriPetugasScene;
-
-//    public static boolean isSplashLoaded = false;
 
     public void setHomepageScene(Scene scene) {
         HomepageScene = scene;
@@ -84,52 +74,4 @@ public class HomepageController {
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(LihatAntriPetugasScene);
     }
-
-//    @Override
-//    public void initialize(URL url, ResourceBundle resourceBundle) {
-//        if(!isSplashLoaded) {
-//            try {
-//                loadSplashScreen();
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
-//
-//    }
-
-//    private void loadSplashScreen() throws IOException {
-//
-//        isSplashLoaded = true;
-//
-//        VBox pane = FXMLLoader.load(getClass().getResource("Splash.fxml"));
-//        root.getChildren().setAll(pane);
-//
-//        FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), pane);
-//        fadeIn.setFromValue(0);
-//        fadeIn.setToValue(1);
-//        fadeIn.setCycleCount(1);
-//
-//        FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), pane);
-//        fadeOut.setFromValue(1);
-//        fadeOut.setToValue(0);
-//        fadeOut.setCycleCount(1);
-//
-//        fadeIn.play();
-//
-//        fadeIn.setOnFinished((e) -> {
-//            fadeOut.play();
-//        });
-//
-//        fadeOut.setOnFinished((e) -> {
-//            try {
-//                VBox ye = FXMLLoader.load(getClass().getResource("Homepage.fxml"));
-//                root.getChildren().setAll(ye);
-//            } catch (IOException ex) {
-//                throw new RuntimeException(ex);
-//            }
-//
-//        });
-//    }
-
-
 }
