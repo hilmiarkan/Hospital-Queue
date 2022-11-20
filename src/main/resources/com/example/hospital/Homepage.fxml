@@ -211,7 +211,7 @@
                <children>
                   <VBox spacing="8.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" text="Antrian Reguler" textFill="#101828">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" text="Antrian Umum" textFill="#101828">
                            <font>
                               <Font name="Inter SemiBold" size="18.0" />
                            </font>

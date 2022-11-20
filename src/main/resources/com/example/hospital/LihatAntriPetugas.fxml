@@ -97,6 +97,14 @@
                <children>
                   <ChoiceBox minHeight="36.0" minWidth="150.0" style="-fx-background-radius: 8;" />
                   <ChoiceBox minHeight="36.0" minWidth="150.0" style="-fx-background-radius: 8;" />
+                  <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#openLoginPetugasScene" prefHeight="33.0" prefWidth="79.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-color: #D0D5DD; -fx-border-radius: 8;" text="Apply" textFill="#344054">
+                     <padding>
+                        <Insets bottom="8.0" left="14.0" right="14.0" top="8.0" />
+                     </padding>
+                     <font>
+                        <Font name="Inter Medium" size="12.0" />
+                     </font>
+                  </Button>
                   <Region HBox.hgrow="ALWAYS" />
                   <TextField minHeight="36.0" minWidth="300.0" promptText="Cari antrian" style="-fx-background-radius: 8;">
                      <font>
@@ -108,7 +116,9 @@
               <columns>
                 <TableColumn editable="false" prefWidth="197.46902465820312" sortable="false" text="No. Antrian" />
                 <TableColumn editable="false" prefWidth="249.46728515625" sortable="false" text="Nama" />
-                  <TableColumn editable="false" prefWidth="-1.0" sortable="false" text="Jenis" />
+                  <TableColumn editable="false" prefWidth="-1.0" sortable="false" text="Poli" />
+                  <TableColumn editable="false" prefWidth="197.46902465820312" sortable="false" text="Dokter" />
+                  <TableColumn editable="false" prefWidth="197.46902465820312" sortable="false" text="Jenis" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
