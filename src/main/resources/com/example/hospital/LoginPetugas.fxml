@@ -70,9 +70,9 @@
             <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
          </padding>
       </VBox>
-      <ImageView fitHeight="696.0" fitWidth="527.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+      <ImageView fitHeight="700.0" fitWidth="527.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
          <image>
-            <Image url="@Blues.png" />
+            <Image url="@yyy_clipdrop-enhance.png" />
          </image>
          <viewport>
             <Rectangle2D />

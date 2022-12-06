@@ -1,71 +1,154 @@
 package com.example.hospital;
 
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
-public class FormAntriController {
-    private Scene HomepageScene;
-    private Scene FormAntriScene;
-    private Scene HomepagePetugasScene;
-    private Scene LoginPetugasScene;
-    private Scene FormAntriPetugasScene;
-    private Scene LihatAntriPetugasScene;
+import java.io.IOException;
+import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ResourceBundle;
 
-    public void setHomepageScene(Scene scene) {
-        HomepageScene = scene;
-    }
-    public void setFormAntriScene(Scene scene) {
-        FormAntriScene = scene;
-    }
+public class FormAntriController implements Initializable{
 
-    public void setHomepagePetugasScene(Scene scene) {
-        HomepagePetugasScene = scene;
-    }
+    @FXML
+    private TextField noantrian;
+    @FXML
+    private TextField nama;
+    @FXML
+    private ComboBox poli;
+    @FXML
+    private ComboBox dokter;
+    @FXML
+    private DatePicker tanggal;
 
-    public void setLoginPetugasScene(Scene scene) {
-        LoginPetugasScene = scene;
-    }
+    String jenisTerpilih = "";
 
-    public void setFormAntriPetugasScene(Scene scene) {
-        FormAntriPetugasScene = scene;
-    }
+    public void openHomepageScene(ActionEvent actionEvent) throws IOException {
+        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Homepage.fxml"));
+        Parent InvoicePage = InvoiceLoader.load();
+        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
 
-    public void setLihatAntriPetugasScene(Scene scene) {
-        LihatAntriPetugasScene = scene;
-    }
-
-
-    public void openHomepageScene(ActionEvent actionEvent) {
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(HomepageScene);
+        primaryStage.setScene(InvoiceScene);
     }
 
-    public void openFormAntriScene(ActionEvent actionEvent) {
+    public void openFormAntriScene(ActionEvent actionEvent) throws IOException {
+        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("FormAntri.fxml"));
+        Parent InvoicePage = InvoiceLoader.load();
+        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(FormAntriScene);
+        primaryStage.setScene(InvoiceScene);
     }
 
-    public void openHomepagePetugasScene(ActionEvent actionEvent) {
+    public void openHomepagePetugasScene(ActionEvent actionEvent) throws IOException {
+        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("HomepagePetugas.fxml"));
+        Parent InvoicePage = InvoiceLoader.load();
+        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(HomepagePetugasScene);
+        primaryStage.setScene(InvoiceScene);
     }
 
-    public void openLoginPetugasScene(ActionEvent actionEvent) {
+    public void openLoginPetugasScene(ActionEvent actionEvent) throws IOException {
+        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("LoginPetugas.fxml"));
+        Parent InvoicePage = InvoiceLoader.load();
+        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(LoginPetugasScene);
+        primaryStage.setScene(InvoiceScene);
     }
 
-    public void openFormAntriPetugasScene(ActionEvent actionEvent) {
+    public void openFormAntriPetugasScene(ActionEvent actionEvent) throws IOException {
+        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("FormAntriPetugas.fxml"));
+        Parent InvoicePage = InvoiceLoader.load();
+        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(FormAntriPetugasScene);
+        primaryStage.setScene(InvoiceScene);
     }
 
-    public void openLihatAntriPetugasScene(ActionEvent actionEvent) {
+    public void openLihatAntriPetugasScene(ActionEvent actionEvent) throws IOException {
+        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("LihatAntriPetugas.fxml"));
+        Parent InvoicePage = InvoiceLoader.load();
+        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(LihatAntriPetugasScene);
+        primaryStage.setScene(InvoiceScene);
+    }
+
+    public void openInvoiceScene(ActionEvent actionEvent) throws IOException {
+
+        int noantrian;
+        String nama, poli, dokter, tanggal, jenis;
+
+        noantrian = Integer.parseInt(this.noantrian.getText());
+        nama = this.nama.getText();
+        poli = this.poli.getValue().toString();
+        dokter = this.dokter.getValue().toString();
+        tanggal = this.tanggal.getValue().toString();
+        jenis = this.jenisTerpilih;
+
+        System.out.println("Telah masuk Antrian => (" + jenisTerpilih + " " + poli  + " " + "99" + ") Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
+
+        Database database = Database.getInstance();
+
+        database.enQueue(noantrian, nama, poli, dokter, tanggal, jenis);
+
+        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Invoice.fxml"));
+        Parent InvoicePage = InvoiceLoader.load();
+        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+
+        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        primaryStage.setScene(InvoiceScene);
+    }
+
+    public void poliTelahTerpilih(ActionEvent actionEvent) {
+
+        poli.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            dokter.getItems().clear();
+            dokter.setPromptText("Pilih Dokter");
+            if (newValue.equals("Poli Mata")) {
+                dokter.getItems().addAll("Dr. Suluri", "Dr. Hilmi", "Dr. Arkan");
+            } else if (newValue.equals("Poli Umum")) {
+                dokter.getItems().addAll("Dr. Suci");
+            } else if (newValue.equals("Poli Bedah")) {
+                dokter.getItems().addAll("Dr. Doc", "Dr. Dia");
+            }
+        });
+    }
+
+   public void memilihBPJS(ActionEvent actionEvent) {
+        jenisTerpilih = "BPJS";
+   }
+
+    public void memilihUmum(ActionEvent actionEvent) {
+        jenisTerpilih = "Umum";
+    }
+
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        poli.getItems().clear();
+        poli.getItems().addAll("Poli Mata", "Poli Umum", "Poli Bedah");
+
+        Database database = Database.getInstance();
+        Queue queue = database.getQueue();
+
+        noantrian.setText(String.valueOf(queue.getnItems()));
     }
 }

@@ -17,7 +17,7 @@
    <children>
       <VBox>
          <children>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER" style="-fx-background-color: #FFFFFF;">
                <children>
                   <ImageView pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -80,8 +80,14 @@
                <padding>
                   <Insets bottom="12.0" left="64.0" right="64.0" top="12.0" />
                </padding>
+               <effect>
+                  <DropShadow height="41.0" offsetY="2.0" radius="15.0" spread="0.15">
+                     <color>
+                        <Color opacity="0.09751433879137039" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </HBox>
-            <Separator prefWidth="200.0" style="-fx-border-color: f2f4f7; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
          </children>
       </VBox>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="32.0" VBox.vgrow="ALWAYS">
@@ -122,7 +128,7 @@
                               <Separator prefWidth="200.0" style="-fx-border-color: #F4EBFF; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <Label alignment="CENTER" text="A01" textFill="#42307d">
+                                    <Label fx:id="counter_poliumum_bpjs" alignment="CENTER" text="A00" textFill="#42307d">
                                        <font>
                                           <Font name="Inter SemiBold" size="96.0" />
                                        </font>
@@ -158,7 +164,7 @@
                               <Separator prefWidth="200.0" style="-fx-border-color: #F4EBFF; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <Label alignment="CENTER" text="A01" textFill="#42307d">
+                                    <Label alignment="CENTER" text="A00" textFill="#42307d">
                                        <font>
                                           <Font name="Inter SemiBold" size="96.0" />
                                        </font>
@@ -194,7 +200,7 @@
                               <Separator prefWidth="200.0" style="-fx-border-color: #F4EBFF; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <Label alignment="CENTER" text="A01" textFill="#42307d">
+                                    <Label alignment="CENTER" text="A00" textFill="#42307d">
                                        <font>
                                           <Font name="Inter SemiBold" size="96.0" />
                                        </font>
@@ -251,7 +257,7 @@
                               <Separator prefWidth="200.0" style="-fx-border-color: f2f4f7; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <Label alignment="CENTER" text="A01" textFill="#101828">
+                                    <Label alignment="CENTER" text="B00" textFill="#101828">
                                        <font>
                                           <Font name="Inter SemiBold" size="96.0" />
                                        </font>
@@ -287,7 +293,7 @@
                               <Separator prefWidth="200.0" style="-fx-border-color: f2f4f7; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <Label alignment="CENTER" text="A01" textFill="#101828">
+                                    <Label alignment="CENTER" text="B00" textFill="#101828">
                                        <font>
                                           <Font name="Inter SemiBold" size="96.0" />
                                        </font>
@@ -323,7 +329,7 @@
                               <Separator prefWidth="200.0" style="-fx-border-color: f2f4f7; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <Label alignment="CENTER" text="A01" textFill="#101828">
+                                    <Label alignment="CENTER" text="B00" textFill="#101828">
                                        <font>
                                           <Font name="Inter SemiBold" size="96.0" />
                                        </font>

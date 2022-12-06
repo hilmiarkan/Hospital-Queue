@@ -2,25 +2,27 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital.FormAntriPetugasController">
    <children>
       <VBox>
          <children>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER" style="-fx-background-color: #FFFFFF;">
                <children>
                   <ImageView pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -83,98 +85,108 @@
                <padding>
                   <Insets bottom="12.0" left="64.0" right="64.0" top="12.0" />
                </padding>
+               <effect>
+                  <DropShadow height="41.0" offsetY="2.0" radius="15.0" spread="0.15">
+                     <color>
+                        <Color opacity="0.1022944524884224" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </HBox>
-            <Separator prefWidth="200.0" style="-fx-border-color: f2f4f7; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
          </children>
       </VBox>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" text="Form Antrian" VBox.vgrow="ALWAYS">
-               <font>
-                  <Font name="Inter SemiBold" size="18.0" />
-               </font>
-            </Label>
-            <HBox alignment="CENTER" maxWidth="400.0" spacing="12.0">
+            <VBox alignment="CENTER" prefHeight="639.0" prefWidth="1200.0" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label text="Anda akan masuk antrian ke : " textFill="#344054">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" text="Form Antrian" VBox.vgrow="ALWAYS">
                      <font>
-                        <Font name="Inter Medium" size="14.0" />
+                        <Font name="Inter SemiBold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField disable="true" editable="false" minHeight="40.0" minWidth="85.0" prefHeight="40.0" prefWidth="85.0" style="-fx-background-radius: 8;" />
-               </children>
-            </HBox>
-            <VBox maxWidth="400.0" spacing="6.0" VBox.vgrow="NEVER">
-               <children>
-                  <Label text="Nama" textFill="#344054">
-                     <font>
-                        <Font name="Inter Medium" size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField minHeight="40.0" minWidth="400.0" style="-fx-background-radius: 8;" />
-               </children>
-            </VBox>
-            <VBox maxWidth="400.0" spacing="6.0" VBox.vgrow="NEVER">
-               <children>
-                  <Label maxWidth="400.0" text="Poli yang dituju" textFill="#344054">
-                     <font>
-                        <Font name="Inter Medium" size="14.0" />
-                     </font>
-                  </Label>
-                  <ChoiceBox minHeight="40.0" minWidth="400.0" style="-fx-background-radius: 8;" />
-               </children>
-            </VBox>
-            <VBox maxWidth="400.0" spacing="6.0" VBox.vgrow="NEVER">
-               <children>
-                  <Label maxWidth="400.0" text="Dokter" textFill="#344054">
-                     <font>
-                        <Font name="Inter Medium" size="14.0" />
-                     </font>
-                  </Label>
-                  <ChoiceBox minHeight="40.0" minWidth="400.0" style="-fx-background-radius: 8;" />
-               </children>
-            </VBox>
-            <VBox maxWidth="400.0" spacing="6.0" VBox.vgrow="NEVER">
-               <children>
-                  <Label text="Tanggal" textFill="#344054">
-                     <font>
-                        <Font name="Inter Medium" size="14.0" />
-                     </font>
-                  </Label>
-                  <DatePicker minHeight="40.0" minWidth="400.0" />
-               </children>
-            </VBox>
-            <VBox maxWidth="400.0" spacing="10.0">
-               <children>
-                  <Label maxWidth="400.0" text="Jenis" textFill="#344054">
-                     <font>
-                        <Font name="Inter Medium" size="14.0" />
-                     </font>
-                  </Label>
-                  <HBox maxWidth="400.0" spacing="24.0">
+                  <HBox alignment="CENTER" maxWidth="400.0" spacing="12.0">
                      <children>
-                        <RadioButton mnemonicParsing="false" text="Umum">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="jenis" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="BPJS" toggleGroup="$jenis" />
+                        <Label text="Anda akan masuk antrian ke : " textFill="#344054">
+                           <font>
+                              <Font name="Inter Medium" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="noantrian" disable="true" minHeight="40.0" minWidth="85.0" prefHeight="40.0" prefWidth="85.0" style="-fx-background-radius: 8;" />
                      </children>
                   </HBox>
+                  <VBox maxWidth="400.0" spacing="6.0" VBox.vgrow="NEVER">
+                     <children>
+                        <Label text="Nama" textFill="#344054">
+                           <font>
+                              <Font name="Inter Medium" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="nama" minHeight="40.0" minWidth="400.0" style="-fx-background-radius: 8;" />
+                     </children>
+                  </VBox>
+                  <VBox maxWidth="400.0" spacing="6.0" VBox.vgrow="NEVER">
+                     <children>
+                        <Label maxWidth="400.0" text="Poli yang dituju" textFill="#344054">
+                           <font>
+                              <Font name="Inter Medium" size="14.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="poli" minHeight="40.0" minWidth="400.0" onAction="#poliTelahTerpilih" promptText="Pilih poli" style="-fx-background-radius: 8;" />
+                     </children>
+                  </VBox>
+                  <VBox maxWidth="400.0" spacing="6.0" VBox.vgrow="NEVER">
+                     <children>
+                        <Label maxWidth="400.0" text="Dokter" textFill="#344054">
+                           <font>
+                              <Font name="Inter Medium" size="14.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="dokter" minHeight="40.0" minWidth="400.0" promptText="Pilih dokter" style="-fx-background-radius: 8;" />
+                     </children>
+                  </VBox>
+                  <VBox maxWidth="400.0" spacing="6.0" VBox.vgrow="NEVER">
+                     <children>
+                        <Label text="Tanggal" textFill="#344054">
+                           <font>
+                              <Font name="Inter Medium" size="14.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="tanggal" minHeight="40.0" minWidth="400.0" />
+                     </children>
+                  </VBox>
+                  <VBox maxWidth="400.0" spacing="10.0">
+                     <children>
+                        <Label maxWidth="400.0" text="Jenis" textFill="#344054">
+                           <font>
+                              <Font name="Inter Medium" size="14.0" />
+                           </font>
+                        </Label>
+                        <HBox maxWidth="400.0" spacing="24.0">
+                           <children>
+                              <RadioButton fx:id="radioumum" mnemonicParsing="false" onAction="#memilihUmum" text="Umum">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="jenis" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="radiobpjs" mnemonicParsing="false" onAction="#memilihBPJS" text="BPJS" toggleGroup="$jenis" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Button id="button-login-petugas" graphicTextGap="8.0" minHeight="40.0" minWidth="400.0" mnemonicParsing="false" onAction="#openInvoicePetugasScene" style="-fx-background-color: #8654E1; -fx-background-radius: 8;" text="Tambahkan Antrian" textFill="WHITE">
+                     <padding>
+                        <Insets bottom="8.0" left="14.0" right="14.0" top="8.0" />
+                     </padding>
+                     <font>
+                        <Font name="Inter Medium" size="12.0" />
+                     </font>
+                  </Button>
                </children>
-            </VBox>
-            <Button id="button-login-petugas" graphicTextGap="8.0" minHeight="40.0" minWidth="400.0" mnemonicParsing="false" onAction="#openHomepagePetugasScene" style="-fx-background-color: #8654E1; -fx-background-radius: 8;" text="Tambahkan Antrian" textFill="WHITE">
                <padding>
-                  <Insets bottom="8.0" left="14.0" right="14.0" top="8.0" />
+                  <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
                </padding>
-               <font>
-                  <Font name="Inter Medium" size="12.0" />
-               </font>
-            </Button>
+            </VBox>
          </children>
-         <padding>
-            <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
-         </padding>
-      </VBox>
+      </AnchorPane>
    </children>
 </VBox>
