@@ -4,7 +4,8 @@ package com.example.hospital;
 
 public final class Database {
 
-    Queue queue = new Queue(11);
+    QueuePoliMata queuePoliMata = new QueuePoliMata(20);
+    QueuePoliJantung queuePoliJantung = new QueuePoliJantung(20);
     private final static Database INSTANCE = new Database();
 
     private Database() {}
@@ -13,15 +14,29 @@ public final class Database {
         return INSTANCE;
     }
 
+    private String poliTerakhir;
     public void enQueue(int noantrian, String nama, String poli, String dokter, String tanggal, String jenis) {
-        this.queue.insert(noantrian, nama, poli, dokter, tanggal, jenis);
+        poliTerakhir=poli;
+        if (poli.equals("Poli Mata")) {
+            this.queuePoliMata.insert(noantrian, nama, poli, dokter, tanggal, jenis);
+        } else if (poli.equals("Poli Jantung")) {
+            this.queuePoliJantung.insert(noantrian, nama, poli, dokter, tanggal, jenis);
+        }
     }
 
     public void deQueue(){
-        this.queue.remove();
+        this.queuePoliMata.remove();
     }
 
-    public Queue getQueue() {
-        return queue;
+    public String getPoliTerakhir(){
+        return poliTerakhir;
+    }
+
+    public QueuePoliMata getQueuePoliMata() {
+            return queuePoliMata;
+    }
+
+    public QueuePoliJantung getQueuePoliJantung() {
+        return queuePoliJantung;
     }
 }

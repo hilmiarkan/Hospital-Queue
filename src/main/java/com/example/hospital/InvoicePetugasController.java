@@ -8,7 +8,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -96,7 +95,7 @@ public class InvoicePetugasController implements Initializable {
 
     public void deleteThisAntrian(ActionEvent actionEvent) throws IOException {
         Database database = Database.getInstance();
-        Queue queue = database.getQueue();
+        QueuePoliMata queue = database.getQueuePoliMata();
 
         FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("LihatAntriPetugas.fxml"));
         Parent InvoicePage = InvoiceLoader.load();
@@ -109,8 +108,8 @@ public class InvoicePetugasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Database database = Database.getInstance();
-        Queue queue = database.getQueue();
-        Antrian last = queue.lastAdded();
+        QueuePoliMata queue = database.getQueuePoliMata();
+        ObjectPoliMata last = queue.lastAdded();
 
         int noantrian;
         String nama, poli, dokter, tanggal, jenis;

@@ -23,17 +23,17 @@ public class LihatAntriPetugasController implements Initializable {
     @FXML
     private TableView Tabel;
     @FXML
-    private TableColumn<Antrian, Integer> noantrianCol;
+    private TableColumn<ObjectPoliMata, Integer> noantrianCol;
     @FXML
-    private TableColumn<Antrian, String> namaCol;
+    private TableColumn<ObjectPoliMata, String> namaCol;
     @FXML
-    private TableColumn<Antrian, String> poliCol;
+    private TableColumn<ObjectPoliMata, String> poliCol;
     @FXML
-    private TableColumn<Antrian, String> dokterCol;
+    private TableColumn<ObjectPoliMata, String> dokterCol;
     @FXML
-    private TableColumn<Antrian, String> tanggalCol;
+    private TableColumn<ObjectPoliMata, String> tanggalCol;
     @FXML
-    private TableColumn<Antrian, String> jenisCol;
+    private TableColumn<ObjectPoliMata, String> jenisCol;
 
 
     public void openHomepageScene(ActionEvent actionEvent) throws IOException {
@@ -106,17 +106,17 @@ public class LihatAntriPetugasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Database database = Database.getInstance();
-        Queue queue = database.getQueue();
-        Antrian[] array = queue.toArray();
+        QueuePoliMata queue = database.getQueuePoliMata();
+        ObjectPoliMata[] array = queue.toArray();
 
-        ObservableList<Antrian> list = FXCollections.observableArrayList(array);
+        ObservableList<ObjectPoliMata> list = FXCollections.observableArrayList(array);
 
-        noantrianCol.setCellValueFactory(new PropertyValueFactory<Antrian, Integer>("noantrian"));
-        namaCol.setCellValueFactory(new PropertyValueFactory<Antrian, String>("nama"));
-        poliCol.setCellValueFactory(new PropertyValueFactory<Antrian, String>("poli"));
-        dokterCol.setCellValueFactory(new PropertyValueFactory<Antrian, String>("dokter"));
-        tanggalCol.setCellValueFactory(new PropertyValueFactory<Antrian, String>("tanggal"));
-        jenisCol.setCellValueFactory(new PropertyValueFactory<Antrian, String>("jenis"));
+        noantrianCol.setCellValueFactory(new PropertyValueFactory<ObjectPoliMata, Integer>("noantrian"));
+        namaCol.setCellValueFactory(new PropertyValueFactory<ObjectPoliMata, String>("nama"));
+        poliCol.setCellValueFactory(new PropertyValueFactory<ObjectPoliMata, String>("poli"));
+        dokterCol.setCellValueFactory(new PropertyValueFactory<ObjectPoliMata, String>("dokter"));
+        tanggalCol.setCellValueFactory(new PropertyValueFactory<ObjectPoliMata, String>("tanggal"));
+        jenisCol.setCellValueFactory(new PropertyValueFactory<ObjectPoliMata, String>("jenis"));
 
         noantrianCol.setReorderable(false);
         namaCol.setReorderable(false);
@@ -131,7 +131,7 @@ public class LihatAntriPetugasController implements Initializable {
             // Check if the event was a double-click.
             if (event.getClickCount() == 2) {
                 // Get the data for the clicked on row.
-                Antrian antrianTerpilih = (Antrian) Tabel.getSelectionModel().getSelectedItem();
+                ObjectPoliMata antrianTerpilih = (ObjectPoliMata) Tabel.getSelectionModel().getSelectedItem();
 
                 // Do something with the data (e.g. switch to another scene and
                 // display the data in that scene).

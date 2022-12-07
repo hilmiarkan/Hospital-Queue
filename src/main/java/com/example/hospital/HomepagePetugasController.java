@@ -86,12 +86,14 @@ public class HomepagePetugasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Database database = Database.getInstance();
-        Queue queue = database.getQueue();
-
-        if((queue.getnItems()-1) >= 10) {
-            counter_poliumum_bpjs.setText("A" + (queue.getnItems()-1));
+        QueuePoliMata queue = database.getQueuePoliMata();
+        ObjectPoliMata an = queue.getnItems();
+        if (an == null) {
+            counter_poliumum_bpjs.setText("A00");
+        } else if(an.getNoantrian() >= 10) {
+            counter_poliumum_bpjs.setText("A" + an.getNoantrian());
         } else {
-            counter_poliumum_bpjs.setText("A0" + (queue.getnItems()-1));
+            counter_poliumum_bpjs.setText("A0" + an.getNoantrian());
         }
 
     }

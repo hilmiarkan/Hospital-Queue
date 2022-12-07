@@ -1,11 +1,11 @@
 package com.example.hospital;
 
-public class Antrian {
+public class ObjectPoliMata {
 
     private int noantrian;
     private String nama, poli, dokter, tanggal, jenis;
 
-    public Antrian(int noantrian, String nama, String poli, String dokter, String tanggal, String jenis) {
+    public ObjectPoliMata(int noantrian, String nama, String poli, String dokter, String tanggal, String jenis) {
         this.noantrian = noantrian;
         this.nama = nama;
         this.poli = poli;

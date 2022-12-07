@@ -81,7 +81,7 @@
             </HBox>
          </children>
       </VBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+      <HBox alignment="CENTER" prefHeight="737.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
          <children>
             <VBox fx:id="receipt" alignment="TOP_CENTER" prefHeight="553.0" prefWidth="430.0" spacing="42.0" style="-fx-background-color: #FFFFFF;">
                <effect>
@@ -202,6 +202,20 @@
                                        </font>
                                     </Label>
                                     <Label fx:id="viewJenis" text="BPJS">
+                                       <font>
+                                          <Font name="Shelf Life" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" spacing="18.0">
+                                 <children>
+                                    <Label text="Antrian            :">
+                                       <font>
+                                          <Font name="Shelf Life" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="viewAntri" text="1 Orang">
                                        <font>
                                           <Font name="Shelf Life" size="16.0" />
                                        </font>
