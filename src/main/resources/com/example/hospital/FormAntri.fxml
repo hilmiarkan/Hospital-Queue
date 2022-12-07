@@ -96,16 +96,6 @@
                         <Font name="Inter SemiBold" size="18.0" />
                      </font>
                   </Label>
-                  <HBox alignment="CENTER" maxWidth="400.0" spacing="12.0">
-                     <children>
-                        <Label text="Anda akan masuk antrian ke : " textFill="#344054">
-                           <font>
-                              <Font name="Inter Medium" size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="noantrian" disable="true" minHeight="40.0" minWidth="85.0" prefHeight="40.0" prefWidth="85.0" style="-fx-background-radius: 8;" />
-                     </children>
-                  </HBox>
                   <VBox maxWidth="400.0" spacing="6.0" VBox.vgrow="NEVER">
                      <children>
                         <Label text="Nama" textFill="#344054">
