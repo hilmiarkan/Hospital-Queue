@@ -9,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -119,7 +118,7 @@ public class FormAntriPetugasController implements Initializable {
             dokter.setPromptText("Pilih Dokter");
             if (newValue.equals("Poli Mata")) {
                 dokter.getItems().addAll("Dr. Suluri", "Dr. Hilmi", "Dr. Arkan");
-            } else if (newValue.equals("Poli Umum")) {
+            } else if (newValue.equals("Poli Jantung")) {
                 dokter.getItems().addAll("Dr. Suci");
             } else if (newValue.equals("Poli Bedah")) {
                 dokter.getItems().addAll("Dr. Doc", "Dr. Dia");
@@ -142,10 +141,10 @@ public class FormAntriPetugasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         poli.getItems().clear();
-        poli.getItems().addAll("Poli Mata", "Poli Umum", "Poli Bedah");
+        poli.getItems().addAll("Poli Mata", "Poli Jantung", "Poli Bedah");
 
         Database database = Database.getInstance();
-        Queue queue = database.getQueue();
+        QueuePoliMata queue = database.getQueuePoliMata();
 
         noantrian.setText(String.valueOf(queue.getnItems()));
     }

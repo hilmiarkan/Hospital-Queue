@@ -1,8 +1,6 @@
 package com.example.hospital;
 
-import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,18 +8,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
-public class FormAntriController implements Initializable{
+public class FormAntriController implements Initializable {
 
     @FXML
     private TextField noantrian;
@@ -41,7 +34,7 @@ public class FormAntriController implements Initializable{
         Parent InvoicePage = InvoiceLoader.load();
         Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
 
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(InvoiceScene);
     }
 
@@ -50,7 +43,7 @@ public class FormAntriController implements Initializable{
         Parent InvoicePage = InvoiceLoader.load();
         Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
 
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(InvoiceScene);
     }
 
@@ -59,7 +52,7 @@ public class FormAntriController implements Initializable{
         Parent InvoicePage = InvoiceLoader.load();
         Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
 
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(InvoiceScene);
     }
 
@@ -68,7 +61,7 @@ public class FormAntriController implements Initializable{
         Parent InvoicePage = InvoiceLoader.load();
         Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
 
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(InvoiceScene);
     }
 
@@ -77,7 +70,7 @@ public class FormAntriController implements Initializable{
         Parent InvoicePage = InvoiceLoader.load();
         Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
 
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(InvoiceScene);
     }
 
@@ -86,69 +79,76 @@ public class FormAntriController implements Initializable{
         Parent InvoicePage = InvoiceLoader.load();
         Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
 
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(InvoiceScene);
     }
 
     public void openInvoiceScene(ActionEvent actionEvent) throws IOException {
+        Database database = Database.getInstance();
+        QueuePoliMata queuePoliMata = database.getQueuePoliMata();
+        QueuePoliJantung queuePoliJantung = database.getQueuePoliJantung();
 
-        int noantrian;
+        int noantrian = 0, antri = 0;
         String nama, poli, dokter, tanggal, jenis;
 
-        noantrian = Integer.parseInt(this.noantrian.getText());
+//        noantrian = Integer.parseInt(this.noantrian.getText());
+        if (this.poli.getValue().equals("Poli Mata")) {
+            noantrian = queuePoliMata.getNoAntrian();
+        } else if (this.poli.getValue().equals("Poli Jantung")) {
+            noantrian = queuePoliJantung.getNoAntrian();
+        }
+
         nama = this.nama.getText();
         poli = this.poli.getValue().toString();
         dokter = this.dokter.getValue().toString();
         tanggal = this.tanggal.getValue().toString();
         jenis = this.jenisTerpilih;
 
-        System.out.println("Telah masuk Antrian => (" + jenisTerpilih + " " + poli  + " " + "99" + ") Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
-
-        Database database = Database.getInstance();
+        System.out.println("Telah masuk Antrian => (" + jenisTerpilih + " " + poli + " " + noantrian + ") Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
 
         database.enQueue(noantrian, nama, poli, dokter, tanggal, jenis);
+
+//        InvoiceController invoice = new InvoiceController();
+//        invoice.setUp(noantrian, nama, poli, dokter, tanggal, jenis, antri);
 
         FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Invoice.fxml"));
         Parent InvoicePage = InvoiceLoader.load();
         Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
 
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(InvoiceScene);
     }
 
     public void poliTelahTerpilih(ActionEvent actionEvent) {
-
-        poli.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        if (poli.getValue().equals("Poli Mata")) {
             dokter.getItems().clear();
-            dokter.setPromptText("Pilih Dokter");
-            if (newValue.equals("Poli Mata")) {
-                dokter.getItems().addAll("Dr. Suluri", "Dr. Hilmi", "Dr. Arkan");
-            } else if (newValue.equals("Poli Umum")) {
-                dokter.getItems().addAll("Dr. Suci");
-            } else if (newValue.equals("Poli Bedah")) {
-                dokter.getItems().addAll("Dr. Doc", "Dr. Dia");
-            }
-        });
+            dokter.getItems().addAll("Dr. Suluri", "Dr. Hilmi", "Dr. Arkan");
+        } else if (poli.getValue().equals("Poli Jantung")) {
+            dokter.getItems().clear();
+            dokter.getItems().addAll("Dr. Suci");
+        } else if (poli.getValue().equals("Poli Bedah")) {
+            dokter.getItems().clear();
+            dokter.getItems().addAll("Dr. Doc", "Dr. Dia");
+        }
     }
 
-   public void memilihBPJS(ActionEvent actionEvent) {
+    public void memilihBPJS(ActionEvent actionEvent) {
         jenisTerpilih = "BPJS";
-   }
+    }
 
     public void memilihUmum(ActionEvent actionEvent) {
         jenisTerpilih = "Umum";
     }
 
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         poli.getItems().clear();
-        poli.getItems().addAll("Poli Mata", "Poli Umum", "Poli Bedah");
+        poli.getItems().addAll("Poli Mata", "Poli Jantung", "Poli Bedah");
 
-        Database database = Database.getInstance();
-        Queue queue = database.getQueue();
-
-        noantrian.setText(String.valueOf(queue.getnItems()));
+//        Database database = Database.getInstance();
+//        QueuePoliMata queue = database.getQueue();
+//
+//        noantrian.setText(String.valueOf(queue.getNoAntrian()));
     }
 }

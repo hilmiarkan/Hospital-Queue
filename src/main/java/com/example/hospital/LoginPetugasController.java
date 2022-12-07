@@ -1,14 +1,11 @@
 package com.example.hospital;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -84,6 +81,6 @@ public class LoginPetugasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Database database = Database.getInstance();
-        Queue queue = database.getQueue();
+        QueuePoliMata queue = database.getQueuePoliMata();
     }
 }
