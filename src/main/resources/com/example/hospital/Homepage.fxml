@@ -86,21 +86,11 @@
          <children>
             <VBox VBox.vgrow="ALWAYS">
                <children>
-                  <VBox spacing="8.0">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" text="• Antrian BPJS" textFill="#7f56d9">
-                           <font>
-                              <Font name="Inter SemiBold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Separator prefWidth="200.0" style="-fx-border-color: #D6BBFB; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
-                     </children>
-                  </VBox>
                   <HBox spacing="20.0" VBox.vgrow="ALWAYS">
                      <children>
                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #9E77ED; -fx-border-radius: 16; -fx-background-radius: 16;" HBox.hgrow="ALWAYS">
                            <children>
-                              <VBox alignment="CENTER" prefHeight="23.0" prefWidth="423.0" style="-fx-background-color: #FCFAFF; -fx-background-radius: 18 18 0 0;" VBox.vgrow="ALWAYS">
+                              <VBox alignment="CENTER" prefHeight="23.0" prefWidth="423.0" style="-fx-background-color: #FCFAFF; -fx-background-radius: 18 18 0 0;">
                                  <children>
                                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="150.0" text="Poli Mata" textFill="#42307d" VBox.vgrow="ALWAYS">
                                        <font>
@@ -109,7 +99,7 @@
                                     </Label>
                                  </children>
                                  <padding>
-                                    <Insets bottom="6.0" top="6.0" />
+                                    <Insets bottom="21.0" top="21.0" />
                                  </padding>
                               </VBox>
                               <Separator prefWidth="200.0" style="-fx-border-color: #F4EBFF; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
@@ -125,9 +115,34 @@
                                     <Insets left="12.0" right="12.0" />
                                  </padding>
                               </VBox>
+                              <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" onAction="#openFormAntriScene" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-color: #9E77ED; -fx-border-radius: 8;" text="Panggil antrian" textFill="#6941c6">
+                                 <padding>
+                                    <Insets bottom="8.0" left="14.0" right="14.0" top="8.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="Inter Medium" size="12.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@announcement-01.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <VBox.margin>
+                                    <Insets bottom="42.0" />
+                                 </VBox.margin>
+                                 <effect>
+                                    <DropShadow blurType="GAUSSIAN" height="9.19" offsetY="1.0" radius="11.469999999999999" width="38.69">
+                                       <color>
+                                          <Color red="0.06159999966621399" green="0.08904000371694565" blue="0.14000000059604645" opacity="0.12588909268379211" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Button>
                            </children>
                            <effect>
-                              <DropShadow blurType="GAUSSIAN" height="38.33" offsetY="5.0" radius="18.755" width="38.69">
+                              <DropShadow blurType="GAUSSIAN" height="38.6" offsetY="5.0" radius="18.822499999999998" width="38.69">
                                  <color>
                                     <Color red="0.062745101749897" green="0.09019608050584793" blue="0.14901961386203766" opacity="0.07999999821186066" />
                                  </color>
@@ -136,7 +151,7 @@
                         </VBox>
                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #9E77ED; -fx-border-radius: 16; -fx-background-radius: 16;" HBox.hgrow="ALWAYS">
                            <children>
-                              <VBox alignment="CENTER" prefHeight="23.0" prefWidth="423.0" style="-fx-background-color: #FCFAFF; -fx-background-radius: 18 18 0 0;" VBox.vgrow="ALWAYS">
+                              <VBox alignment="CENTER" prefHeight="23.0" prefWidth="423.0" style="-fx-background-color: #FCFAFF; -fx-background-radius: 18 18 0 0;">
                                  <children>
                                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="150.0" text="Poli Jantung" textFill="#42307d" VBox.vgrow="ALWAYS">
                                        <font>
@@ -145,7 +160,7 @@
                                     </Label>
                                  </children>
                                  <padding>
-                                    <Insets bottom="6.0" top="6.0" />
+                                    <Insets bottom="21.0" top="21.0" />
                                  </padding>
                               </VBox>
                               <Separator prefWidth="200.0" style="-fx-border-color: #F4EBFF; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
@@ -161,6 +176,31 @@
                                     <Insets left="12.0" right="12.0" />
                                  </padding>
                               </VBox>
+                              <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" onAction="#openFormAntriScene" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-color: #9E77ED; -fx-border-radius: 8;" text="Panggil antrian" textFill="#6941c6">
+                                 <padding>
+                                    <Insets bottom="8.0" left="14.0" right="14.0" top="8.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="Inter Medium" size="12.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@announcement-01.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <effect>
+                                    <DropShadow blurType="GAUSSIAN" height="9.19" offsetY="1.0" radius="11.469999999999999" width="38.69">
+                                       <color>
+                                          <Color red="0.06159999966621399" green="0.08904000371694565" blue="0.14000000059604645" opacity="0.12588909268379211" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                                 <VBox.margin>
+                                    <Insets bottom="42.0" />
+                                 </VBox.margin>
+                              </Button>
                            </children>
                            <effect>
                               <DropShadow blurType="GAUSSIAN" height="37.22" offsetY="5.0" radius="18.4775" width="38.69">
@@ -172,7 +212,7 @@
                         </VBox>
                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #9E77ED; -fx-border-radius: 16; -fx-background-radius: 16;" HBox.hgrow="ALWAYS">
                            <children>
-                              <VBox alignment="CENTER" prefHeight="23.0" prefWidth="423.0" style="-fx-background-color: #FCFAFF; -fx-background-radius: 18 18 0 0;" VBox.vgrow="ALWAYS">
+                              <VBox alignment="CENTER" prefHeight="23.0" prefWidth="423.0" style="-fx-background-color: #FCFAFF; -fx-background-radius: 18 18 0 0;">
                                  <children>
                                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="150.0" text="Poli Bedah" textFill="#42307d" VBox.vgrow="ALWAYS">
                                        <font>
@@ -181,7 +221,7 @@
                                     </Label>
                                  </children>
                                  <padding>
-                                    <Insets bottom="6.0" top="6.0" />
+                                    <Insets bottom="21.0" top="21.0" />
                                  </padding>
                               </VBox>
                               <Separator prefWidth="200.0" style="-fx-border-color: #F4EBFF; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
@@ -197,140 +237,29 @@
                                     <Insets left="12.0" right="12.0" />
                                  </padding>
                               </VBox>
+                              <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" onAction="#openFormAntriScene" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-color: #D0D5DD; -fx-border-radius: 8;" text="Panggil antrian" textFill="#344054">
+                                 <padding>
+                                    <Insets bottom="8.0" left="14.0" right="14.0" top="8.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="Inter Medium" size="12.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@announcement-01.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <VBox.margin>
+                                    <Insets bottom="42.0" />
+                                 </VBox.margin>
+                              </Button>
                            </children>
                            <effect>
                               <DropShadow blurType="GAUSSIAN" height="37.22" offsetY="5.0" radius="18.4775" width="38.69">
                                  <color>
                                     <Color red="0.061500001698732376" green="0.09099999815225601" blue="0.15000000596046448" opacity="0.07839389145374298" />
-                                 </color>
-                              </DropShadow>
-                           </effect>
-                        </VBox>
-                     </children>
-                     <padding>
-                        <Insets top="14.0" />
-                     </padding>
-                  </HBox>
-               </children>
-            </VBox>
-            <VBox VBox.vgrow="ALWAYS">
-               <children>
-                  <VBox spacing="8.0">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" text="Antrian Umum" textFill="#101828">
-                           <font>
-                              <Font name="Inter SemiBold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Separator prefWidth="200.0" style="-fx-border-color: #D9D9D9; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
-                     </children>
-                  </VBox>
-                  <HBox spacing="20.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #D0D5DD; -fx-border-radius: 16; -fx-background-radius: 16;" HBox.hgrow="ALWAYS">
-                           <children>
-                              <VBox alignment="CENTER" prefHeight="23.0" prefWidth="423.0" style="-fx-background-color: #FCFCFD; -fx-background-radius: 30 30 0 0;" VBox.vgrow="ALWAYS">
-                                 <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="150.0" text="Poli Umum" textFill="#101828" VBox.vgrow="ALWAYS">
-                                       <font>
-                                          <Font name="Inter SemiBold" size="18.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="6.0" top="6.0" />
-                                 </padding>
-                              </VBox>
-                              <Separator prefWidth="200.0" style="-fx-border-color: f2f4f7; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
-                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
-                                 <children>
-                                    <Label alignment="CENTER" text="B00" textFill="#101828">
-                                       <font>
-                                          <Font name="Inter SemiBold" size="96.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets left="12.0" right="12.0" />
-                                 </padding>
-                              </VBox>
-                           </children>
-                           <effect>
-                              <DropShadow blurType="GAUSSIAN" height="38.0" offsetY="5.0" radius="18.5" width="38.0">
-                                 <color>
-                                    <Color red="0.06159999966621399" green="0.08773333579301834" blue="0.14000000059604645" opacity="0.07839388400316238" />
-                                 </color>
-                              </DropShadow>
-                           </effect>
-                        </VBox>
-                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #D0D5DD; -fx-border-radius: 16; -fx-background-radius: 16;" HBox.hgrow="ALWAYS">
-                           <children>
-                              <VBox alignment="CENTER" prefHeight="23.0" prefWidth="423.0" style="-fx-background-color: #FCFCFD; -fx-background-radius: 30 30 0 0;" VBox.vgrow="ALWAYS">
-                                 <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="150.0" text="Poli Umum" textFill="#101828" VBox.vgrow="ALWAYS">
-                                       <font>
-                                          <Font name="Inter SemiBold" size="18.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="6.0" top="6.0" />
-                                 </padding>
-                              </VBox>
-                              <Separator prefWidth="200.0" style="-fx-border-color: f2f4f7; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
-                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
-                                 <children>
-                                    <Label alignment="CENTER" text="B00" textFill="#101828">
-                                       <font>
-                                          <Font name="Inter SemiBold" size="96.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets left="12.0" right="12.0" />
-                                 </padding>
-                              </VBox>
-                           </children>
-                           <effect>
-                              <DropShadow blurType="GAUSSIAN" height="38.0" offsetY="5.0" radius="18.5" width="38.0">
-                                 <color>
-                                    <Color red="0.06159999966621399" green="0.08773333579301834" blue="0.14000000059604645" opacity="0.07839388400316238" />
-                                 </color>
-                              </DropShadow>
-                           </effect>
-                        </VBox>
-                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #D0D5DD; -fx-border-radius: 16; -fx-background-radius: 16;" HBox.hgrow="ALWAYS">
-                           <children>
-                              <VBox alignment="CENTER" prefHeight="23.0" prefWidth="423.0" style="-fx-background-color: #FCFCFD; -fx-background-radius: 30 30 0 0;" VBox.vgrow="ALWAYS">
-                                 <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="150.0" text="Poli Umum" textFill="#101828" VBox.vgrow="ALWAYS">
-                                       <font>
-                                          <Font name="Inter SemiBold" size="18.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="6.0" top="6.0" />
-                                 </padding>
-                              </VBox>
-                              <Separator prefWidth="200.0" style="-fx-border-color: f2f4f7; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
-                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
-                                 <children>
-                                    <Label alignment="CENTER" text="B00" textFill="#101828">
-                                       <font>
-                                          <Font name="Inter SemiBold" size="96.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets left="12.0" right="12.0" />
-                                 </padding>
-                              </VBox>
-                           </children>
-                           <effect>
-                              <DropShadow blurType="GAUSSIAN" height="38.0" offsetY="5.0" radius="18.5" width="38.0">
-                                 <color>
-                                    <Color red="0.06159999966621399" green="0.08773333579301834" blue="0.14000000059604645" opacity="0.07839388400316238" />
                                  </color>
                               </DropShadow>
                            </effect>
