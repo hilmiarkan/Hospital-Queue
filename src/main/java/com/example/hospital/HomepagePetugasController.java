@@ -17,14 +17,17 @@ import java.util.ResourceBundle;
 public class HomepagePetugasController implements Initializable {
 
     @FXML
-    private Label counter_poliumum_bpjs;
+    private Label antrianPoliJantung;
+
+    @FXML
+    private Label antrianPoliMata;
 
     public void openHomepageScene(ActionEvent actionEvent) throws IOException {
         FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Homepage.fxml"));
         Parent InvoicePage = InvoiceLoader.load();
         Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
 
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(InvoiceScene);
     }
 
@@ -34,7 +37,7 @@ public class HomepagePetugasController implements Initializable {
         Parent InvoicePage = InvoiceLoader.load();
         Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
 
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(InvoiceScene);
     }
 
@@ -43,7 +46,7 @@ public class HomepagePetugasController implements Initializable {
         Parent InvoicePage = InvoiceLoader.load();
         Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
 
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(InvoiceScene);
     }
 
@@ -52,7 +55,7 @@ public class HomepagePetugasController implements Initializable {
         Parent InvoicePage = InvoiceLoader.load();
         Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
 
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(InvoiceScene);
     }
 
@@ -61,7 +64,7 @@ public class HomepagePetugasController implements Initializable {
         Parent InvoicePage = InvoiceLoader.load();
         Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
 
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(InvoiceScene);
     }
 
@@ -70,7 +73,7 @@ public class HomepagePetugasController implements Initializable {
         Parent InvoicePage = InvoiceLoader.load();
         Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
 
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(InvoiceScene);
     }
 
@@ -79,22 +82,50 @@ public class HomepagePetugasController implements Initializable {
         Parent InvoicePage = InvoiceLoader.load();
         Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
 
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(InvoiceScene);
+    }
+
+    @FXML
+    void panggilPoliMata(ActionEvent event) {
+        Database database = Database.getInstance();
+        database.deQueue();
+        setUp();
+    }
+
+    @FXML
+    void panggilPoliJantung(ActionEvent event) {
+
+    }
+
+    void setUp() {
+        Database database = Database.getInstance();
+        QueuePoliMata queuePoliMata = database.getQueuePoliMata();
+        ObjectPoliMata objMata = queuePoliMata.getnItems();
+
+        QueuePoliJantung queuePoliJantung = database.getQueuePoliJantung();
+        ObjectPoliJantung objJantung = queuePoliJantung.getnItems();
+
+        if (objMata == null) {
+            antrianPoliMata.setText("A00");
+        } else if (objMata.getNoantrian() >= 10) {
+            antrianPoliMata.setText("A" + objMata.getNoantrian());
+        } else {
+            antrianPoliMata.setText("A0" + objMata.getNoantrian());
+        }
+
+        if (objJantung == null) {
+            antrianPoliJantung.setText("B00");
+        } else if (objJantung.getNoantrian() >= 10) {
+            antrianPoliJantung.setText("B" + objJantung.getNoantrian());
+        } else {
+            antrianPoliJantung.setText("B0" + objJantung.getNoantrian());
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Database database = Database.getInstance();
-        QueuePoliMata queue = database.getQueuePoliMata();
-        ObjectPoliMata an = queue.getnItems();
-        if (an == null) {
-            counter_poliumum_bpjs.setText("A00");
-        } else if(an.getNoantrian() >= 10) {
-            counter_poliumum_bpjs.setText("A" + an.getNoantrian());
-        } else {
-            counter_poliumum_bpjs.setText("A0" + an.getNoantrian());
-        }
+        setUp();
 
     }
 }
