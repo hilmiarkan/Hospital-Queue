@@ -69,7 +69,7 @@ class QueuePoliJantung {
     }
 
     public int getAntri() {
-        return nItems;
+        return nItems-1;
     }
 
     public ObjectPoliJantung[] toArray() {
