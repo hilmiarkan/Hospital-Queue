@@ -2,14 +2,14 @@ package com.example.hospital;
 
 //import static com.sun.beans.introspect.ClassInfo.clear;
 
-class QueuePoliMata {
+class QueuePoliBedah {
 
-    private int maxSize, front, rear, nItems, antrian;
-    private ObjectPoliMata[] queArray;
+    private int maxSize, front, rear, nItems,antrian;
+    private ObjectPoliBedah[] queArray;
 
-    public QueuePoliMata(int size) {
+    public QueuePoliBedah(int size) {
         this.maxSize = size;
-        queArray = new ObjectPoliMata[maxSize];
+        queArray = new ObjectPoliBedah[maxSize];
         front = 0;
         rear = -1;
         nItems = 0;
@@ -17,17 +17,20 @@ class QueuePoliMata {
     }
 
     public void insert(int noantrian, String nama, String poli, String dokter, String tanggal, String jenis) {
-        queArray[++rear] = new ObjectPoliMata(noantrian, nama, poli, dokter, tanggal, jenis);
+        if (rear == maxSize - 1) {
+            rear = -1;
+        }
+        queArray[++rear] = new ObjectPoliBedah(noantrian, nama, poli, dokter, tanggal, jenis);
         antrian++;
         nItems++;
     }
 
-    public ObjectPoliMata remove() {
-        ObjectPoliMata temp = queArray[front++];
+    public ObjectPoliBedah remove() {
+        ObjectPoliBedah temp = queArray[front++]; //10
         if (front == maxSize) {
             front = 0;
         }
-        nItems--;
+        nItems--; //1
         return temp;
     }
 
@@ -41,12 +44,12 @@ class QueuePoliMata {
 //        }
 //    }
 
-    public ObjectPoliMata peekFront() {
+    public ObjectPoliBedah peekFront() {
         return queArray[front];
     }
 
-    public ObjectPoliMata lastAdded() {
-        return queArray[nItems - 1];
+    public ObjectPoliBedah lastAdded() {
+        return queArray[nItems-1];
     }
 
     public boolean isEmpty() {
@@ -57,20 +60,20 @@ class QueuePoliMata {
         return (nItems == maxSize);
     }
 
-    public ObjectPoliMata getnItems() {
+    public ObjectPoliBedah getnItems() {
         return queArray[front];
     }
 
     public int getNoAntrian() {
-        return antrian + 1;
+        return antrian+1;
     }
 
     public int getAntri() {
         return nItems-1;
     }
 
-    public ObjectPoliMata[] toArray() {
-        ObjectPoliMata[] array = new ObjectPoliMata[nItems];
+    public ObjectPoliBedah[] toArray() {
+        ObjectPoliBedah[] array = new ObjectPoliBedah[nItems];
         for (int i = 0; i < nItems; i++) {
             array[i] = queArray[(front + i) % maxSize];
         }

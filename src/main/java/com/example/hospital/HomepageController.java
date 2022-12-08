@@ -20,6 +20,8 @@ public class HomepageController implements Initializable {
     private Label antrianPoliMata;
     @FXML
     private Label antrianPoliJantung;
+    @FXML
+    private Label antrianPoliBedah;
 
     public void openHomepageScene(ActionEvent actionEvent) throws IOException {
         FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Homepage.fxml"));
@@ -88,11 +90,15 @@ public class HomepageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Database database = Database.getInstance();
+
         QueuePoliMata queuePoliMata = database.getQueuePoliMata();
         ObjectPoliMata objMata = queuePoliMata.getnItems();
 
         QueuePoliJantung queuePoliJantung = database.getQueuePoliJantung();
         ObjectPoliJantung objJantung = queuePoliJantung.getnItems();
+
+        QueuePoliBedah queuePoliBedah = database.getQueuePoliBedah();
+        ObjectPoliBedah objBedah = queuePoliBedah.getnItems();
 
         if (objMata == null) {
             antrianPoliMata.setText("A00");
@@ -108,6 +114,14 @@ public class HomepageController implements Initializable {
             antrianPoliJantung.setText("B" + objJantung.getNoantrian());
         } else {
             antrianPoliJantung.setText("B0" + objJantung.getNoantrian());
+        }
+
+        if (objBedah == null) {
+            antrianPoliBedah.setText("C00");
+        } else if (objBedah.getNoantrian() >= 10) {
+            antrianPoliBedah.setText("C" + objBedah.getNoantrian());
+        } else {
+            antrianPoliBedah.setText("C0" + objBedah.getNoantrian());
         }
 
     }

@@ -16,11 +16,14 @@ import java.util.ResourceBundle;
 
 public class HomepagePetugasController implements Initializable {
 
-    @FXML
-    private Label antrianPoliJantung;
+    Database database = Database.getInstance();
 
     @FXML
     private Label antrianPoliMata;
+    @FXML
+    private Label antrianPoliJantung;
+    @FXML
+    private Label antrianPoliBedah;
 
     public void openHomepageScene(ActionEvent actionEvent) throws IOException {
         FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Homepage.fxml"));
@@ -88,14 +91,20 @@ public class HomepagePetugasController implements Initializable {
 
     @FXML
     void panggilPoliMata(ActionEvent event) {
-        Database database = Database.getInstance();
-        database.deQueue();
+        database.deQueue("Poli Mata");
         setUp();
     }
 
     @FXML
     void panggilPoliJantung(ActionEvent event) {
+        database.deQueue("Poli Jantung");
+        setUp();
+    }
 
+    @FXML
+    void panggilPoliBedah(ActionEvent event) {
+        database.deQueue("Poli Bedah");
+        setUp();
     }
 
     void setUp() {
@@ -105,6 +114,9 @@ public class HomepagePetugasController implements Initializable {
 
         QueuePoliJantung queuePoliJantung = database.getQueuePoliJantung();
         ObjectPoliJantung objJantung = queuePoliJantung.getnItems();
+
+        QueuePoliBedah queuePoliBedah = database.getQueuePoliBedah();
+        ObjectPoliBedah objBedah = queuePoliBedah.getnItems();
 
         if (objMata == null) {
             antrianPoliMata.setText("A00");
@@ -121,11 +133,18 @@ public class HomepagePetugasController implements Initializable {
         } else {
             antrianPoliJantung.setText("B0" + objJantung.getNoantrian());
         }
+
+        if (objBedah == null) {
+            antrianPoliBedah.setText("C00");
+        } else if (objBedah.getNoantrian() >= 10) {
+            antrianPoliBedah.setText("C" + objBedah.getNoantrian());
+        } else {
+            antrianPoliBedah.setText("C0" + objBedah.getNoantrian());
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setUp();
-
     }
 }

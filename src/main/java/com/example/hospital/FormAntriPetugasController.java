@@ -87,43 +87,57 @@ public class FormAntriPetugasController implements Initializable {
     }
 
     public void openInvoicePetugasScene(ActionEvent actionEvent) throws IOException {
-        int noantrian;
+        Database database = Database.getInstance();
+        QueuePoliMata queuePoliMata = database.getQueuePoliMata();
+        QueuePoliJantung queuePoliJantung = database.getQueuePoliJantung();
+
+        int noantrian = 0, antri = 0;
         String nama, poli, dokter, tanggal, jenis;
 
-        noantrian = Integer.parseInt(this.noantrian.getText());
+//        noantrian = Integer.parseInt(this.noantrian.getText());
+        if (this.poli.getValue().equals("Poli Mata")) {
+            noantrian = queuePoliMata.getNoAntrian();
+            antri = queuePoliMata.getAntri();
+        } else if (this.poli.getValue().equals("Poli Jantung")) {
+            noantrian = queuePoliJantung.getNoAntrian();
+            antri = queuePoliJantung.getAntri();
+        }
+
         nama = this.nama.getText();
         poli = this.poli.getValue().toString();
         dokter = this.dokter.getValue().toString();
         tanggal = this.tanggal.getValue().toString();
         jenis = this.jenisTerpilih;
 
-        System.out.println("Telah masuk Antrian => (" + jenisTerpilih + " " + poli  + " " + "99" + ") Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
+        System.out.println("Telah masuk Antrian => (" + jenisTerpilih + " " + poli + ")No Antrian: " + noantrian + ", Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
 
-        Database database = Database.getInstance();
+//        database.enQueue(noantrian, nama, poli, dokter, tanggal, jenis);
 
-        database.enQueue(noantrian, nama, poli, dokter, tanggal, jenis);
+//        InvoiceController invoice = new InvoiceController();
+//        invoice.setUp(noantrian, nama, poli, dokter, tanggal, jenis, antri);
 
-        FXMLLoader InvoicePetugasLoader = new FXMLLoader(getClass().getResource("InvoicePetugas.fxml"));
-        Parent InvoicePetugasPage = InvoicePetugasLoader.load();
-        Scene InvoicePetugasScene = new Scene(InvoicePetugasPage, 1200, 700);
+        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("InvoicePetugas.fxml"));
+        Parent InvoicePage = InvoiceLoader.load();
+        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
 
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(InvoicePetugasScene);
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        primaryStage.setScene(InvoiceScene);
     }
 
     public void poliTelahTerpilih(ActionEvent actionEvent) {
-
-        poli.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        if (poli.getValue().equals("Poli Mata")) {
+            dokter.setDisable(false);
             dokter.getItems().clear();
-            dokter.setPromptText("Pilih Dokter");
-            if (newValue.equals("Poli Mata")) {
-                dokter.getItems().addAll("Dr. Suluri", "Dr. Hilmi", "Dr. Arkan");
-            } else if (newValue.equals("Poli Jantung")) {
-                dokter.getItems().addAll("Dr. Suci");
-            } else if (newValue.equals("Poli Bedah")) {
-                dokter.getItems().addAll("Dr. Doc", "Dr. Dia");
-            }
-        });
+            dokter.getItems().addAll("Dr. Suluri", "Dr. Hilmi", "Dr. Arkan");
+        } else if (poli.getValue().equals("Poli Jantung")) {
+            dokter.setDisable(false);
+            dokter.getItems().clear();
+            dokter.getItems().addAll("Dr. Suci");
+        } else if (poli.getValue().equals("Poli Bedah")) {
+            dokter.setDisable(false);
+            dokter.getItems().clear();
+            dokter.getItems().addAll("Dr. Doc", "Dr. Dia");
+        }
     }
 
     public void memilihBPJS(ActionEvent actionEvent) {
@@ -134,18 +148,10 @@ public class FormAntriPetugasController implements Initializable {
         jenisTerpilih = "Umum";
     }
 
-
-
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         poli.getItems().clear();
         poli.getItems().addAll("Poli Mata", "Poli Jantung", "Poli Bedah");
-
-        Database database = Database.getInstance();
-        QueuePoliMata queue = database.getQueuePoliMata();
-
-        noantrian.setText(String.valueOf(queue.getnItems()));
+        dokter.setDisable(true);
     }
 }

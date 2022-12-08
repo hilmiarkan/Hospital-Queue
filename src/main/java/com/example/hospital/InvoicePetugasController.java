@@ -28,7 +28,8 @@ public class InvoicePetugasController implements Initializable {
     private Label viewJenis;
     @FXML
     private Label viewDokter;
-
+    @FXML
+    private Label viewAntri;
     public void openHomepageScene(ActionEvent actionEvent) throws IOException {
         FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Homepage.fxml"));
         Parent InvoicePage = InvoiceLoader.load();
@@ -105,26 +106,83 @@ public class InvoicePetugasController implements Initializable {
         primaryStage.setScene(InvoiceScene);
     }
 
+    int noantrian, antri;
+    String nama, poli, dokter, tanggal, jenis;
+
+    public void setUp(int noantrian, String nama, String poli, String dokter, String tanggal, String jenis, int antri) {
+        this.noantrian = noantrian;
+        this.nama = nama;
+        this.poli = poli;
+        this.dokter = dokter;
+        this.tanggal = tanggal;
+        this.jenis = jenis;
+        this.antri = antri;
+        System.out.println(this.noantrian + this.nama);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Database database = Database.getInstance();
-        QueuePoliMata queue = database.getQueuePoliMata();
-        ObjectPoliMata last = queue.lastAdded();
-
-        int noantrian;
+        int noantrian, antri;
         String nama, poli, dokter, tanggal, jenis;
-        noantrian = last.getNoantrian();
-        nama = last.getNama();
-        poli = last.getPoli();
-        dokter = last.getDokter();
-        tanggal = last.getTanggal();
-        jenis = last.getJenis();
 
-        viewNo.setText(String.valueOf(noantrian));
-        viewNama.setText(nama);
-        viewPoli.setText(poli);
-        viewDokter.setText(dokter);
-        viewTgl.setText(tanggal);
-        viewJenis.setText(jenis);
+        if (database.getPoliTerakhir().equals("Poli Mata")) {
+            QueuePoliMata queue = database.getQueuePoliMata();
+            ObjectPoliMata last = queue.lastAdded();
+
+            noantrian = last.getNoantrian();
+            nama = last.getNama();
+            poli = last.getPoli();
+            dokter = last.getDokter();
+            tanggal = last.getTanggal();
+            jenis = last.getJenis();
+            antri = queue.getAntri();
+
+            viewNo.setText(String.valueOf(noantrian));
+            viewNama.setText(nama);
+            viewPoli.setText(poli);
+            viewDokter.setText(dokter);
+            viewTgl.setText(tanggal);
+            viewJenis.setText(jenis);
+            viewAntri.setText(String.valueOf(antri) + " Orang");
+        } else if (database.getPoliTerakhir().equals("Poli Jantung")) {
+            QueuePoliJantung queue = database.getQueuePoliJantung();
+            ObjectPoliJantung last = queue.lastAdded();
+
+            noantrian = last.getNoantrian();
+            nama = last.getNama();
+            poli = last.getPoli();
+            dokter = last.getDokter();
+            tanggal = last.getTanggal();
+            jenis = last.getJenis();
+            antri = queue.getAntri();
+
+            viewNo.setText(String.valueOf(noantrian));
+            viewNama.setText(nama);
+            viewPoli.setText(poli);
+            viewDokter.setText(dokter);
+            viewTgl.setText(tanggal);
+            viewJenis.setText(jenis);
+            viewAntri.setText(String.valueOf(antri) + " Orang");
+        } else if (database.getPoliTerakhir().equals("Poli Bedah")) {
+            QueuePoliBedah queue = database.getQueuePoliBedah();
+            ObjectPoliBedah last = queue.lastAdded();
+
+            noantrian = last.getNoantrian();
+            nama = last.getNama();
+            poli = last.getPoli();
+            dokter = last.getDokter();
+            tanggal = last.getTanggal();
+            jenis = last.getJenis();
+            antri = queue.getAntri();
+
+            viewNo.setText(String.valueOf(noantrian));
+            viewNama.setText(nama);
+            viewPoli.setText(poli);
+            viewDokter.setText(dokter);
+            viewTgl.setText(tanggal);
+            viewJenis.setText(jenis);
+            viewAntri.setText(String.valueOf(antri) + " Orang");
+        }
     }
 }

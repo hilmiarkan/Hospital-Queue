@@ -95,7 +95,7 @@ public class InvoiceController implements Initializable {
         primaryStage.setScene(InvoiceScene);
     }
 
-    int noantrian = 0, antri = 0;
+    int noantrian, antri;
     String nama, poli, dokter, tanggal, jenis;
 
     public void setUp(int noantrian, String nama, String poli, String dokter, String tanggal, String jenis, int antri) {
@@ -111,58 +111,77 @@ public class InvoiceController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        InvoiceController in = new InvoiceController();
-        viewNo.setText(String.valueOf(in.noantrian));
-        viewNama.setText(in.nama);
-        viewPoli.setText(in.poli);
-        viewDokter.setText(in.dokter);
-        viewTgl.setText(in.tanggal);
-        viewJenis.setText(in.jenis);
-        viewAntri.setText(String.valueOf(in.antri));
+//        System.out.println(this.noantrian + this.nama);
+//        InvoiceController in = new InvoiceController();
+//        viewNo.setText(String.valueOf(in.noantrian));
+//        viewNama.setText(in.nama);
+//        viewPoli.setText(in.poli);
+//        viewDokter.setText(in.dokter);
+//        viewTgl.setText(in.tanggal);
+//        viewJenis.setText(in.jenis);
+//        viewAntri.setText(String.valueOf(in.antri));
 //        setUp(noantrian,nama,poli,dokter,tanggal,jenis,antri);
-//        Database database = Database.getInstance();
-//        int noantrian, antri;
-//        String nama, poli, dokter, tanggal, jenis;
-//
-//        if (database.getPoliTerakhir().equals("Poli Mata")) {
-//            QueuePoliMata queue = database.getQueuePoliMata();
-//            ObjectPoliMata last = queue.lastAdded();
-//
-//            noantrian = last.getNoantrian();
-//            nama = last.getNama();
-//            poli = last.getPoli();
-//            dokter = last.getDokter();
-//            tanggal = last.getTanggal();
-//            jenis = last.getJenis();
-//            antri = queue.getAntri();
-//
-//            viewNo.setText(String.valueOf(noantrian));
-//            viewNama.setText(nama);
-//            viewPoli.setText(poli);
-//            viewDokter.setText(dokter);
-//            viewTgl.setText(tanggal);
-//            viewJenis.setText(jenis);
-//            viewAntri.setText(String.valueOf(antri));
-//        } else if (database.getPoliTerakhir().equals("Poli Jantung")) {
-//            QueuePoliJantung queue = database.getQueuePoliJantung();
-//            ObjectPoliJantung last = queue.lastAdded();
-//
-//            noantrian = last.getNoantrian();
-//            nama = last.getNama();
-//            poli = last.getPoli();
-//            dokter = last.getDokter();
-//            tanggal = last.getTanggal();
-//            jenis = last.getJenis();
-//            antri = queue.getAntri();
-//
-//            viewNo.setText(String.valueOf(noantrian));
-//            viewNama.setText(nama);
-//            viewPoli.setText(poli);
-//            viewDokter.setText(dokter);
-//            viewTgl.setText(tanggal);
-//            viewJenis.setText(jenis);
-//            viewAntri.setText(String.valueOf(antri));
-//        }
+        Database database = Database.getInstance();
+        int noantrian, antri;
+        String nama, poli, dokter, tanggal, jenis;
 
+        if (database.getPoliTerakhir().equals("Poli Mata")) {
+            QueuePoliMata queue = database.getQueuePoliMata();
+            ObjectPoliMata last = queue.lastAdded();
+
+            noantrian = queue.getNoAntrian()-1;
+            nama = last.getNama();
+            poli = last.getPoli();
+            dokter = last.getDokter();
+            tanggal = last.getTanggal();
+            jenis = last.getJenis();
+            antri = queue.getAntri();
+
+            viewNo.setText(String.valueOf(noantrian));
+            viewNama.setText(nama);
+            viewPoli.setText(poli);
+            viewDokter.setText(dokter);
+            viewTgl.setText(tanggal);
+            viewJenis.setText(jenis);
+            viewAntri.setText(String.valueOf(antri) + " Orang");
+        } else if (database.getPoliTerakhir().equals("Poli Jantung")) {
+            QueuePoliJantung queue = database.getQueuePoliJantung();
+            ObjectPoliJantung last = queue.lastAdded();
+
+            noantrian = last.getNoantrian();
+            nama = last.getNama();
+            poli = last.getPoli();
+            dokter = last.getDokter();
+            tanggal = last.getTanggal();
+            jenis = last.getJenis();
+            antri = queue.getAntri();
+
+            viewNo.setText(String.valueOf(noantrian));
+            viewNama.setText(nama);
+            viewPoli.setText(poli);
+            viewDokter.setText(dokter);
+            viewTgl.setText(tanggal);
+            viewJenis.setText(jenis);
+            viewAntri.setText(String.valueOf(antri) + " Orang");
+        } else if (database.getPoliTerakhir().equals("Poli Bedah")) {
+            QueuePoliBedah queue = database.getQueuePoliBedah();
+            ObjectPoliBedah last = queue.lastAdded();
+
+            noantrian = last.getNoantrian();
+            nama = last.getNama();
+            poli = last.getPoli();
+            dokter = last.getDokter();
+            tanggal = last.getTanggal();
+            jenis = last.getJenis();
+            antri = queue.getAntri();
+
+            viewNo.setText(String.valueOf(noantrian));
+            viewNama.setText(nama);
+            viewPoli.setText(poli);
+            viewDokter.setText(dokter);
+            viewTgl.setText(tanggal);
+            viewJenis.setText(jenis);
+            viewAntri.setText(String.valueOf(antri) + " Orang");
+        }
     }
 }
