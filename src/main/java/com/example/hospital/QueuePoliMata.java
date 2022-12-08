@@ -26,11 +26,11 @@ class QueuePoliMata {
     }
 
     public ObjectPoliMata remove() {
-        ObjectPoliMata temp = queArray[front++]; //10
+        ObjectPoliMata temp = queArray[front++];
         if (front == maxSize) {
             front = 0;
         }
-        nItems--; //1
+        nItems--;
         return temp;
     }
 

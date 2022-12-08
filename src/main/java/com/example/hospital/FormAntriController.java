@@ -108,8 +108,8 @@ public class FormAntriController implements Initializable {
 
         database.enQueue(noantrian, nama, poli, dokter, tanggal, jenis);
 
-//        InvoiceController invoice = new InvoiceController();
-//        invoice.setUp(noantrian, nama, poli, dokter, tanggal, jenis, antri);
+        InvoiceController invoice = new InvoiceController();
+        invoice.setUp(noantrian, nama, poli, dokter, tanggal, jenis, antri);
 
         FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Invoice.fxml"));
         Parent InvoicePage = InvoiceLoader.load();
