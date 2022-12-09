@@ -100,7 +100,7 @@ public class HomepageController implements Initializable {
         QueuePoliBedah queuePoliBedah = database.getQueuePoliBedah();
         ObjectPoliBedah objBedah = queuePoliBedah.getnItems();
 
-        if (objMata == null) {
+        if (queuePoliMata.isEmpty()) {
             antrianPoliMata.setText("A00");
         } else if (objMata.getNoantrian() >= 10) {
             antrianPoliMata.setText("A" + objMata.getNoantrian());
@@ -108,7 +108,7 @@ public class HomepageController implements Initializable {
             antrianPoliMata.setText("A0" + objMata.getNoantrian());
         }
 
-        if (objJantung == null) {
+        if (queuePoliJantung.isEmpty()) {
             antrianPoliJantung.setText("B00");
         } else if (objJantung.getNoantrian() >= 10) {
             antrianPoliJantung.setText("B" + objJantung.getNoantrian());
@@ -116,7 +116,7 @@ public class HomepageController implements Initializable {
             antrianPoliJantung.setText("B0" + objJantung.getNoantrian());
         }
 
-        if (objBedah == null) {
+        if (queuePoliBedah.isEmpty()) {
             antrianPoliBedah.setText("C00");
         } else if (objBedah.getNoantrian() >= 10) {
             antrianPoliBedah.setText("C" + objBedah.getNoantrian());

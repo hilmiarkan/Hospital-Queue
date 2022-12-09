@@ -123,7 +123,7 @@ public class InvoicePetugasController implements Initializable {
             QueuePoliMata queue = database.getQueuePoliMata();
             ObjectPoliMata last = queue.lastAdded();
 
-            noantrian = last.getNoantrian();
+            noantrian = queue.getNoAntrian()-1;
             nama = last.getNama();
             poli = last.getPoli();
             dokter = last.getDokter();
@@ -142,7 +142,7 @@ public class InvoicePetugasController implements Initializable {
             QueuePoliJantung queue = database.getQueuePoliJantung();
             ObjectPoliJantung last = queue.lastAdded();
 
-            noantrian = last.getNoantrian();
+            noantrian = queue.getNoAntrian()-1;
             nama = last.getNama();
             poli = last.getPoli();
             dokter = last.getDokter();
@@ -161,7 +161,7 @@ public class InvoicePetugasController implements Initializable {
             QueuePoliBedah queue = database.getQueuePoliBedah();
             ObjectPoliBedah last = queue.lastAdded();
 
-            noantrian = last.getNoantrian();
+            noantrian = queue.getNoAntrian()-1;
             nama = last.getNama();
             poli = last.getPoli();
             dokter = last.getDokter();

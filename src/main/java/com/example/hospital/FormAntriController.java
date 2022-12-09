@@ -155,9 +155,6 @@ public class FormAntriController implements Initializable {
             } else {
                 openAlerta();
             }
-
-
-
         } else {
             int noantrian = 0, antri = 0;
             String nama, poli, dokter, tanggal, jenis;
