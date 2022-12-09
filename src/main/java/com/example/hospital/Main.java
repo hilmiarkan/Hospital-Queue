@@ -15,6 +15,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
+        Image icon = new Image(Main.class.getResource("Hearth.png").toString());
+
+        primaryStage.getIcons().add(icon);
 
         FXMLLoader HomepageLoader = new FXMLLoader(getClass().getResource("Homepage.fxml"));
         Parent HomepagePage = HomepageLoader.load();

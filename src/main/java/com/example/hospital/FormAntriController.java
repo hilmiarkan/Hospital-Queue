@@ -140,7 +140,7 @@ public class FormAntriController implements Initializable {
 //        invoice.setUp(noantrian, nama, poli, dokter, tanggal, jenis, antri);
 
         if (this.nama.getText().equals("") || this.poli.getValue() == "Pilih poli" || this.poli.getValue() == null || this.dokter.getValue() == "Pilih dokter" || this.dokter.getValue() == null || this.tanggal.getValue() == null || jenisTerpilih.equals("")) {
-            TranslateTransition moveIn = new TranslateTransition();
+
             if (apakah_alert_active) {
                 TranslateTransition moveOut = new TranslateTransition();
                 moveOut.setNode(alerta);

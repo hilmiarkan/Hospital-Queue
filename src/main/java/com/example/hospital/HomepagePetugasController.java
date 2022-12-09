@@ -1,5 +1,6 @@
 package com.example.hospital;
 
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +9,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,13 +20,15 @@ import java.util.ResourceBundle;
 public class HomepagePetugasController implements Initializable {
 
     Database database = Database.getInstance();
-
+    @FXML
+    private HBox alerta;
     @FXML
     private Label antrianPoliMata;
     @FXML
     private Label antrianPoliJantung;
     @FXML
     private Label antrianPoliBedah;
+    Boolean apakah_alert_active = false;
 
     public void openHomepageScene(ActionEvent actionEvent) throws IOException {
         FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Homepage.fxml"));
@@ -91,23 +96,102 @@ public class HomepagePetugasController implements Initializable {
 
     @FXML
     void panggilPoliMata(ActionEvent event) {
+
+        if(database.queuePoliMata.isEmpty()){
+            if (apakah_alert_active) {
+                TranslateTransition moveOut = new TranslateTransition();
+                moveOut.setNode(alerta);
+                moveOut.setDuration(Duration.millis(200));
+                moveOut.setCycleCount(1);
+                moveOut.setByX(270);
+                moveOut.play();
+                apakah_alert_active = false;
+                moveOut.setOnFinished(e -> {
+                    openAlerta();
+                });
+            } else {
+                openAlerta();
+            }
+        }
         database.deQueue("Poli Mata");
         setUp();
     }
 
     @FXML
     void panggilPoliJantung(ActionEvent event) {
+        if(database.queuePoliJantung.isEmpty()){
+            if (apakah_alert_active) {
+                TranslateTransition moveOut = new TranslateTransition();
+                moveOut.setNode(alerta);
+                moveOut.setDuration(Duration.millis(200));
+                moveOut.setCycleCount(1);
+                moveOut.setByX(270);
+                moveOut.play();
+                apakah_alert_active = false;
+                moveOut.setOnFinished(e -> {
+                    openAlerta();
+                });
+            } else {
+                openAlerta();
+            }
+        }
         database.deQueue("Poli Jantung");
+
         setUp();
     }
 
     @FXML
     void panggilPoliBedah(ActionEvent event) {
+
+        if(database.queuePoliBedah.isEmpty()){
+            if (apakah_alert_active) {
+                TranslateTransition moveOut = new TranslateTransition();
+                moveOut.setNode(alerta);
+                moveOut.setDuration(Duration.millis(200));
+                moveOut.setCycleCount(1);
+                moveOut.setByX(270);
+                moveOut.play();
+                apakah_alert_active = false;
+                moveOut.setOnFinished(e -> {
+                    openAlerta();
+                });
+            } else {
+                openAlerta();
+            }
+        }
         database.deQueue("Poli Bedah");
         setUp();
     }
 
+    public void closeAlerta() {
+        TranslateTransition moveOut = new TranslateTransition();
+        moveOut.setNode(alerta);
+        moveOut.setDuration(Duration.millis(200));
+        moveOut.setCycleCount(1);
+        moveOut.setByX(270);
+        moveOut.play();
+        apakah_alert_active = false;
+    }
+
+    public void openAlerta() {
+        TranslateTransition moveIn = new TranslateTransition();
+        moveIn.setNode(alerta);
+        moveIn.setDuration(Duration.millis(200));
+        moveIn.setCycleCount(1);
+        moveIn.setByX(-270);
+        moveIn.play();
+        apakah_alert_active = true;
+//        moveIn.setOnFinished(e -> {
+//            Timeline timeline = new Timeline(new KeyFrame(
+//                    Duration.seconds(7),
+//                    event -> closeAlerta()
+//            ));
+//            timeline.play();
+//        });
+    }
+
     void setUp() {
+
         Database database = Database.getInstance();
         QueuePoliMata queuePoliMata = database.getQueuePoliMata();
         ObjectPoliMata objMata = queuePoliMata.getnItems();
@@ -120,6 +204,8 @@ public class HomepagePetugasController implements Initializable {
 
         if (queuePoliMata.isEmpty()) {
             antrianPoliMata.setText("A00");
+
+
         } else if (objMata.getNoantrian() >= 10) {
             antrianPoliMata.setText("A" + objMata.getNoantrian());
         } else {
