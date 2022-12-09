@@ -39,7 +39,7 @@
                         <Font name="Inter Medium" size="12.0" />
                      </font>
                   </Button>
-                  <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" onAction="#openFormAntriPetugasScene" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-radius: 8;" text="Buat Antrian" textFill="#344054">
+                  <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" style="-fx-background-color: #F9F5FF; -fx-background-radius: 8; -fx-border-radius: 8;" text="Buat Antrian" textFill="#6941c6">
                      <padding>
                         <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
                      </padding>
@@ -47,7 +47,7 @@
                         <Font name="Inter Medium" size="12.0" />
                      </font>
                   </Button>
-                  <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" style="-fx-background-color: #F9F5FF; -fx-background-radius: 8; -fx-border-radius: 8;" text="Lihat Antrian" textFill="#6941c6">
+                  <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" onAction="#openLihatAntriPetugasScene" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-radius: 8;" text="List Antrian" textFill="#344054">
                      <padding>
                         <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
                      </padding>
@@ -85,7 +85,7 @@
             </DropShadow>
          </effect>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+      <HBox alignment="CENTER" prefHeight="737.0" prefWidth="1200.0">
          <children>
             <VBox fx:id="receipt" alignment="TOP_CENTER" prefHeight="553.0" prefWidth="430.0" spacing="42.0" style="-fx-background-color: #FFFFFF;">
                <effect>
@@ -212,6 +212,20 @@
                                     </Label>
                                  </children>
                               </HBox>
+                              <HBox alignment="CENTER_LEFT" spacing="18.0">
+                                 <children>
+                                    <Label text="Antrian            :">
+                                       <font>
+                                          <Font name="Shelf Life" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="viewAntri" text="1 Orang">
+                                       <font>
+                                          <Font name="Shelf Life" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
                               <Label text="----------------------------------">
                                  <font>
                                     <Font name="Shelf Life" size="16.0" />
@@ -237,7 +251,7 @@
                   </VBox>
                   <HBox alignment="CENTER" spacing="16.0">
                      <children>
-                        <Button id="button-login-petugas" graphicTextGap="8.0" minWidth="100.0" mnemonicParsing="false" onAction="#openLihatAntriPetugasScene" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-color: #D0D5DD; -fx-border-radius: 8;" text="Kembali" textFill="#344054">
+                        <Button id="button-login-petugas" graphicTextGap="8.0" minWidth="119.0" mnemonicParsing="false" onAction="#openFormAntriPetugasScene" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-color: #D0D5DD; -fx-border-radius: 8;" text="Kembali" textFill="#344054">
                            <padding>
                               <Insets bottom="10.0" left="14.0" right="14.0" top="10.0" />
                            </padding>
@@ -260,32 +274,17 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button id="button-login-petugas" graphicTextGap="8.0" minWidth="100.0" mnemonicParsing="false" onAction="#deleteThisAntrian" style="-fx-background-color: #ED0001; -fx-background-radius: 8; -fx-border-color: #ED0001; -fx-border-radius: 8;" text="Hapus" textFill="WHITE">
-                           <padding>
-                              <Insets bottom="8.0" left="14.0" right="14.0" top="8.0" />
-                           </padding>
-                           <font>
-                              <Font name="Inter Medium" size="12.0" />
-                           </font>
-                           <graphic>
-                              <ImageView pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@trash-01.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
                      </children>
                   </HBox>
                </children>
                <padding>
-                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                  <Insets bottom="27.0" left="30.0" right="30.0" top="19.0" />
                </padding>
+               <HBox.margin>
+                  <Insets top="645.0" />
+               </HBox.margin>
             </VBox>
          </children>
-         <padding>
-            <Insets top="52.0" />
-         </padding>
       </HBox>
    </children>
 </VBox>

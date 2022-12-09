@@ -1,5 +1,6 @@
 package com.example.hospital;
 
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +9,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,6 +33,8 @@ public class InvoicePetugasController implements Initializable {
     private Label viewDokter;
     @FXML
     private Label viewAntri;
+    @FXML
+    private VBox receipt;
     public void openHomepageScene(ActionEvent actionEvent) throws IOException {
         FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Homepage.fxml"));
         Parent InvoicePage = InvoiceLoader.load();
@@ -96,7 +101,7 @@ public class InvoicePetugasController implements Initializable {
 
     public void deleteThisAntrian(ActionEvent actionEvent) throws IOException {
         Database database = Database.getInstance();
-        QueuePoliMata queue = database.getQueuePoliMata();
+        Queue queue = database.getQueuePoliMata();
 
         FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("LihatAntriPetugas.fxml"));
         Parent InvoicePage = InvoiceLoader.load();
@@ -127,8 +132,8 @@ public class InvoicePetugasController implements Initializable {
         String nama, poli, dokter, tanggal, jenis;
 
         if (database.getPoliTerakhir().equals("Poli Mata")) {
-            QueuePoliMata queue = database.getQueuePoliMata();
-            ObjectPoliMata last = queue.lastAdded();
+            Queue queue = database.getQueuePoliMata();
+            Object last = queue.lastAdded();
 
             noantrian = last.getNoantrian();
             nama = last.getNama();
@@ -146,8 +151,8 @@ public class InvoicePetugasController implements Initializable {
             viewJenis.setText(jenis);
             viewAntri.setText(String.valueOf(antri) + " Orang");
         } else if (database.getPoliTerakhir().equals("Poli Jantung")) {
-            QueuePoliJantung queue = database.getQueuePoliJantung();
-            ObjectPoliJantung last = queue.lastAdded();
+            Queue queue = database.getQueuePoliJantung();
+            Object last = queue.lastAdded();
 
             noantrian = last.getNoantrian();
             nama = last.getNama();
@@ -165,8 +170,8 @@ public class InvoicePetugasController implements Initializable {
             viewJenis.setText(jenis);
             viewAntri.setText(String.valueOf(antri) + " Orang");
         } else if (database.getPoliTerakhir().equals("Poli Bedah")) {
-            QueuePoliBedah queue = database.getQueuePoliBedah();
-            ObjectPoliBedah last = queue.lastAdded();
+            Queue queue = database.getQueuePoliBedah();
+            Object last = queue.lastAdded();
 
             noantrian = last.getNoantrian();
             nama = last.getNama();
@@ -184,5 +189,12 @@ public class InvoicePetugasController implements Initializable {
             viewJenis.setText(jenis);
             viewAntri.setText(String.valueOf(antri) + " Orang");
         }
+
+        TranslateTransition moveIn = new TranslateTransition();
+        moveIn.setNode(receipt);
+        moveIn.setDuration(Duration.millis(1200));
+        moveIn.setCycleCount(1);
+        moveIn.setByY(-600);
+        moveIn.play();
     }
 }

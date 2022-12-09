@@ -1,5 +1,6 @@
 package com.example.hospital;
 
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,13 +9,29 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class FormAntriController implements Initializable {
+
+    @FXML
+    private HBox alerta;
+
+    private Scene PopUpAntrianPenuhScene;
+
+    public void setPopUpAntrianPenuhScene(Scene scene) {
+        PopUpAntrianPenuhScene = scene;
+    }
+
+    public void openPopUpAntrianPenuhScene(ActionEvent actionEvent) {
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        primaryStage.setScene(PopUpAntrianPenuhScene);
+    }
 
     @FXML
     private TextField noantrian;
@@ -28,6 +45,8 @@ public class FormAntriController implements Initializable {
     private DatePicker tanggal;
 
     String jenisTerpilih = "";
+    String lokasi_invoice = "umum";
+    Boolean apakah_alert_active = false;
 
     public void openHomepageScene(ActionEvent actionEvent) throws IOException {
         FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Homepage.fxml"));
@@ -39,6 +58,7 @@ public class FormAntriController implements Initializable {
     }
 
     public void openFormAntriScene(ActionEvent actionEvent) throws IOException {
+
         FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("FormAntri.fxml"));
         Parent InvoicePage = InvoiceLoader.load();
         Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
@@ -83,17 +103,61 @@ public class FormAntriController implements Initializable {
         primaryStage.setScene(InvoiceScene);
     }
 
+    public void closeAlerta() {
+        TranslateTransition moveOut = new TranslateTransition();
+        moveOut.setNode(alerta);
+        moveOut.setDuration(Duration.millis(200));
+        moveOut.setCycleCount(1);
+        moveOut.setByX(420);
+        moveOut.play();
+        apakah_alert_active = false;
+    }
+
+    public void openAlerta() {
+        TranslateTransition moveIn = new TranslateTransition();
+        moveIn.setNode(alerta);
+        moveIn.setDuration(Duration.millis(200));
+        moveIn.setCycleCount(1);
+        moveIn.setByX(-420);
+        moveIn.play();
+        apakah_alert_active = true;
+//        moveIn.setOnFinished(e -> {
+//            Timeline timeline = new Timeline(new KeyFrame(
+//                    Duration.seconds(7),
+//                    event -> closeAlerta()
+//            ));
+//            timeline.play();
+//        });
+    }
+
     public void openInvoiceScene(ActionEvent actionEvent) throws IOException {
         Database database = Database.getInstance();
-        QueuePoliMata queuePoliMata = database.getQueuePoliMata();
-        QueuePoliJantung queuePoliJantung = database.getQueuePoliJantung();
-        QueuePoliBedah queuePoliBedah = database.getQueuePoliBedah();
+        Queue queue = database.getQueuePoliMata();
+        Queue queuePoliJantung = database.getQueuePoliJantung();
+        Queue queuePoliBedah = database.getQueuePoliBedah();
 
 //        InvoiceController invoice = new InvoiceController();
 //        invoice.setUp(noantrian, nama, poli, dokter, tanggal, jenis, antri);
 
-        if (this.nama.getText().equals("") || this.poli.getValue().equals("Pilih Poli") || this.dokter.getValue() == null || this.tanggal.getValue() == null || jenisTerpilih.equals("")) {
-            System.out.println("Lengkapi Form");
+        if (this.nama.getText().equals("") || this.poli.getValue() == "Pilih poli" || this.poli.getValue() == null || this.dokter.getValue() == "Pilih dokter" || this.dokter.getValue() == null || this.tanggal.getValue() == null || jenisTerpilih.equals("")) {
+            TranslateTransition moveIn = new TranslateTransition();
+            if (apakah_alert_active) {
+                TranslateTransition moveOut = new TranslateTransition();
+                moveOut.setNode(alerta);
+                moveOut.setDuration(Duration.millis(200));
+                moveOut.setCycleCount(1);
+                moveOut.setByX(420);
+                moveOut.play();
+                apakah_alert_active = false;
+                moveOut.setOnFinished(e -> {
+                    openAlerta();
+                });
+            } else {
+                openAlerta();
+            }
+
+
+
         } else {
             int noantrian = 0, antri = 0;
             String nama, poli, dokter, tanggal, jenis;
@@ -105,8 +169,8 @@ public class FormAntriController implements Initializable {
             jenis = this.jenisTerpilih;
 
             if (poli.equals("Poli Mata")) {
-                noantrian = queuePoliMata.getNoAntrian();
-                antri = queuePoliMata.getAntri();
+                noantrian = queue.getNoAntrian();
+                antri = queue.getAntri();
             } else if (poli.equals("Poli Jantung")) {
                 noantrian = queuePoliJantung.getNoAntrian();
                 antri = queuePoliJantung.getAntri();
@@ -115,9 +179,9 @@ public class FormAntriController implements Initializable {
                 antri = queuePoliBedah.getAntri();
             }
 
-            database.enQueue(noantrian, nama, poli, dokter, tanggal, jenis, actionEvent);
+            database.enQueue(noantrian, nama, poli, dokter, tanggal, jenis, actionEvent, lokasi_invoice);
 
-//            if (queuePoliMata.isFull()) {
+//            if (queue.isFull()) {
 //                System.out.println("Poli Mata Penuh");
 //            } else {
 //                System.out.println("Telah masuk Antrian => (" + jenis + " " + poli + ")No Antrian: " + noantrian + ", Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
@@ -131,6 +195,19 @@ public class FormAntriController implements Initializable {
 //            }
         }
 
+//        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Invoice.fxml"));
+//        Parent InvoicePage = InvoiceLoader.load();
+//        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+//
+//
+//        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+//        primaryStage.setScene(InvoiceScene);
+//        FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), InvoicePage);
+//        fadeIn.setFromValue(0);
+//        fadeIn.setToValue(1);
+//        fadeIn.setCycleCount(1);
+//
+//        fadeIn.play();
     }
 
     public void poliTelahTerpilih(ActionEvent actionEvent) {
@@ -165,7 +242,7 @@ public class FormAntriController implements Initializable {
         dokter.setDisable(true);
 
 //        Database database = Database.getInstance();
-//        QueuePoliMata queue = database.getQueue();
+//        Queue queue = database.getQueue();
 //
 //        noantrian.setText(String.valueOf(queue.getNoAntrian()));
     }

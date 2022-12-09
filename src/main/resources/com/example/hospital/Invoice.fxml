@@ -274,10 +274,16 @@
                   </HBox>
                </children>
                <padding>
-                  <Insets bottom="30.0" left="30.0" right="30.0" />
+                  <Insets bottom="27.0" left="30.0" right="30.0" top="19.0" />
                </padding>
+               <HBox.margin>
+                  <Insets top="645.0" />
+               </HBox.margin>
             </VBox>
          </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
       </HBox>
    </children>
 </VBox>
