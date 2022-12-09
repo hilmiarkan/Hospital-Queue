@@ -106,14 +106,14 @@ public class LihatAntriPetugasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Database database = Database.getInstance();
-        Object[] queuepolimata = database.getQueuePoliMata().toArray();
-        Object[] queuepolibedah = database.getQueuePoliBedah().toArray();
-        Object[] queuepolijantung = database.getQueuePoliJantung().toArray();
+        ObjectPoliMata[] queuepolimata = database.getQueuePoliMata().toArray();
+        ObjectPoliBedah[] queuepolibedah = database.getQueuePoliBedah().toArray();
+        ObjectPoliJantung[] queuepolijantung = database.getQueuePoliJantung().toArray();
 
-        ObservableList<Object> list = FXCollections.observableArrayList();
+        ObservableList<ObjectPoliMata> list = FXCollections.observableArrayList();
         list.addAll(queuepolimata);
-        list.addAll(queuepolibedah);
-        list.addAll(queuepolijantung);
+//        list.addAll(queuepolibedah);
+//        list.addAll(queuepolijantung);
 
         noantrianCol.setCellValueFactory(new PropertyValueFactory<Object, Integer>("noantrian"));
         namaCol.setCellValueFactory(new PropertyValueFactory<Object, String>("nama"));

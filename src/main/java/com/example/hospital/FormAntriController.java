@@ -132,9 +132,9 @@ public class FormAntriController implements Initializable {
 
     public void openInvoiceScene(ActionEvent actionEvent) throws IOException {
         Database database = Database.getInstance();
-        Queue queue = database.getQueuePoliMata();
-        Queue queuePoliJantung = database.getQueuePoliJantung();
-        Queue queuePoliBedah = database.getQueuePoliBedah();
+        QueuePoliMata queuePoliMata = database.getQueuePoliMata();
+        QueuePoliJantung queuePoliJantung = database.getQueuePoliJantung();
+        QueuePoliBedah queuePoliBedah = database.getQueuePoliBedah();
 
 //        InvoiceController invoice = new InvoiceController();
 //        invoice.setUp(noantrian, nama, poli, dokter, tanggal, jenis, antri);
@@ -169,8 +169,8 @@ public class FormAntriController implements Initializable {
             jenis = this.jenisTerpilih;
 
             if (poli.equals("Poli Mata")) {
-                noantrian = queue.getNoAntrian();
-                antri = queue.getAntri();
+                noantrian = queuePoliMata.getNoAntrian();
+                antri = queuePoliMata.getAntri();
             } else if (poli.equals("Poli Jantung")) {
                 noantrian = queuePoliJantung.getNoAntrian();
                 antri = queuePoliJantung.getAntri();
@@ -214,15 +214,15 @@ public class FormAntriController implements Initializable {
         if (poli.getValue().equals("Poli Mata")) {
             dokter.setDisable(false);
             dokter.getItems().clear();
-            dokter.getItems().addAll("Dr. Suluri", "Dr. Hilmi", "Dr. Arkan");
+            dokter.getItems().addAll("drg. Sukmarani, M.S.S.");
         } else if (poli.getValue().equals("Poli Jantung")) {
             dokter.setDisable(false);
             dokter.getItems().clear();
-            dokter.getItems().addAll("Dr. Suci");
+            dokter.getItems().addAll("dr. Fredo Tamara,Sp.PD., M.Biomed", "dr. Pandu Herpri Sasongko, Sp.PD.");
         } else if (poli.getValue().equals("Poli Bedah")) {
             dokter.setDisable(false);
             dokter.getItems().clear();
-            dokter.getItems().addAll("Dr. Doc", "Dr. Dia");
+            dokter.getItems().addAll("dr. Sadiman, Sp.B.", "dr. Faris, Sp.B.", "dr. Yusuf Benny Rais, Sp.B.");
         }
     }
 

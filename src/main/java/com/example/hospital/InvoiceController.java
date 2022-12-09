@@ -131,8 +131,8 @@ public class InvoiceController implements Initializable {
         String nama, poli, dokter, tanggal, jenis;
 
         if (database.getPoliTerakhir().equals("Poli Mata")) {
-            Queue queue = database.getQueuePoliMata();
-            Object last = queue.lastAdded();
+            QueuePoliMata queue = database.getQueuePoliMata();
+            ObjectPoliMata last = queue.lastAdded();
 
             noantrian = queue.getNoAntrian()-1;
             nama = last.getNama();
@@ -150,8 +150,8 @@ public class InvoiceController implements Initializable {
             viewJenis.setText(jenis);
             viewAntri.setText(String.valueOf(antri) + " Orang");
         } else if (database.getPoliTerakhir().equals("Poli Jantung")) {
-            Queue queue = database.getQueuePoliJantung();
-            Object last = queue.lastAdded();
+            QueuePoliJantung queue = database.getQueuePoliJantung();
+            ObjectPoliJantung last = queue.lastAdded();
 
             noantrian = last.getNoantrian();
             nama = last.getNama();
@@ -169,8 +169,8 @@ public class InvoiceController implements Initializable {
             viewJenis.setText(jenis);
             viewAntri.setText(String.valueOf(antri) + " Orang");
         } else if (database.getPoliTerakhir().equals("Poli Bedah")) {
-            Queue queue = database.getQueuePoliBedah();
-            Object last = queue.lastAdded();
+            QueuePoliBedah queue = database.getQueuePoliBedah();
+            ObjectPoliBedah last = queue.lastAdded();
 
             noantrian = last.getNoantrian();
             nama = last.getNama();

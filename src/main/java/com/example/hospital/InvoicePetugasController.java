@@ -99,18 +99,6 @@ public class InvoicePetugasController implements Initializable {
         primaryStage.setScene(InvoiceScene);
     }
 
-    public void deleteThisAntrian(ActionEvent actionEvent) throws IOException {
-        Database database = Database.getInstance();
-        Queue queue = database.getQueuePoliMata();
-
-        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("LihatAntriPetugas.fxml"));
-        Parent InvoicePage = InvoiceLoader.load();
-        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(InvoiceScene);
-    }
-
     int noantrian, antri;
     String nama, poli, dokter, tanggal, jenis;
 
@@ -132,8 +120,8 @@ public class InvoicePetugasController implements Initializable {
         String nama, poli, dokter, tanggal, jenis;
 
         if (database.getPoliTerakhir().equals("Poli Mata")) {
-            Queue queue = database.getQueuePoliMata();
-            Object last = queue.lastAdded();
+            QueuePoliMata queue = database.getQueuePoliMata();
+            ObjectPoliMata last = queue.lastAdded();
 
             noantrian = last.getNoantrian();
             nama = last.getNama();
@@ -151,8 +139,8 @@ public class InvoicePetugasController implements Initializable {
             viewJenis.setText(jenis);
             viewAntri.setText(String.valueOf(antri) + " Orang");
         } else if (database.getPoliTerakhir().equals("Poli Jantung")) {
-            Queue queue = database.getQueuePoliJantung();
-            Object last = queue.lastAdded();
+            QueuePoliJantung queue = database.getQueuePoliJantung();
+            ObjectPoliJantung last = queue.lastAdded();
 
             noantrian = last.getNoantrian();
             nama = last.getNama();
@@ -170,8 +158,8 @@ public class InvoicePetugasController implements Initializable {
             viewJenis.setText(jenis);
             viewAntri.setText(String.valueOf(antri) + " Orang");
         } else if (database.getPoliTerakhir().equals("Poli Bedah")) {
-            Queue queue = database.getQueuePoliBedah();
-            Object last = queue.lastAdded();
+            QueuePoliBedah queue = database.getQueuePoliBedah();
+            ObjectPoliBedah last = queue.lastAdded();
 
             noantrian = last.getNoantrian();
             nama = last.getNama();

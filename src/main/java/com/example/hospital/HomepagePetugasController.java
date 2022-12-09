@@ -109,14 +109,14 @@ public class HomepagePetugasController implements Initializable {
 
     void setUp() {
         Database database = Database.getInstance();
-        Queue queue = database.getQueuePoliMata();
-        Object objMata = queue.getnItems();
+        QueuePoliMata queue = database.getQueuePoliMata();
+        ObjectPoliMata objMata = queue.getnItems();
 
-        Queue queuePoliJantung = database.getQueuePoliJantung();
-        Object objJantung = queuePoliJantung.getnItems();
+        QueuePoliJantung queuePoliJantung = database.getQueuePoliJantung();
+        ObjectPoliJantung objJantung = queuePoliJantung.getnItems();
 
-        Queue queuePoliBedah = database.getQueuePoliBedah();
-        Object objBedah = queuePoliBedah.getnItems();
+        QueuePoliBedah queuePoliBedah = database.getQueuePoliBedah();
+        ObjectPoliBedah objBedah = queuePoliBedah.getnItems();
 
         if (objMata == null) {
             antrianPoliMata.setText("A00");

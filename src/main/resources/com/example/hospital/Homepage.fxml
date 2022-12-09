@@ -212,21 +212,27 @@
                               <Insets bottom="10.0" top="10.0" />
                            </padding>
                         </VBox>
-                        <Separator prefWidth="200.0" style="-fx-border-color: #F4EBFF; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
+                        <Separator prefWidth="200.0" style="-fx-border-color: #F4EBFF; -fx-border-width: 1 0 0 0; -fx-border-style: solid;">
+                           <padding>
+                              <Insets bottom="-2.0" />
+                           </padding></Separator>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
                            <children>
                               <HBox>
                                  <children>
                                     <VBox alignment="TOP_CENTER" spacing="14.0" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <VBox alignment="CENTER" prefHeight="23.0" prefWidth="423.0" spacing="10.0" style="-fx-background-color: #FCFAFF; -fx-background-radius: 18 18 0 0;">
+                                          <VBox alignment="CENTER" prefHeight="23.0" prefWidth="423.0" spacing="10.0" style="-fx-background-color: FCFCFD; -fx-background-radius: 0;">
                                              <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Jadwal Dokter" textFill="#42307d">
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Poli Mata" textFill="#5a606b">
                                                    <font>
-                                                      <Font name="Inter SemiBold" size="18.0" />
+                                                      <Font name="Inter Medium" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Separator prefWidth="200.0" style="-fx-border-color: #F4EBFF; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
+                                                <Separator prefWidth="200.0" style="-fx-border-color: #F4EBFF; -fx-border-width: 1 0 0 0; -fx-border-style: solid;">
+                                                   <padding>
+                                                      <Insets bottom="-3.0" />
+                                                   </padding></Separator>
                                              </children>
                                              <padding>
                                                 <Insets top="10.0" />
@@ -250,110 +256,144 @@
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
-                                       <padding>
-                                          <Insets bottom="14.0" />
-                                       </padding>
                                     </VBox>
-                                    <Separator orientation="VERTICAL" prefHeight="200.0" />
-                                    <VBox alignment="CENTER" spacing="14.0" HBox.hgrow="ALWAYS">
+                                    <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-border-style: solid; -fx-border-color: #F4EBFF; -fx-border-width: 1 0 0 0;">
+                                       <padding>
+                                          <Insets left="-3.0" right="-4.0" />
+                                       </padding></Separator>
+                                    <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <VBox alignment="CENTER">
+                                          <VBox alignment="CENTER" prefHeight="23.0" prefWidth="423.0" spacing="10.0" style="-fx-background-color: FCFCFD; -fx-background-radius: 0;">
                                              <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="dr. Fredo Tamara,Sp.PD., M.Biomed" textFill="#42307d">
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Poli Jantung" textFill="#5a606b">
                                                    <font>
-                                                      <Font name="Inter SemiBold" size="18.0" />
+                                                      <Font name="Inter Medium" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Jumat | 08.00 WIB - 10.00 WIB" textFill="#42307d">
-                                                   <font>
-                                                      <Font name="Inter Light" size="18.0" />
-                                                   </font>
-                                                </Label>
+                                                <Separator prefWidth="200.0" style="-fx-border-color: #F4EBFF; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
                                              </children>
+                                             <padding>
+                                                <Insets top="10.0" />
+                                             </padding>
                                           </VBox>
-                                          <VBox alignment="CENTER">
+                                          <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="18.0" VBox.vgrow="ALWAYS">
                                              <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="dr. Pandu Herpri Sasongko, Sp.PD." textFill="#42307d">
-                                                   <font>
-                                                      <Font name="Inter SemiBold" size="18.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Jum'at s.d. Sabtu | 08.00 WIB - Selesai" textFill="#42307d">
-                                                   <font>
-                                                      <Font name="Inter Light" size="18.0" />
-                                                   </font>
-                                                </Label>
+                                                <VBox alignment="CENTER">
+                                                   <children>
+                                                      <Label alignment="CENTER" contentDisplay="CENTER" text="dr. Fredo Tamara,Sp.PD., M.Biomed" textFill="#42307d">
+                                                         <font>
+                                                            <Font name="Inter SemiBold" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER" contentDisplay="CENTER" text="Jumat | 08.00 WIB - 10.00 WIB" textFill="#42307d">
+                                                         <font>
+                                                            <Font name="Inter Light" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="CENTER">
+                                                   <children>
+                                                      <Label alignment="CENTER" contentDisplay="CENTER" text="dr. Pandu Herpri Sasongko, Sp.PD." textFill="#42307d">
+                                                         <font>
+                                                            <Font name="Inter SemiBold" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER" contentDisplay="CENTER" text="Jum'at s.d. Sabtu | 08.00 WIB - Selesai" textFill="#42307d">
+                                                         <font>
+                                                            <Font name="Inter Light" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
                                              </children>
                                           </VBox>
                                        </children>
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
-                                       <padding>
-                                          <Insets bottom="14.0" top="14.0" />
-                                       </padding>
                                     </VBox>
-                                    <Separator orientation="VERTICAL" prefHeight="200.0" />
-                                    <VBox alignment="CENTER" spacing="14.0" HBox.hgrow="ALWAYS">
+                                    <Separator orientation="VERTICAL" prefHeight="200.0">
+                                       <padding>
+                                          <Insets left="-3.0" right="-4.0" />
+                                       </padding></Separator>
+                                    <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <VBox alignment="CENTER">
+                                          <VBox alignment="CENTER" prefHeight="23.0" prefWidth="423.0" spacing="10.0" style="-fx-background-color: FCFCFD; -fx-background-radius: 0;">
                                              <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="dr. Sadiman, Sp.B." textFill="#42307d">
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Poli Bedah" textFill="#5a606b">
                                                    <font>
-                                                      <Font name="Inter SemiBold" size="18.0" />
+                                                      <Font name="Inter Medium" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Senin dan Rabu | 10.00 WIB – Selesai" textFill="#42307d">
-                                                   <font>
-                                                      <Font name="Inter Light" size="18.0" />
-                                                   </font>
-                                                </Label>
+                                                <Separator prefWidth="200.0" style="-fx-border-color: #F4EBFF; -fx-border-width: 1 0 0 0; -fx-border-style: solid;" />
                                              </children>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
+                                             <padding>
+                                                <Insets top="10.0" />
+                                             </padding>
                                           </VBox>
-                                          <VBox alignment="CENTER">
+                                          <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0" VBox.vgrow="ALWAYS">
                                              <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="dr. Faris, Sp.B." textFill="#42307d">
-                                                   <font>
-                                                      <Font name="Inter SemiBold" size="18.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Selasa, Kamis &amp; Jum'at | 08.00 - 11.00 WIB" textFill="#42307d">
-                                                   <font>
-                                                      <Font name="Inter Light" size="18.0" />
-                                                   </font>
-                                                </Label>
+                                                <VBox alignment="CENTER">
+                                                   <children>
+                                                      <Label alignment="CENTER" contentDisplay="CENTER" text="dr. Sadiman, Sp.B." textFill="#42307d">
+                                                         <font>
+                                                            <Font name="Inter SemiBold" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER" contentDisplay="CENTER" text="Rabu | 10.00 WIB – Selesai" textFill="#42307d">
+                                                         <font>
+                                                            <Font name="Inter Light" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                </VBox>
+                                                <VBox alignment="CENTER">
+                                                   <children>
+                                                      <Label alignment="CENTER" contentDisplay="CENTER" text="dr. Faris, Sp.B." textFill="#42307d">
+                                                         <font>
+                                                            <Font name="Inter SemiBold" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER" contentDisplay="CENTER" text="Jum'at | 08.00 - 11.00 WIB" textFill="#42307d">
+                                                         <font>
+                                                            <Font name="Inter Light" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                </VBox>
+                                                <VBox alignment="CENTER">
+                                                   <children>
+                                                      <Label alignment="CENTER" contentDisplay="CENTER" text="dr. Yusuf Benny Rais, Sp.B." textFill="#42307d">
+                                                         <font>
+                                                            <Font name="Inter SemiBold" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER" contentDisplay="CENTER" text="Kamis | 11.00 WIB – Selesai" textFill="#42307d">
+                                                         <font>
+                                                            <Font name="Inter Light" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                </VBox>
                                              </children>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </VBox>
-                                          <VBox alignment="CENTER">
-                                             <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="dr. Yusuf Benny Rais, Sp.B." textFill="#42307d">
-                                                   <font>
-                                                      <Font name="Inter SemiBold" size="18.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Selasa dan Kamis | 11.00 WIB – Selesai" textFill="#42307d">
-                                                   <font>
-                                                      <Font name="Inter Light" size="18.0" />
-                                                   </font>
-                                                </Label>
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
+                                             <padding>
+                                                <Insets bottom="14.0" top="14.0" />
+                                             </padding>
                                           </VBox>
                                        </children>
                                        <HBox.margin>
-                                          <Insets />
+                                          <Insets right="1.0" />
                                        </HBox.margin>
-                                       <padding>
-                                          <Insets bottom="14.0" top="14.0" />
-                                       </padding>
                                     </VBox>
                                  </children>
                               </HBox>

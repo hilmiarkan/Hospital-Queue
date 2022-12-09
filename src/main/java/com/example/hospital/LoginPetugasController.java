@@ -81,6 +81,5 @@ public class LoginPetugasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Database database = Database.getInstance();
-        Queue queue = database.getQueuePoliMata();
     }
 }

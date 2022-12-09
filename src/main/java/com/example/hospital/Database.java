@@ -14,9 +14,9 @@ import java.io.IOException;
 
 public final class Database {
 
-    Queue queue = new Queue(2);
-    Queue queuePoliJantung = new Queue(2);
-    Queue queuePoliBedah = new Queue(2);
+    QueuePoliMata queuePoliMata = new QueuePoliMata(2);
+    QueuePoliJantung queuePoliJantung = new QueuePoliJantung(2);
+    QueuePoliBedah queuePoliBedah = new QueuePoliBedah(2);
     private final static Database INSTANCE = new Database();
 
     private Database() {
@@ -34,7 +34,7 @@ public final class Database {
         poliTerakhir = poli;
         invoiceTerakhir = invoice;
         if (poli.equals("Poli Mata")) {
-            if (queue.isFull()) {
+            if (queuePoliMata.isFull()) {
                 System.out.println("Poli Mata Penuh");
                 if(invoiceTerakhir == "petugas") {
                     FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("PopUpAntrianPenuhPetugas.fxml"));
@@ -71,14 +71,14 @@ public final class Database {
                 //inserHashTable -> Antrian Semua poli -> View Semua poli petugas
 
                 if(invoiceTerakhir == "petugas") {
-                    this.queue.insert(noantrian, nama, poli, dokter, tanggal, jenis);
+                    this.queuePoliMata.insert(noantrian, nama, poli, dokter, tanggal, jenis);
                     FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("InvoicePetugas.fxml"));
                     Parent InvoicePage = InvoiceLoader.load();
                     Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
                     Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                     primaryStage.setScene(InvoiceScene);
                 } else if (invoiceTerakhir == "umum") {
-                    this.queue.insert(noantrian, nama, poli, dokter, tanggal, jenis);
+                    this.queuePoliMata.insert(noantrian, nama, poli, dokter, tanggal, jenis);
                     FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Invoice.fxml"));
                     Parent InvoicePage = InvoiceLoader.load();
                     Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
@@ -202,10 +202,10 @@ public final class Database {
 
     public void deQueue(String jenis) {
         if (jenis.equals("Poli Mata")) {
-            if (queue.isEmpty()) {
+            if (queuePoliMata.isEmpty()) {
                 System.out.println("Antrian Kosong");
             } else {
-                this.queue.remove();
+                this.queuePoliMata.remove();
             }
         } else if (jenis.equals("Poli Jantung")) {
             if (queuePoliJantung.isEmpty()) {
@@ -226,15 +226,15 @@ public final class Database {
         return poliTerakhir;
     }
 
-    public Queue getQueuePoliMata() {
-        return queue;
+    public QueuePoliMata getQueuePoliMata() {
+        return queuePoliMata;
     }
 
-    public Queue getQueuePoliJantung() {
+    public QueuePoliJantung getQueuePoliJantung() {
         return queuePoliJantung;
     }
 
-    public Queue getQueuePoliBedah() {
+    public QueuePoliBedah getQueuePoliBedah() {
         return queuePoliBedah;
     }
 }

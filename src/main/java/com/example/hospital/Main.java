@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -14,6 +15,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
+
         FXMLLoader HomepageLoader = new FXMLLoader(getClass().getResource("Homepage.fxml"));
         Parent HomepagePage = HomepageLoader.load();
         Scene HomepageScene = new Scene(HomepagePage, 1200, 700);
@@ -22,8 +24,11 @@ public class Main extends Application {
         Parent SplashPage = SplashLoader.load();
         Scene SplashScene = new Scene(SplashPage, 1200, 700);
         primaryStage.setTitle("RSUD Dr.Soeprapto Cepu");
+
         primaryStage.setScene(SplashScene);
         primaryStage.show();
+
+
 
         FadeTransition fadeIn = new FadeTransition(Duration.seconds(.5), SplashPage);
         fadeIn.setFromValue(0);
