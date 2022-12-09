@@ -153,7 +153,7 @@ public class InvoiceController implements Initializable {
             QueuePoliJantung queue = database.getQueuePoliJantung();
             ObjectPoliJantung last = queue.lastAdded();
 
-            noantrian = last.getNoantrian();
+            noantrian = queue.getNoAntrian()-1;
             nama = last.getNama();
             poli = last.getPoli();
             dokter = last.getDokter();
@@ -172,7 +172,7 @@ public class InvoiceController implements Initializable {
             QueuePoliBedah queue = database.getQueuePoliBedah();
             ObjectPoliBedah last = queue.lastAdded();
 
-            noantrian = last.getNoantrian();
+            noantrian = queue.getNoAntrian()-1;
             nama = last.getNama();
             poli = last.getPoli();
             dokter = last.getDokter();
