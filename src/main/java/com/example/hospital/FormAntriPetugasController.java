@@ -132,9 +132,9 @@ public class FormAntriPetugasController implements Initializable {
 
     public void openInvoicePetugasScene(ActionEvent actionEvent) throws IOException {
         Database database = Database.getInstance();
-        QueuePoliMata queuePoliMata = database.getQueuePoliMata();
-        QueuePoliJantung queuePoliJantung = database.getQueuePoliJantung();
-        QueuePoliBedah queuePoliBedah = database.getQueuePoliBedah();
+        Queue queuePoliMata = database.getQueuePoliMata();
+        Queue queuePoliJantung = database.getQueuePoliJantung();
+        Queue queuePoliBedah = database.getQueuePoliBedah();
 
 //        InvoiceController invoice = new InvoiceController();
 //        invoice.setUp(noantrian, nama, poli, dokter, tanggal, jenis, antri);
@@ -155,9 +155,6 @@ public class FormAntriPetugasController implements Initializable {
             } else {
                 openAlerta();
             }
-
-
-
         } else {
             int noantrian = 0, antri = 0;
             String nama, poli, dokter, tanggal, jenis;
@@ -170,13 +167,10 @@ public class FormAntriPetugasController implements Initializable {
 
             if (poli.equals("Poli Mata")) {
                 noantrian = queuePoliMata.getNoAntrian();
-                antri = queuePoliMata.getAntri();
             } else if (poli.equals("Poli Jantung")) {
                 noantrian = queuePoliJantung.getNoAntrian();
-                antri = queuePoliJantung.getAntri();
             } else if (poli.equals("Poli Bedah")) {
                 noantrian = queuePoliBedah.getNoAntrian();
-                antri = queuePoliBedah.getAntri();
             }
 
             database.enQueue(noantrian, nama, poli, dokter, tanggal, jenis, actionEvent, lokasi_invoice);
