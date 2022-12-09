@@ -200,22 +200,63 @@ public final class Database {
         }
     }
 
-    public void deQueue(String jenis) {
+    public void deQueue(String jenis, ActionEvent actionEvent) throws IOException {
         if (jenis.equals("Poli Mata")) {
             if (queuePoliMata.isEmpty()) {
                 System.out.println("Antrian Kosong");
+                FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("PopUpAntrianKosongPetugas.fxml"));
+                Parent InvoicePage = InvoiceLoader.load();
+                Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+
+
+                Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                primaryStage.setScene(InvoiceScene);
+                FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), InvoicePage);
+                fadeIn.setFromValue(0);
+                fadeIn.setToValue(1);
+                fadeIn.setCycleCount(1);
+
+                fadeIn.play();
             } else {
                 this.queuePoliMata.remove();
             }
         } else if (jenis.equals("Poli Jantung")) {
             if (queuePoliJantung.isEmpty()) {
                 System.out.println("Antrian Kosong");
+                System.out.println("Antrian Kosong");
+                FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("PopUpAntrianKosongPetugas.fxml"));
+                Parent InvoicePage = InvoiceLoader.load();
+                Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+
+
+                Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                primaryStage.setScene(InvoiceScene);
+                FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), InvoicePage);
+                fadeIn.setFromValue(0);
+                fadeIn.setToValue(1);
+                fadeIn.setCycleCount(1);
+
+                fadeIn.play();
             } else {
                 this.queuePoliJantung.remove();
             }
         } else if (jenis.equals("Poli Bedah")) {
             if (queuePoliBedah.isEmpty()) {
                 System.out.println("Antrian Kosong");
+                System.out.println("Antrian Kosong");
+                FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("PopUpAntrianKosongPetugas.fxml"));
+                Parent InvoicePage = InvoiceLoader.load();
+                Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+
+
+                Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                primaryStage.setScene(InvoiceScene);
+                FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), InvoicePage);
+                fadeIn.setFromValue(0);
+                fadeIn.setToValue(1);
+                fadeIn.setCycleCount(1);
+
+                fadeIn.play();
             } else {
                 this.queuePoliBedah.remove();
             }

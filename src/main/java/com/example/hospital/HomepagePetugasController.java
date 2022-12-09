@@ -95,71 +95,43 @@ public class HomepagePetugasController implements Initializable {
     }
 
     @FXML
-    void panggilPoliMata(ActionEvent event) {
+    void panggilPoliMata(ActionEvent event) throws IOException {
 
         if(database.queuePoliMata.isEmpty()){
-            if (apakah_alert_active) {
-                TranslateTransition moveOut = new TranslateTransition();
-                moveOut.setNode(alerta);
-                moveOut.setDuration(Duration.millis(200));
-                moveOut.setCycleCount(1);
-                moveOut.setByX(270);
-                moveOut.play();
-                apakah_alert_active = false;
-                moveOut.setOnFinished(e -> {
-                    openAlerta();
-                });
-            } else {
-                openAlerta();
-            }
+//            if (apakah_alert_active) {
+//                TranslateTransition moveOut = new TranslateTransition();
+//                moveOut.setNode(alerta);
+//                moveOut.setDuration(Duration.millis(200));
+//                moveOut.setCycleCount(1);
+//                moveOut.setByX(270);
+//                moveOut.play();
+//                apakah_alert_active = false;
+//                moveOut.setOnFinished(e -> {
+//                    openAlerta();
+//                });
+//            } else {
+//                openAlerta();
+//            }
         }
-        database.deQueue("Poli Mata");
+        database.deQueue("Poli Mata", event);
         setUp();
     }
 
     @FXML
-    void panggilPoliJantung(ActionEvent event) {
+    void panggilPoliJantung(ActionEvent event) throws IOException {
         if(database.queuePoliJantung.isEmpty()){
-            if (apakah_alert_active) {
-                TranslateTransition moveOut = new TranslateTransition();
-                moveOut.setNode(alerta);
-                moveOut.setDuration(Duration.millis(200));
-                moveOut.setCycleCount(1);
-                moveOut.setByX(270);
-                moveOut.play();
-                apakah_alert_active = false;
-                moveOut.setOnFinished(e -> {
-                    openAlerta();
-                });
-            } else {
-                openAlerta();
-            }
         }
-        database.deQueue("Poli Jantung");
+        database.deQueue("Poli Jantung", event);
 
         setUp();
     }
 
     @FXML
-    void panggilPoliBedah(ActionEvent event) {
+    void panggilPoliBedah(ActionEvent event) throws IOException {
 
         if(database.queuePoliBedah.isEmpty()){
-            if (apakah_alert_active) {
-                TranslateTransition moveOut = new TranslateTransition();
-                moveOut.setNode(alerta);
-                moveOut.setDuration(Duration.millis(200));
-                moveOut.setCycleCount(1);
-                moveOut.setByX(270);
-                moveOut.play();
-                apakah_alert_active = false;
-                moveOut.setOnFinished(e -> {
-                    openAlerta();
-                });
-            } else {
-                openAlerta();
-            }
         }
-        database.deQueue("Poli Bedah");
+        database.deQueue("Poli Bedah", event);
         setUp();
     }
 
