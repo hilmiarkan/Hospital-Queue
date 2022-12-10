@@ -18,190 +18,428 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital.FormAntriController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital.FormAntriController">
    <children>
-      <VBox>
+      <VBox fx:id="home" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER" style="-fx-background-color: #FFFFFF;">
+            <VBox>
                <children>
-                  <ImageView pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Logomark.png" />
-                     </image>
-                  </ImageView>
-                  <Label text="RSUD Dr. R. Soeprapto Cepu">
-                     <padding>
-                        <Insets left="12.0" right="24.0" />
-                     </padding>
-                     <font>
-                        <Font name="Inter SemiBold" size="18.0" />
-                     </font>
-                  </Label>
-                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                  <HBox alignment="CENTER" style="-fx-background-color: #FFFFFF;">
                      <children>
-                        <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" onAction="#openHomepageScene" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-radius: 8;" text="Home" textFill="#344054">
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Logomark.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="RSUD Dr. R. Soeprapto Cepu">
                            <padding>
-                              <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
+                              <Insets left="12.0" right="24.0" />
+                           </padding>
+                           <font>
+                              <Font name="Inter SemiBold" size="18.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                           <children>
+                              <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" onAction="#openHomepageScene" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-radius: 8;" text="Home" textFill="#344054">
+                                 <padding>
+                                    <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="Inter Medium" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" style="-fx-background-color: #F9F5FF; -fx-background-radius: 8; -fx-border-radius: 8;" text="Buat Antrian" textFill="#6941c6">
+                                 <padding>
+                                    <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="Inter Medium" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#openLoginPetugasScene" style="-fx-background-color: #8654E1; -fx-background-radius: 8;" text="Login Petugas" textFill="WHITE">
+                           <padding>
+                              <Insets bottom="8.0" left="14.0" right="14.0" top="8.0" />
                            </padding>
                            <font>
                               <Font name="Inter Medium" size="12.0" />
                            </font>
+                           <graphic>
+                              <ImageView pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@log-in-01.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </Button>
-                        <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" style="-fx-background-color: #F9F5FF; -fx-background-radius: 8; -fx-border-radius: 8;" text="Buat Antrian" textFill="#6941c6">
+                     </children>
+                     <padding>
+                        <Insets bottom="12.0" left="64.0" right="64.0" top="12.0" />
+                     </padding>
+                     <effect>
+                        <DropShadow height="41.0" offsetY="2.0" radius="15.0" spread="0.15">
+                           <color>
+                              <Color opacity="0.09751433879137039" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </HBox>
+               </children>
+            </VBox>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="639.0" prefWidth="1200.0" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" text="Form Antrian" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font name="Inter SemiBold" size="18.0" />
+                           </font>
+                        </Label>
+                        <VBox maxWidth="400.0" spacing="6.0" VBox.vgrow="NEVER">
+                           <children>
+                              <Label text="Nama" textFill="#344054">
+                                 <font>
+                                    <Font name="Inter Medium" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="nama" minHeight="40.0" minWidth="400.0" style="-fx-background-radius: 8;" />
+                           </children>
+                        </VBox>
+                        <VBox maxWidth="400.0" spacing="6.0" VBox.vgrow="NEVER">
+                           <children>
+                              <Label maxWidth="400.0" text="Poli yang dituju" textFill="#344054">
+                                 <font>
+                                    <Font name="Inter Medium" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="poli" minHeight="40.0" minWidth="400.0" onAction="#poliTelahTerpilih" promptText="Pilih poli" style="-fx-background-radius: 8;" />
+                           </children>
+                        </VBox>
+                        <VBox maxWidth="400.0" spacing="6.0" VBox.vgrow="NEVER">
+                           <children>
+                              <Label maxWidth="400.0" text="Dokter" textFill="#344054">
+                                 <font>
+                                    <Font name="Inter Medium" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="dokter" minHeight="40.0" minWidth="400.0" promptText="Pilih dokter" style="-fx-background-radius: 8;" />
+                           </children>
+                        </VBox>
+                        <VBox maxWidth="400.0" spacing="6.0" VBox.vgrow="NEVER">
+                           <children>
+                              <Label text="Tanggal" textFill="#344054">
+                                 <font>
+                                    <Font name="Inter Medium" size="14.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="tanggal" minHeight="40.0" minWidth="400.0" />
+                           </children>
+                        </VBox>
+                        <VBox maxWidth="400.0" spacing="10.0">
+                           <children>
+                              <Label maxWidth="400.0" text="Jenis" textFill="#344054">
+                                 <font>
+                                    <Font name="Inter Medium" size="14.0" />
+                                 </font>
+                              </Label>
+                              <HBox maxWidth="400.0" spacing="24.0">
+                                 <children>
+                                    <RadioButton fx:id="radioumum" mnemonicParsing="false" onAction="#memilihUmum" text="Umum">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="jenis" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton fx:id="radiobpjs" mnemonicParsing="false" onAction="#memilihBPJS" text="BPJS" toggleGroup="$jenis" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Button id="button-login-petugas" graphicTextGap="8.0" minHeight="40.0" minWidth="400.0" mnemonicParsing="false" onAction="#openInvoiceScene" style="-fx-background-color: #8654E1; -fx-background-radius: 8;" text="Tambahkan Antrian" textFill="WHITE">
                            <padding>
-                              <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
+                              <Insets bottom="8.0" left="14.0" right="14.0" top="8.0" />
                            </padding>
                            <font>
                               <Font name="Inter Medium" size="12.0" />
                            </font>
                         </Button>
                      </children>
-                  </HBox>
-                  <Region HBox.hgrow="ALWAYS" />
-                  <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#openLoginPetugasScene" style="-fx-background-color: #8654E1; -fx-background-radius: 8;" text="Login Petugas" textFill="WHITE">
                      <padding>
-                        <Insets bottom="8.0" left="14.0" right="14.0" top="8.0" />
+                        <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
                      </padding>
-                     <font>
-                        <Font name="Inter Medium" size="12.0" />
-                     </font>
-                     <graphic>
-                        <ImageView pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@log-in-01.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                  </VBox>
+                  <HBox fx:id="alerta" alignment="CENTER_RIGHT" layoutY="14.0" style="-fx-background-color: #FFFBFA; -fx-background-radius: 8; -fx-border-color: #FDA29B; -fx-border-radius: 8;" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="-400.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <ImageView pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@alert-circle.png" />
+                                 </image>
+                              </ImageView>
+                              <Label text="Mohon lengkapi form secara menyeluruh" textFill="#b42318">
+                                 <font>
+                                    <Font name="Inter Medium" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" onAction="#closeAlerta" style="-fx-background-color: #FFFBFA; -fx-background-radius: 8;" textFill="WHITE">
+                           <font>
+                              <Font name="Inter Medium" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Close%20X.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="6.0" left="16.0" right="6.0" top="6.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <AnchorPane fx:id="popup" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(52, 64, 84, 0.7);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="383.0" prefWidth="391.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #D0D5DD;" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="404.0" AnchorPane.rightAnchor="404.0" AnchorPane.topAnchor="125.0">
+               <children>
+                  <ImageView fitHeight="270.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Queue-bro.png" />
+                     </image>
+                  </ImageView>
+                  <VBox alignment="TOP_CENTER" spacing="24.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" text="Mohon maaf, antrian telah penuh" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Inter Medium" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button id="button-login-petugas" graphicTextGap="8.0" minWidth="119.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-color: #D0D5DD; -fx-border-radius: 8;" text="Baik, saya mengerti" textFill="#344054">
+                           <padding>
+                              <Insets bottom="10.0" left="14.0" right="14.0" top="10.0" />
+                           </padding>
+                           <font>
+                              <Font name="Inter Medium" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
                </children>
                <padding>
-                  <Insets bottom="12.0" left="64.0" right="64.0" top="12.0" />
+                  <Insets bottom="31.0" left="21.0" right="21.0" />
                </padding>
                <effect>
-                  <DropShadow height="41.0" offsetY="2.0" radius="15.0" spread="0.15">
+                  <DropShadow blurType="GAUSSIAN" height="255.0" radius="127.0" spread="0.17" width="255.0">
                      <color>
-                        <Color opacity="0.09751433879137039" />
+                        <Color opacity="0.1892925500869751" />
                      </color>
                   </DropShadow>
                </effect>
-            </HBox>
+            </VBox>
          </children>
-      </VBox>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+      </AnchorPane>
+      <VBox fx:id="receipt" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="553.0" prefWidth="430.0" spacing="42.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="-620.0" AnchorPane.leftAnchor="380.0" AnchorPane.rightAnchor="380.0">
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="48.11" radius="24.1475" width="50.48">
+               <color>
+                  <Color opacity="0.09751433879137039" />
+               </color>
+            </DropShadow>
+         </effect>
          <children>
-            <VBox alignment="CENTER" prefHeight="639.0" prefWidth="1200.0" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox alignment="CENTER" spacing="16.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" text="Form Antrian" VBox.vgrow="ALWAYS">
-                     <font>
-                        <Font name="Inter SemiBold" size="18.0" />
-                     </font>
-                  </Label>
-                  <VBox maxWidth="400.0" spacing="6.0" VBox.vgrow="NEVER">
+                  <VBox alignment="TOP_CENTER" spacing="10.0">
                      <children>
-                        <Label text="Nama" textFill="#344054">
+                        <Label text="RSUD Dr. Soeprapto Cepu">
                            <font>
-                              <Font name="Inter Medium" size="14.0" />
+                              <Font name="Shelf Life" size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="nama" minHeight="40.0" minWidth="400.0" style="-fx-background-radius: 8;" />
-                     </children>
-                  </VBox>
-                  <VBox maxWidth="400.0" spacing="6.0" VBox.vgrow="NEVER">
-                     <children>
-                        <Label maxWidth="400.0" text="Poli yang dituju" textFill="#344054">
-                           <font>
-                              <Font name="Inter Medium" size="14.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="poli" minHeight="40.0" minWidth="400.0" onAction="#poliTelahTerpilih" promptText="Pilih poli" style="-fx-background-radius: 8;" />
-                     </children>
-                  </VBox>
-                  <VBox maxWidth="400.0" spacing="6.0" VBox.vgrow="NEVER">
-                     <children>
-                        <Label maxWidth="400.0" text="Dokter" textFill="#344054">
-                           <font>
-                              <Font name="Inter Medium" size="14.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="dokter" minHeight="40.0" minWidth="400.0" promptText="Pilih dokter" style="-fx-background-radius: 8;" />
-                     </children>
-                  </VBox>
-                  <VBox maxWidth="400.0" spacing="6.0" VBox.vgrow="NEVER">
-                     <children>
-                        <Label text="Tanggal" textFill="#344054">
-                           <font>
-                              <Font name="Inter Medium" size="14.0" />
-                           </font>
-                        </Label>
-                        <DatePicker fx:id="tanggal" minHeight="40.0" minWidth="400.0" />
-                     </children>
-                  </VBox>
-                  <VBox maxWidth="400.0" spacing="10.0">
-                     <children>
-                        <Label maxWidth="400.0" text="Jenis" textFill="#344054">
-                           <font>
-                              <Font name="Inter Medium" size="14.0" />
-                           </font>
-                        </Label>
-                        <HBox maxWidth="400.0" spacing="24.0">
+                        <VBox alignment="TOP_CENTER" spacing="2.0">
                            <children>
-                              <RadioButton fx:id="radioumum" mnemonicParsing="false" onAction="#memilihUmum" text="Umum">
-                                 <toggleGroup>
-                                    <ToggleGroup fx:id="jenis" />
-                                 </toggleGroup>
-                              </RadioButton>
-                              <RadioButton fx:id="radiobpjs" mnemonicParsing="false" onAction="#memilihBPJS" text="BPJS" toggleGroup="$jenis" />
+                              <Label text="Jl. Ronggolawe No.50, Megal, Balun, Kec. Cepu,">
+                                 <font>
+                                    <Font name="Shelf Life" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Kabupaten Blora, Jawa Tengah 58311">
+                                 <font>
+                                    <Font name="Shelf Life" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox spacing="14.0">
+                     <children>
+                        <Label text="----------------------------------">
+                           <font>
+                              <Font name="Shelf Life" size="16.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT" spacing="18.0">
+                           <children>
+                              <Label text="No. Antrian   :">
+                                 <font>
+                                    <Font name="Shelf Life" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="viewNo" text="N065">
+                                 <font>
+                                    <Font name="Shelf Life" size="32.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="18.0">
+                           <children>
+                              <Label text="Nama                 :">
+                                 <font>
+                                    <Font name="Shelf Life" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="viewNama" text="Maulana Hilmi Arkan">
+                                 <font>
+                                    <Font name="Shelf Life" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="18.0">
+                           <children>
+                              <Label text="Poli                     :">
+                                 <font>
+                                    <Font name="Shelf Life" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="viewPoli" text="Poli Umum">
+                                 <font>
+                                    <Font name="Shelf Life" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="18.0">
+                           <children>
+                              <Label text="Dokter            :">
+                                 <font>
+                                    <Font name="Shelf Life" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="viewDokter" text="Dr R. Soeprapto">
+                                 <font>
+                                    <Font name="Shelf Life" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="18.0">
+                           <children>
+                              <Label text="Tanggal           :">
+                                 <font>
+                                    <Font name="Shelf Life" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="viewTgl" text="Jumat, 18 November 2022">
+                                 <font>
+                                    <Font name="Shelf Life" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="18.0">
+                           <children>
+                              <Label text="Jenis                :">
+                                 <font>
+                                    <Font name="Shelf Life" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="viewJenis" text="BPJS">
+                                 <font>
+                                    <Font name="Shelf Life" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="18.0">
+                           <children>
+                              <Label text="Antrian            :">
+                                 <font>
+                                    <Font name="Shelf Life" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="viewAntri" text="1 Orang">
+                                 <font>
+                                    <Font name="Shelf Life" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label text="----------------------------------">
+                           <font>
+                              <Font name="Shelf Life" size="16.0" />
+                           </font>
+                        </Label>
                      </children>
                   </VBox>
-                  <Button id="button-login-petugas" graphicTextGap="8.0" minHeight="40.0" minWidth="400.0" mnemonicParsing="false" onAction="#openInvoiceScene" style="-fx-background-color: #8654E1; -fx-background-radius: 8;" text="Tambahkan Antrian" textFill="WHITE">
+                  <VBox alignment="TOP_CENTER" spacing="10.0">
+                     <children>
+                        <Label text="Terima Kasih">
+                           <font>
+                              <Font name="Shelf Life" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="Semoga Lekas Sembuh">
+                           <font>
+                              <Font name="Shelf Life" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" spacing="16.0">
+               <children>
+                  <Button id="button-login-petugas" graphicTextGap="8.0" minWidth="119.0" mnemonicParsing="false" onAction="#closeReceipt" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-color: #D0D5DD; -fx-border-radius: 8;" text="Kembali" textFill="#344054">
+                     <padding>
+                        <Insets bottom="10.0" left="14.0" right="14.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font name="Inter Medium" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-color: #D0D5DD; -fx-border-radius: 8;" text="Print Struk" textFill="#344054">
                      <padding>
                         <Insets bottom="8.0" left="14.0" right="14.0" top="8.0" />
                      </padding>
                      <font>
                         <Font name="Inter Medium" size="12.0" />
                      </font>
-                  </Button>
-               </children>
-               <padding>
-                  <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
-               </padding>
-            </VBox>
-            <HBox fx:id="alerta" alignment="CENTER_RIGHT" layoutY="14.0" style="-fx-background-color: #FFFBFA; -fx-background-radius: 8; -fx-border-color: #FDA29B; -fx-border-radius: 8;" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="-400.0">
-               <children>
-                  <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <ImageView pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@alert-circle.png" />
-                           </image>
-                        </ImageView>
-                        <Label text="Mohon lengkapi form secara menyeluruh" textFill="#b42318">
-                           <font>
-                              <Font name="Inter Medium" size="14.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" onAction="#closeAlerta" style="-fx-background-color: #FFFBFA; -fx-background-radius: 8;" textFill="WHITE">
-                     <font>
-                        <Font name="Inter Medium" size="12.0" />
-                     </font>
                      <graphic>
                         <ImageView pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Close%20X.png" />
+                              <Image url="@printer.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
                </children>
-               <padding>
-                  <Insets bottom="6.0" left="16.0" right="6.0" top="6.0" />
-               </padding>
             </HBox>
          </children>
-      </AnchorPane>
+         <padding>
+            <Insets bottom="27.0" left="30.0" right="30.0" top="19.0" />
+         </padding>
+      </VBox>
    </children>
-</VBox>
+</AnchorPane>

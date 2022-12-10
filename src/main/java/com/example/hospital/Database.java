@@ -34,203 +34,102 @@ public final class Database {
         poliTerakhir = poli;
         invoiceTerakhir = invoice;
         if (poli.equals("Poli Mata")) {
-            if (queuePoliMata.isFull()) {
-                if(invoiceTerakhir == "petugas") {
-                    FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("PopUpAntrianPenuhPetugas.fxml"));
-                    Parent InvoicePage = InvoiceLoader.load();
-                    Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-
-                    Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                    primaryStage.setScene(InvoiceScene);
-                    FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), InvoicePage);
-                    fadeIn.setFromValue(0);
-                    fadeIn.setToValue(1);
-                    fadeIn.setCycleCount(1);
-
-                    fadeIn.play();
-                } else if (invoiceTerakhir == "umum") {
-                    FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("PopUpAntrianPenuh.fxml"));
-                    Parent InvoicePage = InvoiceLoader.load();
-                    Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-
-                    Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                    primaryStage.setScene(InvoiceScene);
-                    FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), InvoicePage);
-                    fadeIn.setFromValue(0);
-                    fadeIn.setToValue(1);
-                    fadeIn.setCycleCount(1);
-
-                    fadeIn.play();
-                }
-
-            } else {
-                System.out.println("Telah masuk Antrian => (" + jenis + " " + poli + ")No Antrian: " + noantrian + ", Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
                 this.queuePoliMata.insert(noantrian, nama, poli, dokter, tanggal, jenis);
-                if(invoiceTerakhir == "petugas") {
-                    FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("InvoicePetugas.fxml"));
-                    Parent InvoicePage = InvoiceLoader.load();
-                    Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-                    Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                    primaryStage.setScene(InvoiceScene);
-                } else if (invoiceTerakhir == "umum") {
-                    FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Invoice.fxml"));
-                    Parent InvoicePage = InvoiceLoader.load();
-                    Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-                    Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                    primaryStage.setScene(InvoiceScene);
-                }
-            }
+                System.out.println("Telah masuk Antrian => (" + jenis + " " + poli + ")No Antrian: " + noantrian + ", Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
+
         } else if (poli.equals("Poli Jantung")) {
-            if (queuePoliJantung.isFull()) {
-                if(invoiceTerakhir == "petugas") {
-                    FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("PopUpAntrianPenuhPetugas.fxml"));
-                    Parent InvoicePage = InvoiceLoader.load();
-                    Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-
-                    Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                    primaryStage.setScene(InvoiceScene);
-                    FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), InvoicePage);
-                    fadeIn.setFromValue(0);
-                    fadeIn.setToValue(1);
-                    fadeIn.setCycleCount(1);
-
-                    fadeIn.play();
-                } else if (invoiceTerakhir == "umum") {
-                    FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("PopUpAntrianPenuh.fxml"));
-                    Parent InvoicePage = InvoiceLoader.load();
-                    Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-
-                    Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                    primaryStage.setScene(InvoiceScene);
-                    FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), InvoicePage);
-                    fadeIn.setFromValue(0);
-                    fadeIn.setToValue(1);
-                    fadeIn.setCycleCount(1);
-
-                    fadeIn.play();
-                }
-
-            } else {
-                System.out.println("Telah masuk Antrian => (" + jenis + " " + poli + ")No Antrian: " + noantrian + ", Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
                 this.queuePoliJantung.insert(noantrian, nama, poli, dokter, tanggal, jenis);
-                if(invoiceTerakhir == "petugas") {
-                    FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("InvoicePetugas.fxml"));
-                    Parent InvoicePage = InvoiceLoader.load();
-                    Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-                    Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                    primaryStage.setScene(InvoiceScene);
-                } else if (invoiceTerakhir == "umum") {
-                    FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Invoice.fxml"));
-                    Parent InvoicePage = InvoiceLoader.load();
-                    Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-                    Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                    primaryStage.setScene(InvoiceScene);
-                }
-            }
-        } else if (poli.equals("Poli Bedah")) {
-            if (queuePoliBedah.isFull()) {
-                if(invoiceTerakhir == "petugas") {
-                    FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("PopUpAntrianPenuhPetugas.fxml"));
-                    Parent InvoicePage = InvoiceLoader.load();
-                    Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-
-                    Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                    primaryStage.setScene(InvoiceScene);
-                    FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), InvoicePage);
-                    fadeIn.setFromValue(0);
-                    fadeIn.setToValue(1);
-                    fadeIn.setCycleCount(1);
-
-                    fadeIn.play();
-                } else if (invoiceTerakhir == "umum") {
-                    FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("PopUpAntrianPenuh.fxml"));
-                    Parent InvoicePage = InvoiceLoader.load();
-                    Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-
-                    Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                    primaryStage.setScene(InvoiceScene);
-                    FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), InvoicePage);
-                    fadeIn.setFromValue(0);
-                    fadeIn.setToValue(1);
-                    fadeIn.setCycleCount(1);
-
-                    fadeIn.play();
-                }
-
-            } else {
                 System.out.println("Telah masuk Antrian => (" + jenis + " " + poli + ")No Antrian: " + noantrian + ", Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
-                this.queuePoliBedah.insert(noantrian, nama, poli, dokter, tanggal, jenis);
-                if(invoiceTerakhir == "petugas") {
-                    FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("InvoicePetugas.fxml"));
-                    Parent InvoicePage = InvoiceLoader.load();
-                    Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-                    Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                    primaryStage.setScene(InvoiceScene);
-                } else if (invoiceTerakhir == "umum") {
-                    FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Invoice.fxml"));
-                    Parent InvoicePage = InvoiceLoader.load();
-                    Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-                    Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                    primaryStage.setScene(InvoiceScene);
-                }
 
-            }
+        } else if (poli.equals("Poli Bedah")) {
+//            if (queuePoliBedah.isFull()) {
+//                System.out.println("Antrian poli bedah sudah penuh");
+//                if(invoiceTerakhir == "petugas") {
+//                    FXMLLoader Loader = new FXMLLoader(getClass().getResource("PopUpAntrianPenuhPetugas.fxml"));
+//                    Parent Page = Loader.load();
+//                    Scene Scene = new Scene(Page, 1200, 700);
+//
+//                    Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+//                    primaryStage.setScene(Scene);
+//                    FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), Page);
+//                    fadeIn.setFromValue(0);
+//                    fadeIn.setToValue(1);
+//                    fadeIn.setCycleCount(1);
+//
+//                    fadeIn.play();
+//                } else if (invoiceTerakhir == "umum") {
+//                    FXMLLoader Loader = new FXMLLoader(getClass().getResource("PopUpAntrianPenuh.fxml"));
+//                    Parent Page = Loader.load();
+//                    Scene Scene = new Scene(Page, 1200, 700);
+//
+//                    Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+//                    primaryStage.setScene(Scene);
+//                    FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), Page);
+//                    fadeIn.setFromValue(0);
+//                    fadeIn.setToValue(1);
+//                    fadeIn.setCycleCount(1);
+//
+//                    fadeIn.play();
+//                }
+
+//            } else {
+                this.queuePoliBedah.insert(noantrian, nama, poli, dokter, tanggal, jenis);
+                System.out.println("Telah masuk Antrian => (" + jenis + " " + poli + ")No Antrian: " + noantrian + ", Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
+//                if(invoiceTerakhir == "petugas") {
+//                    FXMLLoader Loader = new FXMLLoader(getClass().getResource("InvoicePetugas.fxml"));
+//                    Parent Page = Loader.load();
+//                    Scene Scene = new Scene(Page, 1200, 700);
+//                    Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+//                    primaryStage.setScene(Scene);
+//                } else if (invoiceTerakhir == "umum") {
+//                    FXMLLoader Loader = new FXMLLoader(getClass().getResource("Invoice.fxml"));
+//                    Parent Page = Loader.load();
+//                    Scene Scene = new Scene(Page, 1200, 700);
+//                    Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+//                    primaryStage.setScene(Scene);
+//                }
+
+//            }
         }
     }
 
-    public void deQueue(String jenis, ActionEvent actionEvent) throws IOException {
+    public boolean deQueue(String jenis, ActionEvent actionEvent) throws IOException {
+        boolean dequeued = false;
         if (jenis.equals("Poli Mata")) {
             if (queuePoliMata.isEmpty()) {
-                FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("PopUpAntrianKosongPetugas.fxml"));
-                Parent InvoicePage = InvoiceLoader.load();
-                Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-
-                Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                primaryStage.setScene(InvoiceScene);
-                FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), InvoicePage);
-                fadeIn.setFromValue(0);
-                fadeIn.setToValue(1);
-                fadeIn.setCycleCount(1);
-
-                fadeIn.play();
+                dequeued = false;
+//                FXMLLoader Loader = new FXMLLoader(getClass().getResource("PopUpAntrianKosongPetugas.fxml"));
+//                Parent Page = Loader.load();
+//                Scene Scene = new Scene(Page, 1200, 700);
+//
+//                Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+//                primaryStage.setScene(Scene);
+//                FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), Page);
+//                fadeIn.setFromValue(0);
+//                fadeIn.setToValue(1);
+//                fadeIn.setCycleCount(1);
+//
+//                fadeIn.play();
             } else {
                 this.queuePoliMata.remove();
+                dequeued =  true;
             }
         } else if (jenis.equals("Poli Jantung")) {
             if (queuePoliJantung.isEmpty()) {
-                FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("PopUpAntrianKosongPetugas.fxml"));
-                Parent InvoicePage = InvoiceLoader.load();
-                Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-
-                Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                primaryStage.setScene(InvoiceScene);
-                FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), InvoicePage);
-                fadeIn.setFromValue(0);
-                fadeIn.setToValue(1);
-                fadeIn.setCycleCount(1);
-
-                fadeIn.play();
+                dequeued =  false;
             } else {
                 this.queuePoliJantung.remove();
+                dequeued =  true;
             }
         } else if (jenis.equals("Poli Bedah")) {
             if (queuePoliBedah.isEmpty()) {
-                FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("PopUpAntrianKosongPetugas.fxml"));
-                Parent InvoicePage = InvoiceLoader.load();
-                Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-
-                Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                primaryStage.setScene(InvoiceScene);
-                FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), InvoicePage);
-                fadeIn.setFromValue(0);
-                fadeIn.setToValue(1);
-                fadeIn.setCycleCount(1);
-
-                fadeIn.play();
+                dequeued =  false;
             } else {
                 this.queuePoliBedah.remove();
+                dequeued =  true;
             }
         }
+        return dequeued;
     }
 
     public String getPoliTerakhir() {

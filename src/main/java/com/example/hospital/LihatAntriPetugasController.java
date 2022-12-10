@@ -38,68 +38,31 @@ public class LihatAntriPetugasController implements Initializable {
 
     String poli = "";
 
-    public void openHomepageScene(ActionEvent actionEvent) throws IOException {
-        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Homepage.fxml"));
-        Parent InvoicePage = InvoiceLoader.load();
-        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-
-        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(InvoiceScene);
-    }
-
-    public void openFormAntriScene(ActionEvent actionEvent) throws IOException {
-
-        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("FormAntri.fxml"));
-        Parent InvoicePage = InvoiceLoader.load();
-        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-
-        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(InvoiceScene);
-    }
-
     public void openHomepagePetugasScene(ActionEvent actionEvent) throws IOException {
-        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("HomepagePetugas.fxml"));
-        Parent InvoicePage = InvoiceLoader.load();
-        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("HomepagePetugas.fxml"));
+        Parent Page = Loader.load();
+        Scene Scene = new Scene(Page, 1200, 700);
 
         Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(InvoiceScene);
+        primaryStage.setScene(Scene);
     }
 
     public void openLoginPetugasScene(ActionEvent actionEvent) throws IOException {
-        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("LoginPetugas.fxml"));
-        Parent InvoicePage = InvoiceLoader.load();
-        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("LoginPetugas.fxml"));
+        Parent Page = Loader.load();
+        Scene Scene = new Scene(Page, 1200, 700);
 
         Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(InvoiceScene);
+        primaryStage.setScene(Scene);
     }
 
     public void openFormAntriPetugasScene(ActionEvent actionEvent) throws IOException {
-        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("FormAntriPetugas.fxml"));
-        Parent InvoicePage = InvoiceLoader.load();
-        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("FormAntriPetugas.fxml"));
+        Parent Page = Loader.load();
+        Scene Scene = new Scene(Page, 1200, 700);
 
         Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(InvoiceScene);
-    }
-
-    public void openLihatAntriPetugasScene(ActionEvent actionEvent) throws IOException {
-        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("LihatAntriPetugas.fxml"));
-        Parent InvoicePage = InvoiceLoader.load();
-        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-
-        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(InvoiceScene);
-    }
-
-    public void openInvoiceScene(ActionEvent actionEvent) throws IOException {
-        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Invoice.fxml"));
-        Parent InvoicePage = InvoiceLoader.load();
-        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-
-        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(InvoiceScene);
+        primaryStage.setScene(Scene);
     }
 
     @FXML
@@ -171,17 +134,17 @@ public class LihatAntriPetugasController implements Initializable {
 //                // display the data in that scene).
 //                System.out.println(antrianTerpilih);
 //
-//                FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("InvoicePetugas.fxml"));
-//                Parent InvoicePage = null;
+//                FXMLLoader Loader = new FXMLLoader(getClass().getResource("InvoicePetugas.fxml"));
+//                Parent Page = null;
 //                try {
-//                    InvoicePage = InvoiceLoader.load();
+//                    Page = Loader.load();
 //                } catch (IOException e) {
 //                    throw new RuntimeException(e);
 //                }
-//                Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+//                Scene Scene = new Scene(Page, 1200, 700);
 //
 //                Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//                primaryStage.setScene(InvoiceScene);
+//                primaryStage.setScene(Scene);
 //            }
 //        });
     }

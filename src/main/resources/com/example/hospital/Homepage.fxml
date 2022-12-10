@@ -280,7 +280,7 @@
                                              <children>
                                                 <VBox alignment="CENTER">
                                                    <children>
-                                                      <Label alignment="CENTER" contentDisplay="CENTER" text="dr. Fredo Tamara,Sp.PD., M.Biomed" textFill="#42307d">
+                                                      <Label alignment="CENTER" contentDisplay="CENTER" text="dr. Suci, M.Biomed" textFill="#42307d">
                                                          <font>
                                                             <Font name="Inter SemiBold" size="18.0" />
                                                          </font>
@@ -294,7 +294,7 @@
                                                 </VBox>
                                                 <VBox alignment="CENTER">
                                                    <children>
-                                                      <Label alignment="CENTER" contentDisplay="CENTER" text="dr. Pandu Herpri Sasongko, Sp.PD." textFill="#42307d">
+                                                      <Label alignment="CENTER" contentDisplay="CENTER" text="dr. Pandu, Sp.PD." textFill="#42307d">
                                                          <font>
                                                             <Font name="Inter SemiBold" size="18.0" />
                                                          </font>
@@ -370,7 +370,7 @@
                                                 </VBox>
                                                 <VBox alignment="CENTER">
                                                    <children>
-                                                      <Label alignment="CENTER" contentDisplay="CENTER" text="dr. Yusuf Benny Rais, Sp.B." textFill="#42307d">
+                                                      <Label alignment="CENTER" contentDisplay="CENTER" text="dr. Yusuf, Sp.B." textFill="#42307d">
                                                          <font>
                                                             <Font name="Inter SemiBold" size="18.0" />
                                                          </font>

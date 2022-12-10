@@ -1,5 +1,8 @@
 package com.example.hospital;
 
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
+import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,7 +12,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.effect.GaussianBlur;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -43,64 +49,79 @@ public class FormAntriPetugasController implements Initializable {
     private ComboBox dokter;
     @FXML
     private DatePicker tanggal;
+    @FXML
+    private AnchorPane popup;
+    @FXML
+    private VBox home;
+    @FXML
+    private VBox receipt;
+    @FXML
+    private Label viewNo;
+    @FXML
+    private Label viewNama;
+    @FXML
+    private Label viewPoli;
+    @FXML
+    private Label viewTgl;
+    @FXML
+    private Label viewJenis;
+    @FXML
+    private Label viewDokter;
+    @FXML
+    private Label viewAntri;
+    @FXML
+    private RadioButton radiobpjs;
+    @FXML
+    private RadioButton radioumum;
 
     String jenisTerpilih = "";
     String lokasi_invoice = "petugas";
     Boolean apakah_alert_active = false;
 
-    public void openHomepageScene(ActionEvent actionEvent) throws IOException {
-        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Homepage.fxml"));
-        Parent InvoicePage = InvoiceLoader.load();
-        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
-
-        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(InvoiceScene);
-    }
-
     public void openFormAntriScene(ActionEvent actionEvent) throws IOException {
 
-        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("FormAntri.fxml"));
-        Parent InvoicePage = InvoiceLoader.load();
-        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("FormAntri.fxml"));
+        Parent Page = Loader.load();
+        Scene Scene = new Scene(Page, 1200, 700);
 
         Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(InvoiceScene);
+        primaryStage.setScene(Scene);
     }
 
     public void openHomepagePetugasScene(ActionEvent actionEvent) throws IOException {
-        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("HomepagePetugas.fxml"));
-        Parent InvoicePage = InvoiceLoader.load();
-        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("HomepagePetugas.fxml"));
+        Parent Page = Loader.load();
+        Scene Scene = new Scene(Page, 1200, 700);
 
         Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(InvoiceScene);
+        primaryStage.setScene(Scene);
     }
 
     public void openLoginPetugasScene(ActionEvent actionEvent) throws IOException {
-        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("LoginPetugas.fxml"));
-        Parent InvoicePage = InvoiceLoader.load();
-        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("LoginPetugas.fxml"));
+        Parent Page = Loader.load();
+        Scene Scene = new Scene(Page, 1200, 700);
 
         Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(InvoiceScene);
+        primaryStage.setScene(Scene);
     }
 
     public void openFormAntriPetugasScene(ActionEvent actionEvent) throws IOException {
-        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("FormAntriPetugas.fxml"));
-        Parent InvoicePage = InvoiceLoader.load();
-        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("FormAntriPetugas.fxml"));
+        Parent Page = Loader.load();
+        Scene Scene = new Scene(Page, 1200, 700);
 
         Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(InvoiceScene);
+        primaryStage.setScene(Scene);
     }
 
     public void openLihatAntriPetugasScene(ActionEvent actionEvent) throws IOException {
-        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("LihatAntriPetugas.fxml"));
-        Parent InvoicePage = InvoiceLoader.load();
-        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("LihatAntriPetugas.fxml"));
+        Parent Page = Loader.load();
+        Scene Scene = new Scene(Page, 1200, 700);
 
         Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(InvoiceScene);
+        primaryStage.setScene(Scene);
     }
 
     public void closeAlerta() {
@@ -130,7 +151,140 @@ public class FormAntriPetugasController implements Initializable {
 //        });
     }
 
-    public void openInvoicePetugasScene(ActionEvent actionEvent) throws IOException {
+    public void openPopUp() {
+        FadeTransition fade = new FadeTransition();
+        popup.setVisible(true);
+        fade.setNode(popup);
+        fade.setDuration(Duration.millis(200));
+//            fade.setCycleCount(TranslateTransition.INDEFINITE);
+        fade.setCycleCount(1);
+        fade.setInterpolator(Interpolator.LINEAR);
+        fade.setFromValue(0);
+        fade.setToValue(1);
+        fade.play();
+        home.setEffect(new GaussianBlur(14));
+    }
+
+    @FXML
+    void back(ActionEvent event) throws IOException {
+
+        FadeTransition fade = new FadeTransition();
+        fade.setNode(popup);
+        fade.setDuration(Duration.millis(150));
+        fade.setCycleCount(1);
+        fade.setInterpolator(Interpolator.LINEAR);
+        fade.setFromValue(1);
+        fade.setToValue(0);
+        fade.play();
+        home.setEffect(null);
+        fade.setOnFinished(e -> {
+            popup.setVisible(false);
+        });
+    }
+
+    @FXML
+    void closeReceipt(ActionEvent event) throws IOException {
+        TranslateTransition moveOut = new TranslateTransition();
+        moveOut.setNode(receipt);
+        moveOut.setDuration(Duration.millis(1000));
+        moveOut.setCycleCount(1);
+        moveOut.setByY(620);
+        moveOut.play();
+
+
+
+
+
+        moveOut.setOnFinished(e -> {
+            receipt.setVisible(false);
+        });
+    }
+
+    private void openReceipt() {
+        Database database = Database.getInstance();
+        int noantrian, antri;
+        String nama, poli, dokter, tanggal, jenis;
+
+        if (database.getPoliTerakhir().equals("Poli Mata")) {
+            Queue queue = database.getQueuePoliMata();
+            Object last = queue.lastAdded();
+
+            noantrian = queue.getNoAntrian()-1;
+            nama = last.getNama();
+            poli = last.getPoli();
+            dokter = last.getDokter();
+            tanggal = last.getTanggal();
+            jenis = last.getJenis();
+            antri = queue.getAntri();
+
+            viewNo.setText(String.valueOf(noantrian));
+            viewNama.setText(nama);
+            viewPoli.setText(poli);
+            viewDokter.setText(dokter);
+            viewTgl.setText(tanggal);
+            viewJenis.setText(jenis);
+            viewAntri.setText(String.valueOf(antri) + " Orang");
+        } else if (database.getPoliTerakhir().equals("Poli Jantung")) {
+            Queue queue = database.getQueuePoliJantung();
+            Object last = queue.lastAdded();
+
+            noantrian = queue.getNoAntrian()-1;
+            nama = last.getNama();
+            poli = last.getPoli();
+            dokter = last.getDokter();
+            tanggal = last.getTanggal();
+            jenis = last.getJenis();
+            antri = queue.getAntri();
+
+            viewNo.setText(String.valueOf(noantrian));
+            viewNama.setText(nama);
+            viewPoli.setText(poli);
+            viewDokter.setText(dokter);
+            viewTgl.setText(tanggal);
+            viewJenis.setText(jenis);
+            viewAntri.setText(String.valueOf(antri) + " Orang");
+        } else if (database.getPoliTerakhir().equals("Poli Bedah")) {
+            Queue queue = database.getQueuePoliBedah();
+            Object last = queue.lastAdded();
+
+            noantrian = queue.getNoAntrian()-1;
+            nama = last.getNama();
+            poli = last.getPoli();
+            dokter = last.getDokter();
+            tanggal = last.getTanggal();
+            jenis = last.getJenis();
+            antri = queue.getAntri();
+
+            viewNo.setText(String.valueOf(noantrian));
+            viewNama.setText(nama);
+            viewPoli.setText(poli);
+            viewDokter.setText(dokter);
+            viewTgl.setText(tanggal);
+            viewJenis.setText(jenis);
+            viewAntri.setText(String.valueOf(antri) + " Orang");
+        }
+
+        receipt.setVisible(true);
+        TranslateTransition moveIn = new TranslateTransition();
+        moveIn.setNode(receipt);
+        moveIn.setDuration(Duration.millis(1000));
+        moveIn.setCycleCount(1);
+        moveIn.setByY(-620);
+        moveIn.play();
+
+        moveIn.setOnFinished(e -> {
+            this.nama.setText("");
+            this.poli.getSelectionModel().clearSelection();
+            this.poli.setPromptText("Pilih Poli");
+            this.dokter.getSelectionModel().clearSelection();
+            this.dokter.setDisable(true);
+            this.tanggal.setValue(null);
+            this.radiobpjs.setSelected(false);
+            this.radioumum.setSelected(false);
+        });
+    }
+
+    public void openInvoiceScene(ActionEvent actionEvent) throws IOException {
         Database database = Database.getInstance();
         Queue queuePoliMata = database.getQueuePoliMata();
         Queue queuePoliJantung = database.getQueuePoliJantung();
@@ -166,14 +320,35 @@ public class FormAntriPetugasController implements Initializable {
             jenis = this.jenisTerpilih;
 
             if (poli.equals("Poli Mata")) {
-                noantrian = queuePoliMata.getNoAntrian();
+                if (queuePoliMata.isFull()) {
+                    System.out.println("Antrian poli mata sudah penuh");
+                    openPopUp();
+                } else {
+                    noantrian = queuePoliMata.getNoAntrian();
+                    database.enQueue(noantrian, nama, poli, dokter, tanggal, jenis, actionEvent, lokasi_invoice);
+                    openReceipt();
+                }
             } else if (poli.equals("Poli Jantung")) {
-                noantrian = queuePoliJantung.getNoAntrian();
+                if (queuePoliJantung.isFull()) {
+                    System.out.println("Antrian poli jantung sudah penuh");
+                    openPopUp();
+                } else {
+                    noantrian = queuePoliJantung.getNoAntrian();
+                    database.enQueue(noantrian, nama, poli, dokter, tanggal, jenis, actionEvent, lokasi_invoice);
+                    openReceipt();
+                }
             } else if (poli.equals("Poli Bedah")) {
-                noantrian = queuePoliBedah.getNoAntrian();
+                if (queuePoliBedah.isFull()) {
+                    System.out.println("Antrian poli bedah sudah penuh");
+                    openPopUp();
+                } else {
+                    noantrian = queuePoliBedah.getNoAntrian();
+                    database.enQueue(noantrian, nama, poli, dokter, tanggal, jenis, actionEvent, lokasi_invoice);
+                    openReceipt();
+                }
             }
 
-            database.enQueue(noantrian, nama, poli, dokter, tanggal, jenis, actionEvent, lokasi_invoice);
+
 
 //            if (queue.isFull()) {
 //                System.out.println("Poli Mata Penuh");
@@ -181,22 +356,22 @@ public class FormAntriPetugasController implements Initializable {
 //                System.out.println("Telah masuk Antrian => (" + jenis + " " + poli + ")No Antrian: " + noantrian + ", Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
 //                database.enQueue(noantrian, nama, poli, dokter, tanggal, jenis, actionEvent);
 //
-//                FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Invoice.fxml"));
-//                Parent InvoicePage = InvoiceLoader.load();
-//                Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+//                FXMLLoader Loader = new FXMLLoader(getClass().getResource("Invoice.fxml"));
+//                Parent Page = Loader.load();
+//                Scene Scene = new Scene(Page, 1200, 700);
 //                Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-//                primaryStage.setScene(InvoiceScene);
+//                primaryStage.setScene(Scene);
 //            }
         }
 
-//        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Invoice.fxml"));
-//        Parent InvoicePage = InvoiceLoader.load();
-//        Scene InvoiceScene = new Scene(InvoicePage, 1200, 700);
+//        FXMLLoader Loader = new FXMLLoader(getClass().getResource("Invoice.fxml"));
+//        Parent Page = Loader.load();
+//        Scene Scene = new Scene(Page, 1200, 700);
 //
 //
 //        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-//        primaryStage.setScene(InvoiceScene);
-//        FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), InvoicePage);
+//        primaryStage.setScene(Scene);
+//        FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), Page);
 //        fadeIn.setFromValue(0);
 //        fadeIn.setToValue(1);
 //        fadeIn.setCycleCount(1);
@@ -212,11 +387,11 @@ public class FormAntriPetugasController implements Initializable {
         } else if (poli.getValue().equals("Poli Jantung")) {
             dokter.setDisable(false);
             dokter.getItems().clear();
-            dokter.getItems().addAll("dr. Fredo Tamara,Sp.PD., M.Biomed", "dr. Pandu Herpri Sasongko, Sp.PD.");
+            dokter.getItems().addAll("dr. Suci, M.Biomed", "dr. Pandu, Sp.PD.");
         } else if (poli.getValue().equals("Poli Bedah")) {
             dokter.setDisable(false);
             dokter.getItems().clear();
-            dokter.getItems().addAll("dr. Sadiman, Sp.B.", "dr. Faris, Sp.B.", "dr. Yusuf Benny Rais, Sp.B.");
+            dokter.getItems().addAll("dr. Sadiman, Sp.B.", "dr. Faris, Sp.B.", "dr. Yusuf, Sp.B.");
         }
     }
 
@@ -231,6 +406,7 @@ public class FormAntriPetugasController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        popup.setVisible(false);
         poli.getItems().clear();
         poli.getItems().addAll("Poli Mata", "Poli Jantung", "Poli Bedah");
         dokter.setDisable(true);

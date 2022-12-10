@@ -18,7 +18,7 @@
          <children>
             <VBox alignment="TOP_CENTER" maxWidth="200.0" spacing="6.0">
                <children>
-                  <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" onAction="#openHomepageScene" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8;" textFill="WHITE">
+                  <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8;" textFill="WHITE">
                      <font>
                         <Font name="Inter Medium" size="12.0" />
                      </font>
@@ -57,14 +57,33 @@
                   <PasswordField minHeight="36.0" style="-fx-background-radius: 8;" />
                </children>
             </VBox>
-            <Button id="button-login-petugas" graphicTextGap="8.0" minHeight="36.0" minWidth="232.0" mnemonicParsing="false" onAction="#openHomepagePetugasScene" style="-fx-background-color: #8654E1; -fx-background-radius: 8;" text="Log In" textFill="WHITE" VBox.vgrow="NEVER">
-               <padding>
-                  <Insets bottom="4.0" left="14.0" right="14.0" top="4.0" />
-               </padding>
-               <font>
-                  <Font name="Inter Medium" size="12.0" />
-               </font>
-            </Button>
+            <VBox maxWidth="200.0" minWidth="232.0" spacing="10.0">
+               <children>
+                  <Button id="button-login-petugas" graphicTextGap="8.0" minHeight="36.0" minWidth="232.0" mnemonicParsing="false" onAction="#openHomepagePetugasScene" style="-fx-background-color: #8654E1; -fx-background-radius: 8;" text="Log In" textFill="WHITE" VBox.vgrow="NEVER">
+                     <padding>
+                        <Insets bottom="4.0" left="14.0" right="14.0" top="4.0" />
+                     </padding>
+                     <font>
+                        <Font name="Inter Medium" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button id="button-login-petugas" graphicTextGap="8.0" minHeight="26.0" minWidth="232.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#openHomepageScene" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-color: #D0D5DD; -fx-border-radius: 8;" text="Kembali" textFill="#344054">
+                     <padding>
+                        <Insets bottom="4.0" left="14.0" right="14.0" top="4.0" />
+                     </padding>
+                     <font>
+                        <Font name="Inter Medium" size="12.0" />
+                     </font>
+                     <graphic>
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@arrow-left.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
          </children>
          <padding>
             <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
