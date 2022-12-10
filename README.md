@@ -1,4 +1,4 @@
-# Hospital-Queue
+# Hospital Queue
 Hospital Queue w/ JavaFX
 
 this was created for our final homework on Data Structures Practicum in Java.
