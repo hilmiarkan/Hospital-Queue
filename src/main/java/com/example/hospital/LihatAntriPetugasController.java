@@ -2,6 +2,7 @@ package com.example.hospital;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,6 +26,8 @@ public class LihatAntriPetugasController implements Initializable {
     private TableView Tabel;
     @FXML
     private ComboBox filter;
+    @FXML
+    private TextField searchField;
     @FXML
     private TableColumn<Object, Integer> noantrianCol;
     @FXML
@@ -80,6 +85,37 @@ public class LihatAntriPetugasController implements Initializable {
             poli = "Poli Bedah";
             loadTable();
         }
+    }
+
+    private void filterTableViewData(String searchTerm) {
+        loadTable();
+        // Create a FilteredList that wraps the table view's data
+        FilteredList<Object> filteredData = new FilteredList<>(Tabel.getItems(), p -> true);
+
+        // Set the filter Predicate to filter the data based on the search term
+        filteredData.setPredicate(data -> {
+            // If the search term is empty, show all the data
+            if (searchTerm == null || searchTerm.isEmpty()) {
+                return true;
+            }
+
+            // Otherwise, search for the search term in the data
+            String lowerCaseSearchTerm = searchTerm.toLowerCase();
+            return data.getNama().toLowerCase().contains(lowerCaseSearchTerm)
+                    || data.getPoli().toLowerCase().contains(lowerCaseSearchTerm)
+                    || data.getDokter().toLowerCase().contains(lowerCaseSearchTerm)
+                    || data.getTanggal().toLowerCase().contains(lowerCaseSearchTerm)
+                    || data.getJenis().toLowerCase().contains(lowerCaseSearchTerm);
+        });
+
+        // Set the table view's items to be the FilteredList
+        Tabel.setItems(filteredData);
+
+    }
+
+    @FXML
+    public void search(KeyEvent event){
+        filterTableViewData(searchField.getText());
     }
 
     public void loadTable() {

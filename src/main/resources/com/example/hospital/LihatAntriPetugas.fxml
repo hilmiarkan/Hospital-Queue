@@ -104,7 +104,7 @@
                <children>
                   <ComboBox fx:id="filter" minHeight="36.0" minWidth="150.0" onAction="#selectFilter" promptText="Filter berdasarkan" style="-fx-background-radius: 8;" />
                   <Region HBox.hgrow="ALWAYS" />
-                  <TextField minHeight="36.0" minWidth="300.0" promptText="Cari antrian" style="-fx-background-radius: 8;">
+                  <TextField fx:id="searchField" minHeight="36.0" minWidth="300.0" onKeyReleased="#search" promptText="Cari antrian" style="-fx-background-radius: 8;">
                      <font>
                         <Font name="Inter Regular" size="13.0" />
                      </font></TextField>
