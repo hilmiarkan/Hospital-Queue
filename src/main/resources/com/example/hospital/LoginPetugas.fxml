@@ -8,94 +8,165 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1198.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital.LoginPetugasController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital.LoginPetugasController">
    <children>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="278.0" spacing="24.0" HBox.hgrow="ALWAYS">
+      <HBox layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1198.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox alignment="TOP_CENTER" maxWidth="200.0" spacing="6.0">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="278.0" spacing="24.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8;" textFill="WHITE">
-                     <font>
-                        <Font name="Inter Medium" size="12.0" />
-                     </font>
-                     <graphic>
-                        <ImageView pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Logomark.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" text="Login Petugas" VBox.vgrow="ALWAYS">
-                     <font>
-                        <Font name="Inter SemiBold" size="18.0" />
-                     </font>
-                  </Label>
+                  <VBox alignment="TOP_CENTER" maxWidth="200.0" spacing="6.0">
+                     <children>
+                        <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8;" textFill="WHITE">
+                           <font>
+                              <Font name="Inter Medium" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Logomark.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" text="Login Petugas" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font name="Inter SemiBold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox maxWidth="200.0" minWidth="232.0" spacing="6.0">
+                     <children>
+                        <Label text="Username" textFill="#344054">
+                           <font>
+                              <Font name="Inter Medium" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="usernameField" minHeight="36.0" style="-fx-background-radius: 8;" />
+                     </children>
+                  </VBox>
+                  <VBox maxWidth="200.0" minWidth="232.0" spacing="6.0" VBox.vgrow="NEVER">
+                     <children>
+                        <Label text="Password" textFill="#344054">
+                           <font>
+                              <Font name="Inter Medium" size="14.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="passwordField" minHeight="36.0" style="-fx-background-radius: 8;" />
+                     </children>
+                  </VBox>
+                  <VBox maxWidth="200.0" minWidth="232.0" spacing="10.0">
+                     <children>
+                        <Button id="button-login-petugas" graphicTextGap="8.0" minHeight="36.0" minWidth="232.0" mnemonicParsing="false" onAction="#loginAction" style="-fx-background-color: #8654E1; -fx-background-radius: 8;" text="Log In" textFill="WHITE" VBox.vgrow="NEVER">
+                           <padding>
+                              <Insets bottom="4.0" left="14.0" right="14.0" top="4.0" />
+                           </padding>
+                           <font>
+                              <Font name="Inter Medium" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button id="button-login-petugas" graphicTextGap="8.0" minHeight="26.0" minWidth="232.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#back" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-color: #D0D5DD; -fx-border-radius: 8;" text="Kembali" textFill="#344054">
+                           <padding>
+                              <Insets bottom="4.0" left="14.0" right="14.0" top="4.0" />
+                           </padding>
+                           <font>
+                              <Font name="Inter Medium" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@arrow-left.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
                </children>
+               <padding>
+                  <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+               </padding>
             </VBox>
-            <VBox maxWidth="200.0" minWidth="232.0" spacing="6.0">
+            <ImageView fitHeight="700.0" fitWidth="527.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+               <image>
+                  <Image url="@yyy_clipdrop-enhance.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox fx:id="alerta" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="24.0" style="-fx-background-color: #FFFBFA; -fx-background-radius: 8; -fx-border-color: #FDA29B; -fx-border-radius: 8;" AnchorPane.leftAnchor="182.0" AnchorPane.topAnchor="-70.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Username" textFill="#344054">
+                  <ImageView pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@alert-circle.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Username atau Password salah" textFill="#b42318">
                      <font>
                         <Font name="Inter Medium" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="usernameField" minHeight="36.0" style="-fx-background-radius: 8;" />
                </children>
-            </VBox>
-            <VBox maxWidth="200.0" minWidth="232.0" spacing="6.0" VBox.vgrow="NEVER">
-               <children>
-                  <Label text="Password" textFill="#344054">
-                     <font>
-                        <Font name="Inter Medium" size="14.0" />
-                     </font>
-                  </Label>
-                  <PasswordField fx:id="passwordField" minHeight="36.0" style="-fx-background-radius: 8;" />
-               </children>
-            </VBox>
-            <VBox maxWidth="200.0" minWidth="232.0" spacing="10.0">
-               <children>
-                  <Button id="button-login-petugas" graphicTextGap="8.0" minHeight="36.0" minWidth="232.0" mnemonicParsing="false" onAction="#loginAction" style="-fx-background-color: #8654E1; -fx-background-radius: 8;" text="Log In" textFill="WHITE" VBox.vgrow="NEVER">
-                     <padding>
-                        <Insets bottom="4.0" left="14.0" right="14.0" top="4.0" />
-                     </padding>
-                     <font>
-                        <Font name="Inter Medium" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button id="button-login-petugas" graphicTextGap="8.0" minHeight="26.0" minWidth="232.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#back" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-color: #D0D5DD; -fx-border-radius: 8;" text="Kembali" textFill="#344054">
-                     <padding>
-                        <Insets bottom="4.0" left="14.0" right="14.0" top="4.0" />
-                     </padding>
-                     <font>
-                        <Font name="Inter Medium" size="12.0" />
-                     </font>
-                     <graphic>
-                        <ImageView pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@arrow-left.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </VBox>
+            </HBox>
+            <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" onAction="#closeAlerta" style="-fx-background-color: #FFFBFA; -fx-background-radius: 8;" textFill="WHITE">
+               <font>
+                  <Font name="Inter Medium" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Close%20X.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
          <padding>
-            <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+            <Insets bottom="6.0" left="16.0" right="6.0" top="6.0" />
          </padding>
-      </VBox>
-      <ImageView fitHeight="700.0" fitWidth="527.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-         <image>
-            <Image url="@yyy_clipdrop-enhance.png" />
-         </image>
-         <viewport>
-            <Rectangle2D />
-         </viewport>
-      </ImageView>
+      </HBox>
+      <HBox fx:id="alertbelumpenuh" alignment="CENTER_RIGHT" layoutX="20.0" layoutY="34.0" style="-fx-background-color: #FFFBFA; -fx-background-radius: 8; -fx-border-color: #FDA29B; -fx-border-radius: 8;" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="-70.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@alert-circle.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Mohon isi username dan password" textFill="#b42318">
+                     <font>
+                        <Font name="Inter Medium" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" onAction="#closeAlertBelumPenuh" style="-fx-background-color: #FFFBFA; -fx-background-radius: 8;" textFill="WHITE">
+               <font>
+                  <Font name="Inter Medium" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Close%20X.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="6.0" left="16.0" right="6.0" top="6.0" />
+         </padding>
+      </HBox>
    </children>
-</HBox>
+</AnchorPane>
