@@ -102,15 +102,7 @@
             </Label>
             <HBox spacing="14.0">
                <children>
-                  <ComboBox minHeight="36.0" minWidth="150.0" promptText="Filter berdasarkan" style="-fx-background-radius: 8;" />
-                  <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#openLoginPetugasScene" prefHeight="36.0" prefWidth="79.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-color: #D0D5DD; -fx-border-radius: 8;" text="Apply" textFill="#344054">
-                     <padding>
-                        <Insets bottom="8.0" left="14.0" right="14.0" top="8.0" />
-                     </padding>
-                     <font>
-                        <Font name="Inter Medium" size="12.0" />
-                     </font>
-                  </Button>
+                  <ComboBox fx:id="filter" minHeight="36.0" minWidth="150.0" onAction="#selectFilter" promptText="Filter berdasarkan" style="-fx-background-radius: 8;" />
                   <Region HBox.hgrow="ALWAYS" />
                   <TextField minHeight="36.0" minWidth="300.0" promptText="Cari antrian" style="-fx-background-radius: 8;">
                      <font>

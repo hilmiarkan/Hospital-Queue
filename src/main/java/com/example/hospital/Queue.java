@@ -1,15 +1,12 @@
 package com.example.hospital;
 
-//import static com.sun.beans.introspect.ClassInfo.clear;
-
-class QueuePoliMata {
-
+public class Queue {
     private int maxSize, front, rear, nItems, antrian;
-    private ObjectPoliMata[] queArray;
+    private Object[] queArray;
 
-    public QueuePoliMata(int size) {
+    public Queue(int size) {
         this.maxSize = size;
-        queArray = new ObjectPoliMata[maxSize];
+        queArray = new Object[maxSize];
         front = 0;
         rear = -1;
         nItems = 0;
@@ -20,13 +17,13 @@ class QueuePoliMata {
         if (rear == maxSize - 1) {
             rear = -1;
         }
-        queArray[++rear] = new ObjectPoliMata(noantrian, nama, poli, dokter, tanggal, jenis);
+        queArray[++rear] = new Object(noantrian, nama, poli, dokter, tanggal, jenis);
         antrian++;
         nItems++;
     }
 
-    public ObjectPoliMata remove() {
-        ObjectPoliMata temp = queArray[front++];
+    public Object remove() {
+        Object temp = queArray[front++];
         if (front == maxSize) {
             front = 0;
         }
@@ -44,11 +41,7 @@ class QueuePoliMata {
 //        }
 //    }
 
-    public ObjectPoliMata peekFront() {
-        return queArray[front];
-    }
-
-    public ObjectPoliMata lastAdded() {
+    public Object lastAdded() {
         return queArray[nItems - 1];
     }
 
@@ -60,7 +53,7 @@ class QueuePoliMata {
         return (nItems == maxSize);
     }
 
-    public ObjectPoliMata getnItems() {
+    public Object getnItems() {
         return queArray[front];
     }
 
@@ -69,11 +62,11 @@ class QueuePoliMata {
     }
 
     public int getAntri() {
-        return nItems-1;
+        return nItems - 1;
     }
 
-    public ObjectPoliMata[] toArray() {
-        ObjectPoliMata[] array = new ObjectPoliMata[nItems];
+    public Object[] toArray() {
+        Object[] array = new Object[nItems];
         for (int i = 0; i < nItems; i++) {
             array[i] = queArray[(front + i) % maxSize];
         }

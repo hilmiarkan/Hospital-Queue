@@ -91,14 +91,14 @@ public class HomepageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Database database = Database.getInstance();
 
-        QueuePoliMata queuePoliMata = database.getQueuePoliMata();
-        ObjectPoliMata objMata = queuePoliMata.getnItems();
+        Queue queuePoliMata = database.getQueuePoliMata();
+        Object objMata = queuePoliMata.getnItems();
 
-        QueuePoliJantung queuePoliJantung = database.getQueuePoliJantung();
-        ObjectPoliJantung objJantung = queuePoliJantung.getnItems();
+        Queue queuePoliJantung = database.getQueuePoliJantung();
+        Object objJantung = queuePoliJantung.getnItems();
 
-        QueuePoliBedah queuePoliBedah = database.getQueuePoliBedah();
-        ObjectPoliBedah objBedah = queuePoliBedah.getnItems();
+        Queue queuePoliBedah = database.getQueuePoliBedah();
+        Object objBedah = queuePoliBedah.getnItems();
 
         if (queuePoliMata.isEmpty()) {
             antrianPoliMata.setText("A00");
