@@ -44,7 +44,7 @@
                         <Font name="Inter Medium" size="14.0" />
                      </font>
                   </Label>
-                  <TextField minHeight="36.0" style="-fx-background-radius: 8;" />
+                  <TextField fx:id="usernameField" minHeight="36.0" style="-fx-background-radius: 8;" />
                </children>
             </VBox>
             <VBox maxWidth="200.0" minWidth="232.0" spacing="6.0" VBox.vgrow="NEVER">
@@ -54,12 +54,12 @@
                         <Font name="Inter Medium" size="14.0" />
                      </font>
                   </Label>
-                  <PasswordField minHeight="36.0" style="-fx-background-radius: 8;" />
+                  <PasswordField fx:id="passwordField" minHeight="36.0" style="-fx-background-radius: 8;" />
                </children>
             </VBox>
             <VBox maxWidth="200.0" minWidth="232.0" spacing="10.0">
                <children>
-                  <Button id="button-login-petugas" graphicTextGap="8.0" minHeight="36.0" minWidth="232.0" mnemonicParsing="false" onAction="#openHomepagePetugasScene" style="-fx-background-color: #8654E1; -fx-background-radius: 8;" text="Log In" textFill="WHITE" VBox.vgrow="NEVER">
+                  <Button id="button-login-petugas" graphicTextGap="8.0" minHeight="36.0" minWidth="232.0" mnemonicParsing="false" onAction="#loginAction" style="-fx-background-color: #8654E1; -fx-background-radius: 8;" text="Log In" textFill="WHITE" VBox.vgrow="NEVER">
                      <padding>
                         <Insets bottom="4.0" left="14.0" right="14.0" top="4.0" />
                      </padding>
@@ -67,7 +67,7 @@
                         <Font name="Inter Medium" size="12.0" />
                      </font>
                   </Button>
-                  <Button id="button-login-petugas" graphicTextGap="8.0" minHeight="26.0" minWidth="232.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#openHomepageScene" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-color: #D0D5DD; -fx-border-radius: 8;" text="Kembali" textFill="#344054">
+                  <Button id="button-login-petugas" graphicTextGap="8.0" minHeight="26.0" minWidth="232.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#back" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-color: #D0D5DD; -fx-border-radius: 8;" text="Kembali" textFill="#344054">
                      <padding>
                         <Insets bottom="4.0" left="14.0" right="14.0" top="4.0" />
                      </padding>

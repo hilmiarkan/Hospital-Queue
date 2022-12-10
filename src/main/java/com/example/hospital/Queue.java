@@ -68,7 +68,7 @@ public class Queue {
     public Object[] toArray() {
         Object[] array = new Object[nItems];
         for (int i = 0; i < nItems; i++) {
-            array[i] = queArray[(front + i) % maxSize];
+            array[i] = queArray[i];
         }
         return array;
     }

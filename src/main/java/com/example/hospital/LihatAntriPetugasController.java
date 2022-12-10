@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -101,11 +102,7 @@ public class LihatAntriPetugasController implements Initializable {
 
             // Otherwise, search for the search term in the data
             String lowerCaseSearchTerm = searchTerm.toLowerCase();
-            return data.getNama().toLowerCase().contains(lowerCaseSearchTerm)
-                    || data.getPoli().toLowerCase().contains(lowerCaseSearchTerm)
-                    || data.getDokter().toLowerCase().contains(lowerCaseSearchTerm)
-                    || data.getTanggal().toLowerCase().contains(lowerCaseSearchTerm)
-                    || data.getJenis().toLowerCase().contains(lowerCaseSearchTerm);
+            return data.getNama().toLowerCase().contains(lowerCaseSearchTerm);
         });
 
         // Set the table view's items to be the FilteredList
