@@ -274,9 +274,9 @@ public class FormAntriPetugasController implements Initializable {
 
         moveIn.setOnFinished(e -> {
             this.nama.setText("");
-            this.poli.getSelectionModel().clearSelection();
-            this.poli.setPromptText("Pilih Poli");
-            this.dokter.getSelectionModel().clearSelection();
+//            this.poli.getSelectionModel().clearSelection();
+//            this.poli.setPromptText("Pilih Poli");
+//            this.dokter.getSelectionModel().clearSelection();
             this.dokter.setDisable(true);
             this.tanggal.setValue(null);
             this.radiobpjs.setSelected(false);
