@@ -35,7 +35,7 @@ public class FormAntriPetugasController implements Initializable {
     }
 
     public void openPopUpAntrianPenuhScene(ActionEvent actionEvent) {
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(PopUpAntrianPenuhScene);
     }
 
@@ -225,9 +225,6 @@ public class FormAntriPetugasController implements Initializable {
         moveOut.play();
 
 
-
-
-
         moveOut.setOnFinished(e -> {
             receipt.setVisible(false);
         });
@@ -242,7 +239,7 @@ public class FormAntriPetugasController implements Initializable {
             Queue queue = database.getQueuePoliMata();
             Object last = queue.lastAdded();
 
-            noantrian = queue.getNoAntrian()-1;
+            noantrian = queue.getNoAntrian() - 1;
             nama = last.getNama();
             poli = last.getPoli();
             dokter = last.getDokter();
@@ -261,7 +258,7 @@ public class FormAntriPetugasController implements Initializable {
             Queue queue = database.getQueuePoliJantung();
             Object last = queue.lastAdded();
 
-            noantrian = queue.getNoAntrian()-1;
+            noantrian = queue.getNoAntrian() - 1;
             nama = last.getNama();
             poli = last.getPoli();
             dokter = last.getDokter();
@@ -280,7 +277,7 @@ public class FormAntriPetugasController implements Initializable {
             Queue queue = database.getQueuePoliBedah();
             Object last = queue.lastAdded();
 
-            noantrian = queue.getNoAntrian()-1;
+            noantrian = queue.getNoAntrian() - 1;
             nama = last.getNama();
             poli = last.getPoli();
             dokter = last.getDokter();
@@ -302,7 +299,7 @@ public class FormAntriPetugasController implements Initializable {
         moveIn.setNode(receipt);
         moveIn.setDuration(Duration.millis(1000));
         moveIn.setCycleCount(1);
-        moveIn.setByY(-620);
+        moveIn.setByY(-700);
         moveIn.play();
 
         moveIn.setOnFinished(e -> {
@@ -310,7 +307,7 @@ public class FormAntriPetugasController implements Initializable {
 //            this.poli.getSelectionModel().clearSelection();
 //            this.poli.setPromptText("Pilih Poli");
 //            this.dokter.getSelectionModel().clearSelection();
-            this.dokter.setDisable(true);
+//            this.dokter.setDisable(true);
             this.tanggal.setValue(null);
             this.radiobpjs.setSelected(false);
             this.radioumum.setSelected(false);
@@ -322,9 +319,6 @@ public class FormAntriPetugasController implements Initializable {
         Queue queuePoliMata = database.getQueuePoliMata();
         Queue queuePoliJantung = database.getQueuePoliJantung();
         Queue queuePoliBedah = database.getQueuePoliBedah();
-
-//        InvoiceController invoice = new InvoiceController();
-//        invoice.setUp(noantrian, nama, poli, dokter, tanggal, jenis, antri);
 
         if (this.nama.getText().equals("") || this.poli.getValue() == "Pilih poli" || this.poli.getValue() == null || this.dokter.getValue() == "Pilih dokter" || this.dokter.getValue() == null || this.tanggal.getValue() == null || jenisTerpilih.equals("")) {
             TranslateTransition moveIn = new TranslateTransition();
@@ -354,7 +348,6 @@ public class FormAntriPetugasController implements Initializable {
 
             if (poli.equals("Poli Mata")) {
                 if (queuePoliMata.isFull()) {
-                    System.out.println("Antrian poli mata sudah penuh");
                     openPopUp();
                 } else {
                     noantrian = queuePoliMata.getNoAntrian();
@@ -363,7 +356,6 @@ public class FormAntriPetugasController implements Initializable {
                 }
             } else if (poli.equals("Poli Jantung")) {
                 if (queuePoliJantung.isFull()) {
-                    System.out.println("Antrian poli jantung sudah penuh");
                     openPopUp();
                 } else {
                     noantrian = queuePoliJantung.getNoAntrian();
@@ -372,7 +364,6 @@ public class FormAntriPetugasController implements Initializable {
                 }
             } else if (poli.equals("Poli Bedah")) {
                 if (queuePoliBedah.isFull()) {
-                    System.out.println("Antrian poli bedah sudah penuh");
                     openPopUp();
                 } else {
                     noantrian = queuePoliBedah.getNoAntrian();
@@ -380,36 +371,7 @@ public class FormAntriPetugasController implements Initializable {
                     openReceipt();
                 }
             }
-
-
-
-//            if (queue.isFull()) {
-//                System.out.println("Poli Mata Penuh");
-//            } else {
-//                System.out.println("Telah masuk Antrian => (" + jenis + " " + poli + ")No Antrian: " + noantrian + ", Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
-//                database.enQueue(noantrian, nama, poli, dokter, tanggal, jenis, actionEvent);
-//
-//                FXMLLoader Loader = new FXMLLoader(getClass().getResource("Invoice.fxml"));
-//                Parent Page = Loader.load();
-//                Scene Scene = new Scene(Page, 1200, 700);
-//                Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-//                primaryStage.setScene(Scene);
-//            }
         }
-
-//        FXMLLoader Loader = new FXMLLoader(getClass().getResource("Invoice.fxml"));
-//        Parent Page = Loader.load();
-//        Scene Scene = new Scene(Page, 1200, 700);
-//
-//
-//        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-//        primaryStage.setScene(Scene);
-//        FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), Page);
-//        fadeIn.setFromValue(0);
-//        fadeIn.setToValue(1);
-//        fadeIn.setCycleCount(1);
-//
-//        fadeIn.play();
     }
 
     public void poliTelahTerpilih(ActionEvent actionEvent) {
@@ -441,13 +403,7 @@ public class FormAntriPetugasController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         popup.setVisible(false);
         popuplogout.setVisible(false);
-        poli.getItems().clear();
         poli.getItems().addAll("Poli Mata", "Poli Jantung", "Poli Bedah");
         dokter.setDisable(true);
-
-//        Database database = Database.getInstance();
-//        Queue queue = database.getQueue();
-//
-//        noantrian.setText(String.valueOf(queue.getNoAntrian()));
     }
 }

@@ -34,7 +34,6 @@ public class LoginPetugasController implements Initializable {
     private HBox alertbelumpenuh;
 
 
-
     public void closeAlerta() {
         TranslateTransition moveOut = new TranslateTransition();
         moveOut.setNode(alerta);
@@ -53,13 +52,6 @@ public class LoginPetugasController implements Initializable {
         moveIn.setByY(94);
         moveIn.play();
         apakah_alert_active = true;
-//        moveIn.setOnFinished(e -> {
-//            Timeline timeline = new Timeline(new KeyFrame(
-//                    Duration.seconds(7),
-//                    event -> closeAlerta()
-//            ));
-//            timeline.play();
-//        });
     }
 
     public void closeAlertBelumPenuh() {
@@ -80,23 +72,14 @@ public class LoginPetugasController implements Initializable {
         moveIn.setByY(94);
         moveIn.play();
         apakah_alertbelumpenuh_active = true;
-//        moveIn.setOnFinished(e -> {
-//            Timeline timeline = new Timeline(new KeyFrame(
-//                    Duration.seconds(7),
-//                    event -> closeAlerta()
-//            ));
-//            timeline.play();
-//        });
     }
 
     public void loginAction(ActionEvent actionEvent) throws IOException {
         if (usernameField.getText().equals("") || passwordField.getText().equals("")) {
-            System.out.println("Monggo diisi");
-            if(apakah_alert_active){
+            if (apakah_alert_active) {
                 closeAlerta();
             }
             if (apakah_alertbelumpenuh_active) {
-
                 TranslateTransition moveOut = new TranslateTransition();
                 moveOut.setNode(alertbelumpenuh);
                 moveOut.setDuration(Duration.millis(200));
@@ -110,17 +93,15 @@ public class LoginPetugasController implements Initializable {
             } else {
                 openAlertBelumPenuh();
             }
-
-        } else if (usernameField.getText().equals("admin")&& passwordField.getText().equals("admin")) {
+        } else if (usernameField.getText().equals("admin") && passwordField.getText().equals("admin")) {
             FXMLLoader Loader = new FXMLLoader(getClass().getResource("HomepagePetugas.fxml"));
             Parent Page = Loader.load();
             Scene Scene = new Scene(Page, 1200, 700);
 
-            Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             primaryStage.setScene(Scene);
-        } else{
-            System.out.println("username password salah");
-            if(apakah_alertbelumpenuh_active){
+        } else {
+            if (apakah_alertbelumpenuh_active) {
                 closeAlertBelumPenuh();
             }
             if (apakah_alert_active) {
@@ -146,7 +127,7 @@ public class LoginPetugasController implements Initializable {
         Parent Page = Loader.load();
         Scene Scene = new Scene(Page, 1200, 700);
 
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(Scene);
     }
 
