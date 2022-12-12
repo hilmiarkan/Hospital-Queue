@@ -100,24 +100,17 @@ public class LihatAntriPetugasController implements Initializable {
 
     private void filterTableViewData(String searchTerm) {
         loadTable();
-        // Create a FilteredList that wraps the table view's data
         FilteredList<Object> filteredData = new FilteredList<>(Tabel.getItems(), p -> true);
 
-        // Set the filter Predicate to filter the data based on the search term
         filteredData.setPredicate(data -> {
-            // If the search term is empty, show all the data
             if (searchTerm == null || searchTerm.isEmpty()) {
                 return true;
             }
-
-            // Otherwise, search for the search term in the data
             String lowerCaseSearchTerm = searchTerm.toLowerCase();
             return data.getNama().toLowerCase().contains(lowerCaseSearchTerm);
         });
 
-        // Set the table view's items to be the FilteredList
         Tabel.setItems(filteredData);
-
     }
 
     @FXML
@@ -198,28 +191,5 @@ public class LihatAntriPetugasController implements Initializable {
         filter.getItems().addAll("Semua Poli", "Poli Mata", "Poli Jantung", "Poli Bedah");
         popuplogout.setVisible(false);
         loadTable();
-//        Tabel.setOnMouseClicked(event -> {
-//            // Check if the event was a double-click.
-//            if (event.getClickCount() == 2) {
-//                // Get the data for the clicked on row.
-//                Object antrianTerpilih = (Object) Tabel.getSelectionModel().getSelectedItem();
-//
-//                // Do something with the data (e.g. switch to another scene and
-//                // display the data in that scene).
-//                System.out.println(antrianTerpilih);
-//
-//                FXMLLoader Loader = new FXMLLoader(getClass().getResource("InvoicePetugas.fxml"));
-//                Parent Page = null;
-//                try {
-//                    Page = Loader.load();
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
-//                Scene Scene = new Scene(Page, 1200, 700);
-//
-//                Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//                primaryStage.setScene(Scene);
-//            }
-//        });
     }
 }

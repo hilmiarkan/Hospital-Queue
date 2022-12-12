@@ -31,16 +31,6 @@ public class Queue {
         return temp;
     }
 
-//    public void removeSpecific(Antrian antrianToRemove) {
-//        Antrian[] array = toArray();
-//        clear();
-//        for (Antrian antrian : array) {
-//            if (!antrian.equals(antrianToRemove)) {
-//                insert(antrian);
-//            }
-//        }
-//    }
-
     public Object lastAdded() {
         return queArray[nItems - 1];
     }
@@ -68,7 +58,7 @@ public class Queue {
     public Object[] toArray() {
         Object[] array = new Object[nItems];
         for (int i = 0; i < nItems; i++) {
-            array[i] = queArray[i];
+            array[i] = queArray[(front + i) % maxSize];
         }
         return array;
     }

@@ -114,13 +114,6 @@ public class FormAntriController implements Initializable {
         moveIn.setByX(-420);
         moveIn.play();
         apakah_alert_active = true;
-//        moveIn.setOnFinished(e -> {
-//            Timeline timeline = new Timeline(new KeyFrame(
-//                    Duration.seconds(7),
-//                    event -> closeAlerta()
-//            ));
-//            timeline.play();
-//        });
     }
 
     public void openPopUp() {
@@ -162,10 +155,6 @@ public class FormAntriController implements Initializable {
         moveOut.setCycleCount(1);
         moveOut.setByY(620);
         moveOut.play();
-
-
-
-
 
         moveOut.setOnFinished(e -> {
             receipt.setVisible(false);
@@ -244,15 +233,6 @@ public class FormAntriController implements Initializable {
         moveIn.setByY(-620);
         moveIn.play();
 
-//        moveIn.setOnFinished(e -> {
-//            this.nama.setText("");
-//            this.poli.setPromptText("Pilih Poli");
-//            this.dokter.setDisable(true);
-//            this.tanggal.setValue(null);
-//            this.radiobpjs.setSelected(false);
-//            this.radioumum.setSelected(false);
-//        });
-
         PauseTransition pause = new PauseTransition(Duration.millis(900));
         pause.play();
         pause.setOnFinished(e -> {
@@ -260,7 +240,7 @@ public class FormAntriController implements Initializable {
 //            this.poli.getSelectionModel().clearSelection();
 //            this.poli.setPromptText("Pilih Poli");
 //            this.dokter.getSelectionModel().clearSelection();
-            this.dokter.setDisable(true);
+//            this.dokter.setDisable(true);
             this.tanggal.setValue(null);
             this.radiobpjs.setSelected(false);
             this.radioumum.setSelected(false);
@@ -272,9 +252,6 @@ public class FormAntriController implements Initializable {
         Queue queuePoliMata = database.getQueuePoliMata();
         Queue queuePoliJantung = database.getQueuePoliJantung();
         Queue queuePoliBedah = database.getQueuePoliBedah();
-
-//        InvoiceController invoice = new InvoiceController();
-//        invoice.setUp(noantrian, nama, poli, dokter, tanggal, jenis, antri);
 
         if (this.nama.getText().equals("") || this.poli.getValue() == "Pilih poli" || this.poli.getValue() == null || this.dokter.getValue() == "Pilih dokter" || this.dokter.getValue() == null || this.tanggal.getValue() == null || jenisTerpilih.equals("")) {
             if (apakah_alert_active) {
@@ -303,7 +280,6 @@ public class FormAntriController implements Initializable {
 
             if (poli.equals("Poli Mata")) {
                 if (queuePoliMata.isFull()) {
-                    System.out.println("Antrian poli mata sudah penuh");
                     openPopUp();
                 } else {
                     noantrian = queuePoliMata.getNoAntrian();
@@ -312,7 +288,6 @@ public class FormAntriController implements Initializable {
                 }
             } else if (poli.equals("Poli Jantung")) {
                 if (queuePoliJantung.isFull()) {
-                    System.out.println("Antrian poli jantung sudah penuh");
                     openPopUp();
                 } else {
                     noantrian = queuePoliJantung.getNoAntrian();
@@ -321,7 +296,6 @@ public class FormAntriController implements Initializable {
                 }
             } else if (poli.equals("Poli Bedah")) {
                 if (queuePoliBedah.isFull()) {
-                    System.out.println("Antrian poli bedah sudah penuh");
                     openPopUp();
                 } else {
                     noantrian = queuePoliBedah.getNoAntrian();
@@ -329,40 +303,14 @@ public class FormAntriController implements Initializable {
                     openReceipt();
                 }
             }
-
-
-
-//            if (queue.isFull()) {
-//                System.out.println("Poli Mata Penuh");
-//            } else {
-//                System.out.println("Telah masuk Antrian => (" + jenis + " " + poli + ")No Antrian: " + noantrian + ", Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
-//                database.enQueue(noantrian, nama, poli, dokter, tanggal, jenis, actionEvent);
-//
-//                FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Invoice.fxml"));
-//                Parent Page = InvoiceLoader.load();
-//                Scene Scene = new Scene(Page, 1200, 700);
-//                Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-//                primaryStage.setScene(Scene);
-//            }
         }
-
-//        FXMLLoader InvoiceLoader = new FXMLLoader(getClass().getResource("Invoice.fxml"));
-//        Parent Page = InvoiceLoader.load();
-//        Scene Scene = new Scene(Page, 1200, 700);
-//
-//
-//        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-//        primaryStage.setScene(Scene);
-//        FadeTransition fadeIn = new FadeTransition(Duration.seconds(.3), Page);
-//        fadeIn.setFromValue(0);
-//        fadeIn.setToValue(1);
-//        fadeIn.setCycleCount(1);
-//
-//        fadeIn.play();
     }
 
     public void poliTelahTerpilih(ActionEvent actionEvent) {
-        if (poli.getValue().equals("Poli Mata")) {
+        if (poli.getValue() == null) {
+            dokter.setDisable(true);
+            dokter.setPromptText("Pilih Dokter");
+        } else if (poli.getValue().equals("Poli Mata")) {
             dokter.setDisable(false);
             dokter.getItems().clear();
             dokter.getItems().addAll("drg. Sukmarani, M.S.S.");
@@ -390,13 +338,7 @@ public class FormAntriController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         popup.setVisible(false);
         receipt.setVisible(false);
-        poli.getItems().clear();
-        poli.getItems().addAll("Poli Mata", "Poli Jantung", "Poli Bedah");
+        poli.getItems().addAll( "Poli Mata", "Poli Jantung", "Poli Bedah");
         dokter.setDisable(true);
-
-//        Database database = Database.getInstance();
-//        Queue queue = database.getQueue();
-//
-//        noantrian.setText(String.valueOf(queue.getNoAntrian()));
     }
 }

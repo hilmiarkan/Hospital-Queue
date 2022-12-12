@@ -75,17 +75,16 @@ public class HomepagePetugasController implements Initializable {
             popup.setVisible(true);
             fade.setNode(popup);
             fade.setDuration(Duration.millis(200));
-//            fade.setCycleCount(TranslateTransition.INDEFINITE);
             fade.setCycleCount(1);
             fade.setInterpolator(Interpolator.LINEAR);
             fade.setFromValue(0);
             fade.setToValue(1);
             fade.play();
             home.setEffect(new GaussianBlur(14));
+        } else {
+            database.deQueue("Poli Jantung");
+            setUp();
         }
-        database.deQueue("Poli Jantung", event);
-
-        setUp();
     }
 
     @FXML
@@ -96,16 +95,34 @@ public class HomepagePetugasController implements Initializable {
             popup.setVisible(true);
             fade.setNode(popup);
             fade.setDuration(Duration.millis(200));
-//            fade.setCycleCount(TranslateTransition.INDEFINITE);
             fade.setCycleCount(1);
             fade.setInterpolator(Interpolator.LINEAR);
             fade.setFromValue(0);
             fade.setToValue(1);
             fade.play();
             home.setEffect(new GaussianBlur(14));
+        } else {
+            database.deQueue("Poli Bedah");
+            setUp();
         }
-        database.deQueue("Poli Bedah", event);
-        setUp();
+    }
+    @FXML
+    void panggilPoliMata(ActionEvent event) throws IOException {
+        if(database.queuePoliMata.isEmpty()){
+            FadeTransition fade = new FadeTransition();
+            popup.setVisible(true);
+            fade.setNode(popup);
+            fade.setDuration(Duration.millis(200));
+            fade.setCycleCount(1);
+            fade.setInterpolator(Interpolator.LINEAR);
+            fade.setFromValue(0);
+            fade.setToValue(1);
+            fade.play();
+            home.setEffect(new GaussianBlur(14));
+        } else {
+            database.deQueue("Poli Mata");
+            setUp();
+        }
     }
 
     public void closeAlerta() {
@@ -126,13 +143,6 @@ public class HomepagePetugasController implements Initializable {
         moveIn.setByX(-270);
         moveIn.play();
         apakah_alert_active = true;
-//        moveIn.setOnFinished(e -> {
-//            Timeline timeline = new Timeline(new KeyFrame(
-//                    Duration.seconds(7),
-//                    event -> closeAlerta()
-//            ));
-//            timeline.play();
-//        });
     }
 
     public void openPopUpLogOut() {
@@ -167,7 +177,6 @@ public class HomepagePetugasController implements Initializable {
     }
 
     void setUp() {
-        Database database = Database.getInstance();
         Queue queuePoliMata = database.getQueuePoliMata();
         Object objMata = queuePoliMata.getnItems();
 
@@ -217,41 +226,6 @@ public class HomepagePetugasController implements Initializable {
         fade.setOnFinished(e -> {
             popup.setVisible(false);
         });
-    }
-
-    @FXML
-    void panggilPoliMata(ActionEvent event) throws IOException {
-
-        if(database.queuePoliMata.isEmpty()){
-//            if (apakah_alert_active) {
-//                TranslateTransition moveOut = new TranslateTransition();
-//                moveOut.setNode(alerta);
-//                moveOut.setDuration(Duration.millis(200));
-//                moveOut.setCycleCount(1);
-//                moveOut.setByX(270);
-//                moveOut.play();
-//                apakah_alert_active = false;
-//                moveOut.setOnFinished(e -> {
-//                    openAlerta();
-//                });
-//            } else {
-//                openAlerta();
-//            }
-            FadeTransition fade = new FadeTransition();
-            popup.setVisible(true);
-            fade.setNode(popup);
-            fade.setDuration(Duration.millis(200));
-//            fade.setCycleCount(TranslateTransition.INDEFINITE);
-            fade.setCycleCount(1);
-            fade.setInterpolator(Interpolator.LINEAR);
-            fade.setFromValue(0);
-            fade.setToValue(1);
-            fade.play();
-            home.setEffect(new GaussianBlur(14));
-        }
-
-        database.deQueue("Poli Mata", event);
-        setUp();
     }
 
     @Override
