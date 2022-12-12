@@ -40,6 +40,7 @@ public final class Database {
 
     public void deQueue(String jenis) throws IOException {
         if (jenis.equals("Poli Mata")) {
+            System.out.println(queuePoliMata.getnItems().getNama());
             this.queuePoliMata.remove();
         } else if (jenis.equals("Poli Jantung")) {
             this.queuePoliJantung.remove();

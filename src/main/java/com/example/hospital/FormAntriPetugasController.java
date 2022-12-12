@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -54,6 +55,8 @@ public class FormAntriPetugasController implements Initializable {
     @FXML
     private VBox receipt;
     @FXML
+    private VBox invoice;
+    @FXML
     private Label viewNo;
     @FXML
     private Label viewNama;
@@ -75,6 +78,8 @@ public class FormAntriPetugasController implements Initializable {
     private AnchorPane popup;
     @FXML
     private AnchorPane popuplogout;
+    @FXML
+    private Button print;
 
     String jenisTerpilih = "";
     String lokasi_invoice = "petugas";
@@ -390,6 +395,24 @@ public class FormAntriPetugasController implements Initializable {
         }
     }
 
+    void printAction(Node node) {
+        System.out.println("Creating a printer job...");
+
+        PrinterJob job = PrinterJob.createPrinterJob();
+        if (job != null) {
+            System.out.println(job.jobStatusProperty().asString());
+
+            boolean printed = job.printPage(node);
+            if (printed) {
+                job.endJob();
+            } else {
+                System.out.println("Printing failed.");
+            }
+        } else {
+            System.out.println("Could not create a printer job.");
+        }
+    }
+
     public void memilihBPJS(ActionEvent actionEvent) {
         jenisTerpilih = "BPJS";
     }
@@ -405,5 +428,6 @@ public class FormAntriPetugasController implements Initializable {
         popuplogout.setVisible(false);
         poli.getItems().addAll("Poli Mata", "Poli Jantung", "Poli Bedah");
         dokter.setDisable(true);
+        print.setOnAction(e -> printAction(invoice));
     }
 }
