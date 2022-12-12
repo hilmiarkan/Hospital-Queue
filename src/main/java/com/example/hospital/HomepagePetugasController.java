@@ -18,7 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -35,6 +35,8 @@ public class HomepagePetugasController implements Initializable {
     private Label antrianPoliBedah;
     @FXML
     private AnchorPane popup;
+    @FXML
+    private AnchorPane popuplogout;
     @FXML
     private VBox home;
     Boolean apakah_alert_active = false;
@@ -133,6 +135,37 @@ public class HomepagePetugasController implements Initializable {
 //        });
     }
 
+    public void openPopUpLogOut() {
+        FadeTransition fade = new FadeTransition();
+        popuplogout.setVisible(true);
+        fade.setNode(popuplogout);
+        fade.setDuration(Duration.millis(200));
+//            fade.setCycleCount(TranslateTransition.INDEFINITE);
+        fade.setCycleCount(1);
+        fade.setInterpolator(Interpolator.LINEAR);
+        fade.setFromValue(0);
+        fade.setToValue(1);
+        fade.play();
+        home.setEffect(new GaussianBlur(14));
+    }
+
+    @FXML
+    void backlogout(ActionEvent event) throws IOException {
+
+        FadeTransition fade = new FadeTransition();
+        fade.setNode(popuplogout);
+        fade.setDuration(Duration.millis(150));
+        fade.setCycleCount(1);
+        fade.setInterpolator(Interpolator.LINEAR);
+        fade.setFromValue(1);
+        fade.setToValue(0);
+        fade.play();
+        home.setEffect(null);
+        fade.setOnFinished(e -> {
+            popuplogout.setVisible(false);
+        });
+    }
+
     void setUp() {
         Database database = Database.getInstance();
         Queue queuePoliMata = database.getQueuePoliMata();
@@ -216,6 +249,7 @@ public class HomepagePetugasController implements Initializable {
             fade.play();
             home.setEffect(new GaussianBlur(14));
         }
+
         database.deQueue("Poli Mata", event);
         setUp();
     }
@@ -223,6 +257,7 @@ public class HomepagePetugasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         popup.setVisible(false);
+        popuplogout.setVisible(false);
         setUp();
     }
 }

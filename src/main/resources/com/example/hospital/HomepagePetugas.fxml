@@ -64,7 +64,7 @@
                            </children>
                         </HBox>
                         <Region HBox.hgrow="ALWAYS" />
-                        <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#openLoginPetugasScene" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-color: #D0D5DD; -fx-border-radius: 8;" text="Keluar" textFill="#344054">
+                        <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#openPopUpLogOut" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-color: #D0D5DD; -fx-border-radius: 8;" text="Keluar" textFill="#344054">
                            <padding>
                               <Insets bottom="8.0" left="14.0" right="14.0" top="8.0" />
                            </padding>
@@ -362,6 +362,67 @@
                </children>
                <padding>
                   <Insets bottom="31.0" left="21.0" right="21.0" />
+               </padding>
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" height="255.0" radius="127.0" spread="0.17" width="255.0">
+                     <color>
+                        <Color opacity="0.1892925500869751" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="popuplogout" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(52, 64, 84, 0.7);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" layoutY="232.0" prefHeight="151.0" prefWidth="392.0" spacing="32.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #D0D5DD;" AnchorPane.leftAnchor="404.0" AnchorPane.rightAnchor="404.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" spacing="20.0">
+                     <children>
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Featured%20icon.png" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="8.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" text="Log Out" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font name="Inter Medium" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" text="Apakah anda yakin ingin keluar?" textAlignment="CENTER" textFill="#667085" wrapText="true">
+                                 <font>
+                                    <Font name="Inter Regular" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <HBox spacing="12.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" onAction="#backlogout" prefHeight="37.0" prefWidth="171.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-color: #D0D5DD; -fx-border-radius: 8;" text="Kembali" textFill="#344054" HBox.hgrow="ALWAYS">
+                           <padding>
+                              <Insets bottom="10.0" left="14.0" right="14.0" top="10.0" />
+                           </padding>
+                           <font>
+                              <Font name="Inter Medium" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" onAction="#openLoginPetugasScene" prefHeight="35.0" prefWidth="171.0" style="-fx-background-color: #8654E1; -fx-background-radius: 8;" text="Ya, Keluar" textFill="WHITE" HBox.hgrow="ALWAYS">
+                           <padding>
+                              <Insets bottom="10.0" left="14.0" right="14.0" top="10.0" />
+                           </padding>
+                           <font>
+                              <Font name="Inter Medium" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
                </padding>
                <effect>
                   <DropShadow blurType="GAUSSIAN" height="255.0" radius="127.0" spread="0.17" width="255.0">

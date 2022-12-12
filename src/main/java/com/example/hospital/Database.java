@@ -17,13 +17,13 @@ public final class Database {
     Queue queuePoliMata = new Queue(2);
     Queue queuePoliJantung = new Queue(2);
     Queue queuePoliBedah = new Queue(2);
-    private final static Database INSTANCE = new Database();
+    private final static Database okeoce = new Database();
 
     private Database() {
     }
 
     public static Database getInstance() {
-        return INSTANCE;
+        return okeoce;
     }
 
     private String poliTerakhir;
