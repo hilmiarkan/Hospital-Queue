@@ -50,8 +50,6 @@ public class FormAntriPetugasController implements Initializable {
     @FXML
     private DatePicker tanggal;
     @FXML
-    private AnchorPane popup;
-    @FXML
     private VBox home;
     @FXML
     private VBox receipt;
@@ -73,6 +71,10 @@ public class FormAntriPetugasController implements Initializable {
     private RadioButton radiobpjs;
     @FXML
     private RadioButton radioumum;
+    @FXML
+    private AnchorPane popup;
+    @FXML
+    private AnchorPane popuplogout;
 
     String jenisTerpilih = "";
     String lokasi_invoice = "petugas";
@@ -149,6 +151,37 @@ public class FormAntriPetugasController implements Initializable {
 //            ));
 //            timeline.play();
 //        });
+    }
+
+    public void openPopUpLogOut() {
+        FadeTransition fade = new FadeTransition();
+        popuplogout.setVisible(true);
+        fade.setNode(popuplogout);
+        fade.setDuration(Duration.millis(200));
+//            fade.setCycleCount(TranslateTransition.INDEFINITE);
+        fade.setCycleCount(1);
+        fade.setInterpolator(Interpolator.LINEAR);
+        fade.setFromValue(0);
+        fade.setToValue(1);
+        fade.play();
+        home.setEffect(new GaussianBlur(14));
+    }
+
+    @FXML
+    void backlogout(ActionEvent event) throws IOException {
+
+        FadeTransition fade = new FadeTransition();
+        fade.setNode(popuplogout);
+        fade.setDuration(Duration.millis(150));
+        fade.setCycleCount(1);
+        fade.setInterpolator(Interpolator.LINEAR);
+        fade.setFromValue(1);
+        fade.setToValue(0);
+        fade.play();
+        home.setEffect(null);
+        fade.setOnFinished(e -> {
+            popuplogout.setVisible(false);
+        });
     }
 
     public void openPopUp() {
@@ -407,6 +440,7 @@ public class FormAntriPetugasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         popup.setVisible(false);
+        popuplogout.setVisible(false);
         poli.getItems().clear();
         poli.getItems().addAll("Poli Mata", "Poli Jantung", "Poli Bedah");
         dokter.setDisable(true);

@@ -1,5 +1,7 @@
 package com.example.hospital;
 
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -12,10 +14,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.input.KeyEvent;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,6 +47,10 @@ public class LihatAntriPetugasController implements Initializable {
     private TableColumn<Object, String> tanggalCol;
     @FXML
     private TableColumn<Object, String> jenisCol;
+    @FXML
+    private AnchorPane popuplogout;
+    @FXML
+    private VBox home;
 
     String poli = "";
 
@@ -152,10 +162,41 @@ public class LihatAntriPetugasController implements Initializable {
         Tabel.setItems(list);
     }
 
+    public void openPopUpLogOut() {
+        FadeTransition fade = new FadeTransition();
+        popuplogout.setVisible(true);
+        fade.setNode(popuplogout);
+        fade.setDuration(Duration.millis(200));
+//            fade.setCycleCount(TranslateTransition.INDEFINITE);
+        fade.setCycleCount(1);
+        fade.setInterpolator(Interpolator.LINEAR);
+        fade.setFromValue(0);
+        fade.setToValue(1);
+        fade.play();
+        home.setEffect(new GaussianBlur(14));
+    }
+
+    @FXML
+    void backlogout(ActionEvent event) throws IOException {
+
+        FadeTransition fade = new FadeTransition();
+        fade.setNode(popuplogout);
+        fade.setDuration(Duration.millis(150));
+        fade.setCycleCount(1);
+        fade.setInterpolator(Interpolator.LINEAR);
+        fade.setFromValue(1);
+        fade.setToValue(0);
+        fade.play();
+        home.setEffect(null);
+        fade.setOnFinished(e -> {
+            popuplogout.setVisible(false);
+        });
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         filter.getItems().addAll("Semua Poli", "Poli Mata", "Poli Jantung", "Poli Bedah");
-
+        popuplogout.setVisible(false);
         loadTable();
 //        Tabel.setOnMouseClicked(event -> {
 //            // Check if the event was a double-click.
