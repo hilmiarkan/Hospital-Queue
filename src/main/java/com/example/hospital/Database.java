@@ -28,23 +28,25 @@ public final class Database {
         invoiceTerakhir = invoice;
         if (poli.equals("Poli Mata")) {
             this.queuePoliMata.insert(noantrian, nama, poli, dokter, tanggal, jenis);
-            System.out.println("Telah masuk Antrian => (" + jenis + " " + poli + ")No Antrian: " + noantrian + ", Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
+            System.out.println("Telah masuk Antrian => (" + poli + " " + jenis + ")\t\tNo Antrian: " + noantrian + ", Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
         } else if (poli.equals("Poli Jantung")) {
             this.queuePoliJantung.insert(noantrian, nama, poli, dokter, tanggal, jenis);
-            System.out.println("Telah masuk Antrian => (" + jenis + " " + poli + ")No Antrian: " + noantrian + ", Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
+            System.out.println("Telah masuk Antrian => (" + poli + " " + jenis + ")\tNo Antrian: " + noantrian + ", Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
         } else if (poli.equals("Poli Bedah")) {
             this.queuePoliBedah.insert(noantrian, nama, poli, dokter, tanggal, jenis);
-            System.out.println("Telah masuk Antrian => (" + jenis + " " + poli + ")No Antrian: " + noantrian + ", Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
+            System.out.println("Telah masuk Antrian => (" + poli + " " + jenis + ")\tNo Antrian: " + noantrian + ", Nama: " + nama + ", Dokter: " + dokter + ", Tanggal: " + tanggal);
         }
     }
 
     public void deQueue(String jenis) throws IOException {
         if (jenis.equals("Poli Mata")) {
-            System.out.println(queuePoliMata.getnItems().getNama());
+            System.out.println("Antrian " + queuePoliMata.getnItems().getNoantrian() + " Silahkan Menuju " + queuePoliMata.getnItems().getPoli());
             this.queuePoliMata.remove();
         } else if (jenis.equals("Poli Jantung")) {
+            System.out.println("Antrian " + queuePoliJantung.getnItems().getNoantrian() + " Silahkan Menuju " + queuePoliJantung.getnItems().getPoli());
             this.queuePoliJantung.remove();
         } else if (jenis.equals("Poli Bedah")) {
+            System.out.println("Antrian " + queuePoliBedah.getnItems().getNoantrian() + " Silahkan Menuju " + queuePoliBedah.getnItems().getPoli());
             this.queuePoliBedah.remove();
         }
     }

@@ -171,7 +171,6 @@ public class LihatAntriPetugasController implements Initializable {
 
     @FXML
     void backlogout(ActionEvent event) throws IOException {
-
         FadeTransition fade = new FadeTransition();
         fade.setNode(popuplogout);
         fade.setDuration(Duration.millis(150));

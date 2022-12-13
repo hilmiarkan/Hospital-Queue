@@ -71,6 +71,7 @@ public class HomepagePetugasController implements Initializable {
     @FXML
     void panggilPoliJantung(ActionEvent event) throws IOException {
         if(database.queuePoliJantung.isEmpty()){
+            System.out.println("Antrian Kosong");
             FadeTransition fade = new FadeTransition();
             popup.setVisible(true);
             fade.setNode(popup);
@@ -91,6 +92,7 @@ public class HomepagePetugasController implements Initializable {
     void panggilPoliBedah(ActionEvent event) throws IOException {
 
         if(database.queuePoliBedah.isEmpty()){
+            System.out.println("Antrian Kosong");
             FadeTransition fade = new FadeTransition();
             popup.setVisible(true);
             fade.setNode(popup);
@@ -109,6 +111,7 @@ public class HomepagePetugasController implements Initializable {
     @FXML
     void panggilPoliMata(ActionEvent event) throws IOException {
         if(database.queuePoliMata.isEmpty()){
+            System.out.println("Antrian Kosong");
             FadeTransition fade = new FadeTransition();
             popup.setVisible(true);
             fade.setNode(popup);
@@ -213,7 +216,6 @@ public class HomepagePetugasController implements Initializable {
 
     @FXML
     void back(ActionEvent event) throws IOException {
-
         FadeTransition fade = new FadeTransition();
         fade.setNode(popup);
         fade.setDuration(Duration.millis(150));

@@ -314,6 +314,7 @@ public class FormAntriPetugasController implements Initializable {
 //            this.dokter.getSelectionModel().clearSelection();
 //            this.dokter.setDisable(true);
             this.tanggal.setValue(null);
+            jenisTerpilih = "";
             this.radiobpjs.setSelected(false);
             this.radioumum.setSelected(false);
         });
@@ -353,6 +354,7 @@ public class FormAntriPetugasController implements Initializable {
 
             if (poli.equals("Poli Mata")) {
                 if (queuePoliMata.isFull()) {
+                    System.out.println("Antrian Penuh");
                     openPopUp();
                 } else {
                     noantrian = queuePoliMata.getNoAntrian();
@@ -361,6 +363,7 @@ public class FormAntriPetugasController implements Initializable {
                 }
             } else if (poli.equals("Poli Jantung")) {
                 if (queuePoliJantung.isFull()) {
+                    System.out.println("Antrian Penuh");
                     openPopUp();
                 } else {
                     noantrian = queuePoliJantung.getNoAntrian();
@@ -369,6 +372,7 @@ public class FormAntriPetugasController implements Initializable {
                 }
             } else if (poli.equals("Poli Bedah")) {
                 if (queuePoliBedah.isFull()) {
+                    System.out.println("Antrian Penuh");
                     openPopUp();
                 } else {
                     noantrian = queuePoliBedah.getNoAntrian();
@@ -400,10 +404,9 @@ public class FormAntriPetugasController implements Initializable {
 
         PrinterJob job = PrinterJob.createPrinterJob();
         if (job != null) {
-            System.out.println(job.jobStatusProperty().asString());
-
             boolean printed = job.printPage(node);
             if (printed) {
+                System.out.println("Printing Success");
                 job.endJob();
             } else {
                 System.out.println("Printing failed.");
