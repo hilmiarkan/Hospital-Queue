@@ -42,7 +42,7 @@
                               <Font name="Inter Medium" size="12.0" />
                            </font>
                         </Button>
-                        <Button id="button-login-petugas" graphicTextGap="8.0" mnemonicParsing="false" onAction="#openFormAntriScene" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-radius: 8;" text="Buat Antrian" textFill="#344054">
+                        <Button id="button-login-petugas" fx:id="button_buatantrian" graphicTextGap="8.0" mnemonicParsing="false" onAction="#openFormAntriScene" onMouseEntered="#hoverNav" onMouseExited="#unhoverNav" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8; -fx-border-radius: 8;" text="Buat Antrian" textFill="#344054">
                            <padding>
                               <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
                            </padding>

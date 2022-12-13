@@ -304,7 +304,7 @@ public class FormAntriPetugasController implements Initializable {
         moveIn.setNode(receipt);
         moveIn.setDuration(Duration.millis(1000));
         moveIn.setCycleCount(1);
-        moveIn.setByY(-700);
+        moveIn.setByY(-620);
         moveIn.play();
 
         moveIn.setOnFinished(e -> {

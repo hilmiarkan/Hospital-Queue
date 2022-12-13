@@ -1,5 +1,8 @@
 package com.example.hospital;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,12 +10,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class HomepageController implements Initializable {
 
@@ -22,6 +31,26 @@ public class HomepageController implements Initializable {
     private Label antrianPoliJantung;
     @FXML
     private Label antrianPoliBedah;
+    @FXML
+    private Button button_buatantrian;
+
+//
+//    String NavHoverStyle = "-fx-font-size: 18pt; -fx-font-weight: bold; -fx-background-color: blue;";
+//
+//    Timeline NavTimeline = new Timeline(
+//            new KeyFrame(Duration.ZERO, new KeyValue(button_buatantrian.styleProperty(), "")),
+//            new KeyFrame(Duration.seconds(1), new KeyValue(button_buatantrian.styleProperty(), NavHoverStyle))
+//    );
+    @FXML
+    void hoverNav(MouseEvent event) {
+//        NavTimeline.play();
+    }
+    @FXML
+    void unhoverNav(MouseEvent event) {
+//        NavTimeline.stop();
+        // Set the button's style to the original value defined in the first key frame of the timeline
+//        button_buatantrian.setStyle(NavTimeline.getKeyFrames().get(0).getValues().get(0).getEndValue());
+    }
 
     public void openFormAntriScene(ActionEvent actionEvent) throws IOException {
 

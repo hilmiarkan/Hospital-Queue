@@ -249,6 +249,7 @@ public class FormAntriController implements Initializable {
             this.tanggal.setValue(null);
             this.radiobpjs.setSelected(false);
             this.radioumum.setSelected(false);
+            jenisTerpilih = "";
         });
     }
 
